@@ -201,7 +201,7 @@ form.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
 
   try {
-    const res = await fetch('https://TU-DOMINIO-N8N/webhook/neural-studio-subscribe', {
+    const res = await fetch('https://n8n.srv864443.hstgr.cloud/webhook-test/neural-studio-subscribe', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
