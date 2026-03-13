@@ -206,7 +206,7 @@ form.addEventListener('submit', async (e) => {
     const params = new URLSearchParams();
     params.set('first_name', document.getElementById('first_name').value.trim());
     params.set('email', document.getElementById('email').value.trim());
-    const res = await fetch('https://n8n.srv864443.hstgr.cloud/webhook-test/neural-studio-subscribe', {
+    const res = await fetch('https://n8n.srv864443.hstgr.cloud/webhook/neural-studio-subscribe', {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
       body: params.toString()
