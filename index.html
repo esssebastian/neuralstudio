@@ -55,12 +55,10 @@ nav{display:flex;flex-direction:column;align-items:center;margin-bottom:6rem;wid
 .nav-wordmark{font-size:1.875rem;font-weight:600;letter-spacing:-0.05em;color:var(--text)}
 .nav-wordmark span{color:var(--cyan)}
 .nav-sub{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.35em;color:rgba(255,255,255,0.6);margin-top:0.5rem;font-weight:500}
-.nav-live{
-  display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
-  margin-top:0.55rem;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.28em;
-  color:rgba(255,255,255,0.72);font-weight:600;
-}
-.live-dot-wrap{position:relative;width:0.5rem;height:0.5rem;flex-shrink:0}
+.live-dot-wrap{position:relative;width:0.5rem;height:0.5rem;flex-shrink:0;display:inline-block;vertical-align:middle}
+.live-dot-wrap--hero{width:0.55em;height:0.55em;margin-right:0.15em;margin-left:0.05em}
+.h1-live{display:inline-flex;align-items:baseline;gap:0;white-space:nowrap;vertical-align:baseline}
+.h1-live .live-dot-wrap--hero{align-self:center;margin-top:-0.08em}
 .live-dot{
   position:absolute;inset:0;border-radius:50%;background:#ef4444;
   box-shadow:0 0 10px rgba(239,68,68,0.9);
@@ -218,17 +216,10 @@ footer{
   <nav class="sa">
     <div class="nav-wordmark"><span>·</span>NS<span>·</span></div>
     <div class="nav-sub">Neural Studio</div>
-    <div class="nav-live sa" role="status" aria-label="En vivo">
-      <span class="live-dot-wrap" aria-hidden="true">
-        <span class="live-dot-ping"></span>
-        <span class="live-dot"></span>
-      </span>
-      <span>En vivo</span>
-    </div>
   </nav>
 
   <section class="hero wrap">
-    <h1 class="sa">Mientras otros venden cursos de IA, nosotros estamos <span class="cyan">construyendo en vivo.</span> 🧱</h1>
+    <h1 class="sa">Mientras otros venden cursos de IA, nosotros estamos <span class="cyan">construyendo <span class="h1-live" role="status" aria-label="En vivo"><span class="live-dot-wrap live-dot-wrap--hero" aria-hidden="true"><span class="live-dot-ping"></span><span class="live-dot"></span></span>en vivo.</span></span> 🧱</h1>
     <p class="hero-lead sa">Somos la comunidad latinoamericana donde dejas de solo consumir IA y empiezas a construir con ella — en <span class="gold">menos de 30 días</span>, sin código, sin experiencia técnica.</p>
     <div class="hero-btns sa">
       <a class="btn btn-primary" href="#acceso">Quiero estar adentro →</a>
