@@ -46,32 +46,18 @@ body::before{
 }
 
 canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem;position:relative;z-index:1}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem;position:relative;z-index:1;width:100%}
 
-/* ----- header ----- */
-main{position:relative;z-index:1}
-header{
-  position:sticky;top:0;z-index:50;
-  background:rgba(10,15,24,.85);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,255,255,.06);
+/* ----- main + simple nav (same idea as index.html) ----- */
+main{
+  position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;
+  padding:4rem 1.5rem 6rem;max-width:1280px;margin:0 auto;width:100%;
 }
-.header-inner{
-  max-width:var(--max);margin:0 auto;padding:.85rem 1.5rem;
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-}
-.logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--text)}
-.logo-mark{
-  width:40px;height:40px;border-radius:10px;
-  background:linear-gradient(145deg,var(--cyan),#026a8f);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:1rem;color:var(--bg);letter-spacing:-.05em;
-}
-.logo span{font-weight:700;font-size:1.05rem;letter-spacing:-.03em}
-.logo small{display:block;font-size:.6rem;font-weight:600;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:1.75rem;flex-wrap:wrap}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--text)}
+nav{display:flex;flex-direction:column;align-items:center;margin-bottom:6rem;width:100%}
+.nav-wordmark{font-size:1.875rem;font-weight:600;letter-spacing:-0.05em;color:var(--text)}
+.nav-wordmark span{color:var(--cyan)}
+.nav-sub{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.35em;color:rgba(255,255,255,0.6);margin-top:0.5rem;font-weight:500}
+
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
   padding:.65rem 1.25rem;border-radius:var(--radius-sm);font-size:.875rem;font-weight:600;
@@ -83,10 +69,9 @@ header{
 .btn-ghost{background:transparent;color:var(--cyan);border:1px solid rgba(4,161,212,.5)}
 .btn-ghost:hover{background:var(--cyan-dim);border-color:var(--cyan)}
 .btn-gold{background:var(--gold);color:var(--bg)}
-.header-cta{display:flex;gap:.6rem;align-items:center}
 
 /* ----- hero ----- */
-.hero{padding:4rem 0 5rem;text-align:center}
+.hero{padding:0 0 5rem;text-align:center}
 .badge{
   display:inline-flex;align-items:center;gap:.4rem;
   background:var(--gold-dim);color:var(--gold);
@@ -208,25 +193,22 @@ input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
 .btn-wa:hover{background:#25D366;color:var(--bg)}
 .btn-wa svg{width:20px;height:20px;fill:currentColor}
 
-/* ----- footer ----- */
+/* ----- footer (same layout as index.html) ----- */
 footer{
   position:relative;z-index:1;
-  border-top:1px solid rgba(255,255,255,.06);padding:3rem 0 2rem;
-  background:var(--bg-elevated);
+  border-top:1px solid rgba(255,255,255,0.05);padding:2rem 1.5rem;
 }
-.footer-grid{
-  display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:2rem;margin-bottom:2.5rem;
+.footer-inner{
+  max-width:1280px;margin:0 auto;display:flex;flex-direction:row;align-items:center;
+  justify-content:space-between;gap:1rem;flex-wrap:wrap;
 }
-@media(max-width:800px){.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
-.footer-brand p{color:var(--muted);font-size:.8rem;margin-top:.75rem;max-width:280px}
-.footer-col h4{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:1rem}
-.footer-col a{display:block;color:var(--muted);text-decoration:none;font-size:.85rem;margin-bottom:.5rem;transition:color .2s}
-.footer-col a:hover{color:var(--cyan)}
-.footer-bottom{
-  padding-top:2rem;border-top:1px solid rgba(255,255,255,.06);
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
-}
-.footer-bottom small{color:rgba(160,170,184,.6);font-size:.75rem}
+.footer-brand{display:flex;align-items:center;gap:0.75rem}
+.footer-wordmark{font-size:1rem;font-weight:600;letter-spacing:-0.04em;color:var(--text)}
+.footer-wordmark span{color:var(--cyan)}
+.footer-name{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.3);font-weight:500}
+.footer-copy{font-size:0.7rem;color:rgba(255,255,255,0.25);text-align:center}
+.footer-tag{font-size:0.7rem;color:rgba(255,255,255,0.25)}
+@media(max-width:540px){.footer-inner{flex-direction:column;text-align:center}}
 
 .sa{opacity:0;transform:translateY(20px)}
 </style>
@@ -235,28 +217,12 @@ footer{
 
 <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-<header>
-  <div class="header-inner">
-    <a class="logo" href="index2.html">
-      <div class="logo-mark">NS</div>
-      <div>
-        <span>Neural Studio</span>
-        <small>Construyendo en vivo</small>
-      </div>
-    </a>
-    <nav class="nav-links">
-      <a href="#quien">Quiénes</a>
-      <a href="#video">Video</a>
-      <a href="#acceso">Acceso</a>
-      <div class="header-cta">
-        <a class="btn btn-ghost" href="index.html">Versión anterior</a>
-        <a class="btn btn-primary" href="#acceso">Quiero acceso</a>
-      </div>
-    </nav>
-  </div>
-</header>
-
 <main>
+  <nav class="sa">
+    <div class="nav-wordmark"><span>·</span>NS<span>·</span></div>
+    <div class="nav-sub">Neural Studio</div>
+  </nav>
+
   <section class="hero wrap">
     <div class="badge sa">En vivo · Sin humo</div>
     <h1 class="sa">Mientras otros venden cursos de IA, nosotros estamos <span class="cyan">construyendo en vivo.</span></h1>
@@ -356,34 +322,13 @@ footer{
 </main>
 
 <footer>
-  <div class="wrap footer-grid">
+  <div class="footer-inner">
     <div class="footer-brand">
-      <a class="logo" href="index2.html" style="margin-bottom:.5rem">
-        <div class="logo-mark">NS</div>
-        <div><span>Neural Studio</span></div>
-      </a>
-      <p>Construyendo en vivo desde Vancouver para Latinoamérica.</p>
+      <div class="footer-wordmark"><span>·</span>NS<span>·</span></div>
+      <span class="footer-name">Neural Studio</span>
     </div>
-    <div class="footer-col">
-      <h4>Página</h4>
-      <a href="#quien">Quiénes somos</a>
-      <a href="#video">Video</a>
-      <a href="#acceso">Acceso</a>
-      <a href="index.html">Versión clásica</a>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="#">Privacidad</a>
-      <a href="#">Términos</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contacto</h4>
-      <a href="#acceso">Lista de correo</a>
-      <a href="https://chat.whatsapp.com/L1rPx4y1mPTCikQpXDpyyD?mode=gi_t" target="_blank">WhatsApp</a>
-    </div>
-  </div>
-  <div class="wrap footer-bottom">
-    <small>© 2025 Neural Studio. Sin spam. Sin gurus. Solo resultados.</small>
+    <p class="footer-copy">Construyendo en vivo desde Vancouver para Latinoamérica. © 2025 Neural Studio.</p>
+    <p class="footer-tag">Sin spam. Sin gurus. Solo resultados.</p>
   </div>
 </footer>
 
