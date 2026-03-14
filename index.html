@@ -195,10 +195,26 @@ input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
 .reviews-head{text-align:center;margin-bottom:2.5rem}
 .reviews-head h2{font-size:clamp(1.35rem,3vw,1.85rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
 .reviews-head p{color:var(--muted);font-size:.9rem}
-.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+/* Masonry: CSS columns — cards flow top-to-bottom per column, varied heights */
+.reviews-masonry{
+  width:100%;
+  column-count:1;
+  column-gap:1.15rem;
+  column-fill:balance;
+}
+@media(min-width:640px){.reviews-masonry{column-count:2}}
+@media(min-width:1024px){.reviews-masonry{column-count:3}}
+@media(min-width:1320px){.reviews-masonry{column-count:4}}
 .review-card{
   background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);
-  padding:1.25rem 1.2rem;display:flex;flex-direction:column;gap:.65rem;transition:border-color .2s;
+  padding:1.25rem 1.2rem;display:flex;flex-direction:column;gap:.65rem;transition:border-color .2s,box-shadow .2s;
+  break-inside:avoid;
+  -webkit-column-break-inside:avoid;
+  page-break-inside:avoid;
+  margin-bottom:1.15rem;
+  width:100%;
+  box-sizing:border-box;
+  vertical-align:top;
 }
 .review-card:hover{border-color:rgba(247,196,88,.2)}
 .review-stars{color:#f7c458;font-size:.95rem;letter-spacing:.12em;line-height:1}
@@ -339,7 +355,7 @@ footer{
       <h2 id="reviews-heading">⭐ Lo que dice la comunidad</h2>
       <p>Opiniones reales de quienes ya están adentro.</p>
     </div>
-    <div class="reviews-grid">
+    <div class="reviews-masonry">
       <article class="review-card">
         <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
         <p class="review-text">«Llevaba años comprando cursos de IA que terminaban en PDFs y videos de 2021. Acá se ve la pantalla, se arma el flujo y se discute qué falló. En la tercera sesión en vivo ya tenía claridad de qué herramientas sí valen para mi agencia y cuáles eran puro marketing. Por fin algo donde se nota que construyen en serio, no que revenden teoría.»</p>
