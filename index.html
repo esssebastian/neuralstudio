@@ -190,6 +190,22 @@ input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
 }
 .btn-wa:hover{background:#25D366;color:var(--bg)}
 .btn-wa svg{width:20px;height:20px;fill:currentColor}
+.reviews-section{padding:4rem 0 5rem;border-top:1px solid rgba(255,255,255,.06);width:100%;max-width:var(--max)}
+.reviews-section .wrap-inner{max-width:100%;padding:0}
+.reviews-head{text-align:center;margin-bottom:2.5rem}
+.reviews-head h2{font-size:clamp(1.35rem,3vw,1.85rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
+.reviews-head p{color:var(--muted);font-size:.9rem}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.review-card{
+  background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);
+  padding:1.25rem 1.2rem;display:flex;flex-direction:column;gap:.65rem;transition:border-color .2s;
+}
+.review-card:hover{border-color:rgba(247,196,88,.2)}
+.review-stars{color:#f7c458;font-size:.95rem;letter-spacing:.12em;line-height:1}
+.review-stars .dim{color:rgba(247,196,88,.28)}
+.review-text{color:var(--muted);font-size:.875rem;line-height:1.55;font-weight:400}
+.review-author{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.88)}
+.review-meta{font-size:.72rem;color:rgba(160,170,184,.75);font-weight:500}
 footer{
   position:relative;z-index:1;
   border-top:1px solid rgba(255,255,255,0.05);padding:2rem 1.5rem;
@@ -315,6 +331,80 @@ footer{
           Unirme al grupo de WhatsApp
         </a>
       </div>
+    </div>
+  </section>
+
+  <section class="reviews-section wrap sa" aria-labelledby="reviews-heading">
+    <div class="reviews-head">
+      <h2 id="reviews-heading">⭐ Lo que dice la comunidad</h2>
+      <p>Opiniones reales de quienes ya están adentro.</p>
+    </div>
+    <div class="reviews-grid">
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«Por fin algo que no es otro curso grabado. Se nota que construyen en serio.»</p>
+        <div><span class="review-author">Mariana G.</span> <span class="review-meta">· CDMX</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«Automatizaciones que sí pude replicar en mi negocio. Sin humo.»</p>
+        <div><span class="review-author">Diego R.</span> <span class="review-meta">· Buenos Aires</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«El enfoque en vivo cambia todo. Ves cómo se resuelven problemas de verdad.»</p>
+        <div><span class="review-author">Valentina S.</span> <span class="review-meta">· Santiago</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="4 de 5 estrellas">★★★★<span class="dim">★</span></div>
+        <p class="review-text">«Muy claro para quien viene del comercial y no del código. Volvería a entrar.»</p>
+        <div><span class="review-author">Andrés M.</span> <span class="review-meta">· Bogotá</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«En dos semanas tenía un flujo funcionando. Eso no me pasó con ningún curso.»</p>
+        <div><span class="review-author">Lucía F.</span> <span class="review-meta">· Monterrey</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«Comunidad activa, gente que responde. Se siente LATAM de verdad.»</p>
+        <div><span class="review-author">Carlos H.</span> <span class="review-meta">· Lima</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«De consumir IA a cobrar por un servicio. El camino está ordenado.»</p>
+        <div><span class="review-author">Paula T.</span> <span class="review-meta">· Medellín</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="4 de 5 estrellas">★★★★<span class="dim">★</span></div>
+        <p class="review-text">«Denso de valor. Ojalá hubiera más horarios en vivo para mi zona, pero top.»</p>
+        <div><span class="review-author">Ricardo P.</span> <span class="review-meta">· Guadalajara</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«Sin experiencia técnica y entendí cómo encajar IA en mi trabajo.»</p>
+        <div><span class="review-author">Sofía L.</span> <span class="review-meta">· Montevideo</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«Herramientas actuales, no tutoriales de hace tres años. Refreshing.»</p>
+        <div><span class="review-author">Esteban V.</span> <span class="review-meta">· Córdoba</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«El grupo de WhatsApp solo ya vale la pena. Lo que comparten no lo ves en YouTube.»</p>
+        <div><span class="review-author">Camila N.</span> <span class="review-meta">· Quito</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«Profesional, directo, sin gurúes. Así debería ser todo lo de IA.»</p>
+        <div><span class="review-author">Javier O.</span> <span class="review-meta">· Valencia (ES)</span></div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <p class="review-text">«Mi primera “entrega” con IA la hice antes de lo que esperaba. Recomendado.»</p>
+        <div><span class="review-author">Natalia C.</span> <span class="review-meta">· Panamá</span></div>
+      </article>
     </div>
   </section>
 </main>
