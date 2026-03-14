@@ -11,9 +11,9 @@
   --bg:#0a0f18;
   --bg-elevated:#121a26;
   --card:#151d2e;
-  --card-border:rgba(47,231,221,0.08);
-  --cyan:#2fe7dd;
-  --cyan-dim:rgba(47,231,221,0.15);
+  --card-border:rgba(4,161,212,0.1);
+  --cyan:#04A1D4;
+  --cyan-dim:rgba(4,161,212,0.15);
   --gold:#f7c458;
   --gold-dim:rgba(247,196,88,0.12);
   --text:#ffffff;
@@ -39,15 +39,17 @@ body::before{
   content:'';
   position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:
-    linear-gradient(rgba(47,231,221,0.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(47,231,221,0.03) 1px,transparent 1px);
+    linear-gradient(rgba(4,161,212,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(4,161,212,0.04) 1px,transparent 1px);
   background-size:64px 64px;
   mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 20%,transparent 70%);
 }
 
+canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem;position:relative;z-index:1}
 
 /* ----- header ----- */
+main{position:relative;z-index:1}
 header{
   position:sticky;top:0;z-index:50;
   background:rgba(10,15,24,.85);
@@ -61,7 +63,7 @@ header{
 .logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--text)}
 .logo-mark{
   width:40px;height:40px;border-radius:10px;
-  background:linear-gradient(145deg,var(--cyan),#1a9d96);
+  background:linear-gradient(145deg,var(--cyan),#026a8f);
   display:flex;align-items:center;justify-content:center;
   font-weight:800;font-size:1rem;color:var(--bg);letter-spacing:-.05em;
 }
@@ -76,9 +78,9 @@ header{
   font-family:inherit;cursor:pointer;border:none;text-decoration:none;transition:transform .15s,box-shadow .2s;
 }
 .btn:active{transform:scale(.98)}
-.btn-primary{background:var(--cyan);color:var(--bg);box-shadow:0 0 24px rgba(47,231,221,.25)}
-.btn-primary:hover{box-shadow:0 0 32px rgba(47,231,221,.4)}
-.btn-ghost{background:transparent;color:var(--cyan);border:1px solid rgba(47,231,221,.45)}
+.btn-primary{background:var(--cyan);color:#fff;box-shadow:0 0 24px rgba(4,161,212,.3)}
+.btn-primary:hover{box-shadow:0 0 32px rgba(4,161,212,.45)}
+.btn-ghost{background:transparent;color:var(--cyan);border:1px solid rgba(4,161,212,.5)}
 .btn-ghost:hover{background:var(--cyan-dim);border-color:var(--cyan)}
 .btn-gold{background:var(--gold);color:var(--bg)}
 .header-cta{display:flex;gap:.6rem;align-items:center}
@@ -129,7 +131,7 @@ header{
   background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);
   padding:1.35rem 1.25rem;transition:border-color .2s,box-shadow .2s;
 }
-.card:hover{border-color:rgba(47,231,221,.2);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+.card:hover{border-color:rgba(4,161,212,.25);box-shadow:0 8px 32px rgba(0,0,0,.25)}
 .card .tag{font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem}
 .card .tag.cyan{color:var(--cyan)}
 .card .tag.gold{color:var(--gold)}
@@ -194,7 +196,7 @@ input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
 .success-wrap.visible{display:block}
 .success-wrap .check{
   width:56px;height:56px;margin:0 auto 1rem;border-radius:50%;
-  background:var(--cyan-dim);border:1px solid rgba(47,231,221,.3);
+  background:var(--cyan-dim);border:1px solid rgba(4,161,212,.35);
   display:flex;align-items:center;justify-content:center;color:var(--cyan);
 }
 .btn-wa{
@@ -208,6 +210,7 @@ input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
 
 /* ----- footer ----- */
 footer{
+  position:relative;z-index:1;
   border-top:1px solid rgba(255,255,255,.06);padding:3rem 0 2rem;
   background:var(--bg-elevated);
 }
@@ -229,6 +232,8 @@ footer{
 </style>
 </head>
 <body>
+
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
 
 <header>
   <div class="header-inner">
@@ -430,6 +435,78 @@ form.addEventListener('submit', async (e) => {
     errorMsg.style.display = 'block';
   }
 });
+
+/* Neural connections — same idea as index.html, colors match #04A1D4 */
+(function () {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let pts = [], mouse = { x: null, y: null };
+  const R = 4, G = 161, B = 212;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', function () { resize(); init(); });
+  window.addEventListener('mousemove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseout', function () { mouse.x = null; mouse.y = null; });
+
+  function init() {
+    pts = [];
+    const n = Math.min((canvas.width * canvas.height) / 12000, 120);
+    for (let i = 0; i < n; i++) {
+      pts.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 1.2 + 0.4
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pts.forEach(function (p) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + R + ',' + G + ',' + B + ',0.28)';
+      ctx.fill();
+    });
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, d = Math.hypot(dx, dy);
+        if (d < 110) {
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.strokeStyle = 'rgba(' + R + ',' + G + ',' + B + ',' + (0.14 * (1 - d / 110)) + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+      if (mouse.x != null) {
+        const dx = pts[i].x - mouse.x, dy = pts[i].y - mouse.y, d = Math.hypot(dx, dy);
+        if (d < 160) {
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = 'rgba(' + R + ',' + G + ',' + B + ',' + (0.38 * (1 - d / 160)) + ')';
+          ctx.lineWidth = 0.65;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  init();
+  draw();
+})();
 </script>
 </body>
 </html>
