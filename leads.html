@@ -101,7 +101,7 @@ input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
 </style>
 </head>
 <body>
-<canvas id="particles"></canvas>
+<canvas id="particles" aria-hidden="true"></canvas>
 <main>
   <div class="logo">
     <div class="logo-wordmark"><span>·</span>NS<span>·</span></div>
@@ -141,54 +141,57 @@ input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
 document.body.classList.add('loaded');
 
 // Particle system
-(function(){
+(function () {
   const canvas = document.getElementById('particles');
+  if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  let W, H, particles, mouse = {x:-999,y:-999};
-  function resize(){
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-  function init(){
-    resize();
-    const count = Math.min(80, Math.floor(W*H/14000));
-    particles = Array.from({length:count}, () => ({
-      x:Math.random()*W, y:Math.random()*H,
-      vx:(Math.random()-.5)*.4, vy:(Math.random()-.5)*.4,
-      r:Math.random()*1.5+.5
-    }));
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    for(const p of particles){
-      const dx=p.x-mouse.x, dy=p.y-mouse.y, dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<160){p.vx+=dx/dist*.04;p.vy+=dy/dist*.04}
-      p.x+=p.vx; p.y+=p.vy;
-      if(p.x<0||p.x>W) p.vx*=-1;
-      if(p.y<0||p.y>H) p.vy*=-1;
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(4,161,212,.5)';
-      ctx.fill();
+  let pts = [], mouse = { x: null, y: null };
+  const R = 4, G = 161, B = 212;
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', function () { resize(); init(); });
+  window.addEventListener('mousemove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseout', function () { mouse.x = null; mouse.y = null; });
+  function init() {
+    pts = [];
+    const n = Math.min((canvas.width * canvas.height) / 12000, 120);
+    for (let i = 0; i < n; i++) {
+      pts.push({
+        x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 1.2 + 0.4
+      });
     }
-    for(let i=0;i<particles.length;i++){
-      for(let j=i+1;j<particles.length;j++){
-        const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
-        const d=Math.sqrt(dx*dx+dy*dy);
-        if(d<110){
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x,particles[i].y);
-          ctx.lineTo(particles[j].x,particles[j].y);
-          ctx.strokeStyle=`rgba(4,161,212,${(1-d/110)*.2})`;
-          ctx.lineWidth=.6;
-          ctx.stroke();
+  }
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pts.forEach(function (p) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + R + ',' + G + ',' + B + ',0.28)'; ctx.fill();
+    });
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, d = Math.hypot(dx, dy);
+        if (d < 110) {
+          ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.strokeStyle = 'rgba(' + R + ',' + G + ',' + B + ',' + (0.14 * (1 - d / 110)) + ')';
+          ctx.lineWidth = 0.5; ctx.stroke();
+        }
+      }
+      if (mouse.x != null) {
+        const dx = pts[i].x - mouse.x, dy = pts[i].y - mouse.y, d = Math.hypot(dx, dy);
+        if (d < 160) {
+          ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = 'rgba(' + R + ',' + G + ',' + B + ',' + (0.38 * (1 - d / 160)) + ')';
+          ctx.lineWidth = 0.65; ctx.stroke();
         }
       }
     }
     requestAnimationFrame(draw);
   }
-  window.addEventListener('resize', init);
-  window.addEventListener('mousemove', e => {mouse.x=e.clientX;mouse.y=e.clientY});
   init(); draw();
 })();
 
