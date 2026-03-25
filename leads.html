@@ -229,12 +229,15 @@ form.addEventListener('submit', async (e) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
       body: params.toString()
     });
+    console.log('[NS] webhook status:', res.status, res.ok);
     if (res.ok) {
       fbq('track', 'CompleteRegistration');
+      console.log('[NS] fbq CompleteRegistration fired');
       formContainer.style.display = 'none';
       successContainer.classList.add('visible');
     } else throw new Error(res.status);
   } catch (err) {
+    console.error('[NS] error:', err);
     submitBtn.textContent = orig;
     submitBtn.disabled = false;
     errorMsg.style.display = 'block';
