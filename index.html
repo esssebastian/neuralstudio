@@ -138,7 +138,7 @@ nav{display:flex;flex-direction:column;align-items:center;margin-bottom:6rem;wid
   padding:1.35rem 1.25rem;transition:border-color .2s,box-shadow .2s;
 }
 .card:hover{border-color:rgba(4,161,212,.25);box-shadow:0 8px 32px rgba(0,0,0,.25)}
-.card .tag{font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem}
+.card .tag{font-size:1.25rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem}
 .card .tag.cyan{color:var(--cyan)}
 .card .tag.gold{color:var(--gold)}
 .card p{color:var(--muted);font-size:.875rem;line-height:1.6}
@@ -167,7 +167,63 @@ nav{display:flex;flex-direction:column;align-items:center;margin-bottom:6rem;wid
 }
 .cta-band h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:1rem;letter-spacing:-.02em}
 .cta-band p{color:var(--muted);max-width:480px;margin:0 auto 1.5rem;font-size:.95rem}
-.form-section{padding:4rem 0 5rem}
+.form-section{padding:4rem 0 5rem;position:relative}
+.form-arrows{pointer-events:none}
+.form-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:8px;
+}
+.form-arrow--left{left:calc(50% - 300px)}
+.form-arrow--right{right:calc(50% - 300px)}
+.form-arrow span{
+  display:block;width:14px;height:14px;
+  border-right:2.5px solid var(--cyan);border-bottom:2.5px solid var(--cyan);
+  opacity:0;
+}
+.form-arrow--left span{transform:rotate(-45deg)}
+.form-arrow--right span{transform:rotate(135deg)}
+.form-arrow--left span:nth-child(1){animation:arrow-pulse-l .9s ease-in-out infinite 0s}
+.form-arrow--left span:nth-child(2){animation:arrow-pulse-l .9s ease-in-out infinite .2s}
+.form-arrow--left span:nth-child(3){animation:arrow-pulse-l .9s ease-in-out infinite .4s}
+.form-arrow--right span:nth-child(1){animation:arrow-pulse-r .9s ease-in-out infinite 0s}
+.form-arrow--right span:nth-child(2){animation:arrow-pulse-r .9s ease-in-out infinite .2s}
+.form-arrow--right span:nth-child(3){animation:arrow-pulse-r .9s ease-in-out infinite .4s}
+@keyframes arrow-pulse-l{
+  0%{opacity:0;transform:rotate(-45deg) translate(-4px,-4px)}
+  50%{opacity:.7}
+  100%{opacity:0;transform:rotate(-45deg) translate(4px,4px)}
+}
+@keyframes arrow-pulse-r{
+  0%{opacity:0;transform:rotate(135deg) translate(-4px,-4px)}
+  50%{opacity:.7}
+  100%{opacity:0;transform:rotate(135deg) translate(4px,4px)}
+}
+@media(max-width:800px){
+  .form-arrow{
+    position:static;transform:none;
+    flex-direction:row;justify-content:center;gap:8px;width:100%;
+  }
+  .form-arrow--left{margin-bottom:1.25rem}
+  .form-arrow--right{margin-top:1.25rem}
+  .form-arrow--left span{transform:rotate(45deg)}
+  .form-arrow--right span{transform:rotate(225deg)}
+  .form-arrow--left span:nth-child(1){animation:arrow-pulse-d .9s ease-in-out infinite 0s}
+  .form-arrow--left span:nth-child(2){animation:arrow-pulse-d .9s ease-in-out infinite .2s}
+  .form-arrow--left span:nth-child(3){animation:arrow-pulse-d .9s ease-in-out infinite .4s}
+  .form-arrow--right span:nth-child(1){animation:arrow-pulse-u .9s ease-in-out infinite 0s}
+  .form-arrow--right span:nth-child(2){animation:arrow-pulse-u .9s ease-in-out infinite .2s}
+  .form-arrow--right span:nth-child(3){animation:arrow-pulse-u .9s ease-in-out infinite .4s}
+}
+@keyframes arrow-pulse-d{
+  0%{opacity:0;transform:rotate(45deg) translate(-4px,-4px)}
+  50%{opacity:.7}
+  100%{opacity:0;transform:rotate(45deg) translate(4px,4px)}
+}
+@keyframes arrow-pulse-u{
+  0%{opacity:0;transform:rotate(225deg) translate(-4px,-4px)}
+  50%{opacity:.7}
+  100%{opacity:0;transform:rotate(225deg) translate(4px,4px)}
+}
 .form-box{
   max-width:440px;margin:0 auto;background:var(--card);border:1px solid var(--card-border);
   border-radius:var(--radius);padding:2rem;position:relative;overflow:hidden;
@@ -234,6 +290,15 @@ footer{
 .footer-tag{font-size:0.7rem;color:rgba(255,255,255,0.25)}
 @media(max-width:540px){.footer-inner{flex-direction:column;text-align:center}}
 .sa{opacity:0;transform:translateY(20px)}
+.urgency-banner{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);
+  border-radius:var(--radius-sm);padding:.6rem 1rem;margin-bottom:1.25rem;
+  font-size:.8rem;font-weight:700;color:#f87171;text-align:center;
+}
+.urgency-banner .spot-count{font-size:1.05rem;font-weight:800;color:#ef4444}
+.urgency-banner .spot-count.blink{animation:spot-blink 1.2s ease-in-out infinite}
+@keyframes spot-blink{0%,100%{opacity:1}50%{opacity:.3}}
 </style>
 </head>
 <body>
@@ -247,41 +312,44 @@ footer{
   </nav>
 
   <section class="hero wrap">
-    <h1 class="sa">Mientras otros venden cursos de IA, nosotros estamos <span class="cyan">construyendo <span class="h1-live" role="status" aria-label="En vivo"><span class="live-dot-wrap live-dot-wrap--hero" aria-hidden="true"><span class="live-dot-ping"></span><span class="live-dot"></span></span>en vivo.</span></span> 🧱</h1>
-    <p class="hero-lead sa">Somos la comunidad latinoamericana donde dejas de solo consumir IA y empiezas a construir con ella — en <span class="gold">menos de 30 días</span>, sin código, sin experiencia técnica.</p>
+    <h1 class="sa">Las buenas intenciones no construyeron nada. La ejecución sí. <span class="cyan">Aquí construimos <span class="h1-live" role="status" aria-label="En vivo"><span class="live-dot-wrap live-dot-wrap--hero" aria-hidden="true"><span class="live-dot-ping"></span><span class="live-dot"></span></span>en vivo.</span></span></h1>
+    <p class="hero-lead sa">Neural Studio es la comunidad latinoamericana donde dejas de aprender sobre IA y empiezas a construir con ella — en <span class="gold">menos de 30 días</span>, sin código, sin experiencia técnica previa.</p>
     <div class="hero-btns sa">
       <a class="btn btn-primary" href="#acceso">Quiero estar adentro →</a>
       <a class="btn btn-ghost" href="#video">Ver el video</a>
     </div>
+    <div class="urgency-banner sa" id="hero-urgency" style="max-width:360px;margin:0 auto 2rem">
+      🔴 Solo quedan <span class="spot-count" id="hero-spots">20</span> cupos disponibles
+    </div>
     <div class="stats sa">
-      <div class="stat"><strong>30</strong><span>días o menos al primer resultado</span></div>
-      <div class="stat"><strong>En vivo</strong><span>sin teoría eterna</span></div>
-      <div class="stat"><strong>LATAM</strong><span>hecho para la región</span></div>
+      <div class="stat"><strong>30</strong><span>días al primer resultado real</span></div>
+      <div class="stat"><strong>En vivo</strong><span>sin teoría, con ejecución</span></div>
+      <div class="stat"><strong>LATAM</strong><span>construido para la región</span></div>
     </div>
   </section>
 
   <section class="section wrap" id="quien">
     <div class="split">
       <div class="sa">
-        <h2 class="section-head">🧠 No somos un curso. <span class="cyan">Somos la comunidad donde construyes en vivo.</span> 💸</h2>
-        <p class="section-desc">Lo que realmente te transforma no es ver videos — es construir junto a personas que están resolviendo los mismos problemas que tú, en tiempo real, con herramientas que ya existen y casos que puedes replicar hoy.</p>
-        <p class="section-desc" style="margin-top:1rem;margin-bottom:0">Si tienes experiencia corporativa y quieres saber exactamente cómo aplicar IA a tu trabajo o negocio — este es tu lugar.</p>
+        <h2 class="section-head">🧠 No somos un curso. <span class="cyan">Somos la comunidad donde ejecutas en vivo.</span></h2>
+        <p class="section-desc">Lo que cambia vidas no son las buenas intenciones — es lo que ejecutas. Neural Studio existe para que pares de consumir contenido sobre IA y empieces a construir con ella: flujos reales, soluciones reales, resultados reales.</p>
+        <p class="section-desc" style="margin-top:1rem;margin-bottom:0">Si tienes experiencia, hambre de construir y estás dispuesto a ejecutar — este es tu lugar.</p>
       </div>
       <div class="sa" style="display:flex;flex-direction:column;align-items:center;width:100%">
         <p class="section-desc" style="text-align:center;margin-bottom:1.25rem;font-weight:600;color:rgba(255,255,255,0.85)">Ayudamos a..</p>
         <div class="card-grid" style="width:100%">
-        <div class="card"><p class="tag cyan">01</p><p>Profesionales comerciales que quieren reinventarse con IA</p></div>
-        <div class="card"><p class="tag gold">02</p><p>Emprendedores que quieren automatizar sin depender de técnicos</p></div>
-        <div class="card"><p class="tag cyan">03</p><p>Personas que probaron IA pero no saben cómo monetizarla</p></div>
-        <div class="card"><p class="tag gold">04</p><p>Quienes quieren construir su primera solución real en menos de 30 días</p></div>
+        <div class="card"><p class="tag cyan">01</p><p>Profesionales que quieren construir algo real con IA — desde cero</p></div>
+        <div class="card"><p class="tag gold">02</p><p>Emprendedores que quieren dejar de depender de terceros y hacerlo ellos mismos</p></div>
+        <div class="card"><p class="tag cyan">03</p><p>Personas que consumen IA pero nunca han ejecutado nada con ella</p></div>
+        <div class="card"><p class="tag gold">04</p><p>Quienes están listos para pasar del "quiero hacerlo" al "ya lo hice"</p></div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="section wrap" id="video">
-    <h2 class="section-head sa" style="text-align:center;max-width:none">🎬 Lo que estamos construyendo <span class="gold">va a sorprenderte.</span></h2>
-    <p class="section-desc sa" style="text-align:center;margin-left:auto;margin-right:auto">Mira el video. Luego decide si quieres ser parte de esto desde el principio.</p>
+    <h2 class="section-head sa" style="text-align:center;max-width:none">🎬 Mira exactamente qué se construye aquí — <span class="gold">antes de decidir si entras.</span></h2>
+    <p class="section-desc sa" style="text-align:center;margin-left:auto;margin-right:auto">Sin filtros. Sin edición de marketing. Lo que ves es lo que hay.</p>
     <div class="video-block sa">
       <div class="inner">
         <iframe src="https://www.tella.tv/video/vid_cmlqrfsak00gp04le4ky30tid/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=0&o=0" allowfullscreen></iframe>
@@ -298,19 +366,19 @@ footer{
     <div class="features-grid sa">
       <div class="feature-card">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <div><h3>🛠️ Herramientas reales</h3><p>Flujos y automatizaciones que puedes aplicar o vender hoy — no en seis meses.</p></div>
+        <div><h3>🛠️ Herramientas reales</h3><p>Flujos que funcionan, que puedes replicar y que puedes cobrar — desde la primera semana.</p></div>
       </div>
       <div class="feature-card">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
-        <div><h3>📡 En vivo</h3><p>Lo que construimos hoy, no lo que funcionaba en 2022.</p></div>
+        <div><h3>📡 En vivo</h3><p>Lo que se construye hoy, no lo que se explicaba hace tres años.</p></div>
       </div>
       <div class="feature-card">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div><h3>🌎 Perfil LATAM</h3><p>Idioma, contexto y negocios pensados para la región.</p></div>
+        <div><h3>🌎 Perfil LATAM</h3><p>Construido para los mercados de la región — el idioma, los clientes, las fricciones reales.</p></div>
       </div>
       <div class="feature-card">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <div><h3>💰 Monetización</h3><p>De experimentar con IA a cobrar por lo que sabes hacer.</p></div>
+        <div><h3>💰 Monetización</h3><p>De construir tu primera solución a cobrar por ella. Ese es el camino.</p></div>
       </div>
     </div>
   </section>
@@ -324,18 +392,24 @@ footer{
   </section>
 
   <section class="form-section wrap" id="acceso">
+    <div class="form-arrow form-arrow--left">
+      <span></span><span></span><span></span>
+    </div>
     <div class="form-box sa">
+      <div class="urgency-banner" id="form-urgency">
+        🔴 Solo quedan <span class="spot-count" id="form-spots">20</span> cupos disponibles
+      </div>
       <div id="form-container">
-        <h3>👀 Si quieres ver todo lo que estamos construyendo</h3>
+        <h3>👀 Entra antes de que abramos oficialmente.</h3>
         <form id="subscribe-form">
           <div class="field">
             <input type="text" id="first_name" placeholder="Tu nombre" required>
             <input type="email" id="email" placeholder="Tu correo electrónico" required>
           </div>
-          <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%">Quiero estar adentro →</button>
+          <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%">Quiero construir →</button>
         </form>
         <p class="error-msg" id="error-msg">Hubo un error al enviar. Por favor intenta de nuevo.</p>
-        <p class="form-note">Sin spam. Solo lo que estamos construyendo.</p>
+        <p class="form-note">Sin spam. Solo ejecución.</p>
       </div>
       <div class="success-wrap" id="success-container">
         <div class="check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5 11-11"/></svg></div>
@@ -346,6 +420,9 @@ footer{
           Unirme al grupo de WhatsApp
         </a>
       </div>
+    </div>
+    <div class="form-arrow form-arrow--right">
+      <span></span><span></span><span></span>
     </div>
   </section>
 
@@ -425,8 +502,8 @@ footer{
       <div class="footer-wordmark"><span>·</span>NS<span>·</span></div>
       <span class="footer-name">Neural Studio</span>
     </div>
-    <p class="footer-copy">Construyendo en vivo desde Vancouver para Latinoamérica. © 2025 Neural Studio.</p>
-    <p class="footer-tag">Sin spam. Sin gurus. Solo resultados.</p>
+    <p class="footer-copy">© 2025 Neural Studio.</p>
+    <p class="footer-tag">Sin spam. Sin gurus. Solo ejecución.</p>
   </div>
 </footer>
 
@@ -445,6 +522,24 @@ const obs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.sa').forEach(el => obs.observe(el));
+
+function updateSpots(n) {
+  document.querySelectorAll('.spot-count').forEach(el => el.textContent = n);
+}
+(function animateSpots() {
+  let current = 20;
+  function next() {
+    if (current <= 10) {
+      document.querySelectorAll('.spot-count').forEach(el => el.classList.add('blink'));
+      return;
+    }
+    current--;
+    updateSpots(current);
+    const delay = Math.random() < 0.25 ? 4000 + Math.random() * 5000 : 800 + Math.random() * 1800;
+    setTimeout(next, delay);
+  }
+  setTimeout(next, 1800);
+})();
 
 const form = document.getElementById('subscribe-form');
 const formContainer = document.getElementById('form-container');

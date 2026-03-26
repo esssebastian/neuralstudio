@@ -110,6 +110,15 @@ input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
   text-decoration:none;transition:opacity .15s;
 }
 .wa-btn:hover{opacity:.9}
+.urgency-banner{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);
+  border-radius:var(--radius-sm);padding:.6rem 1rem;margin-bottom:1.25rem;
+  font-size:.8rem;font-weight:700;color:#f87171;text-align:center;
+}
+.urgency-banner .spot-count{font-size:1.05rem;font-weight:800;color:#ef4444}
+.urgency-banner .spot-count.blink{animation:spot-blink 1.2s ease-in-out infinite}
+@keyframes spot-blink{0%,100%{opacity:1}50%{opacity:.3}}
 </style>
 </head>
 <body>
@@ -121,6 +130,9 @@ input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
   </div>
 
   <div class="form-box">
+    <div class="urgency-banner" id="form-urgency">
+      🔴 Solo quedan <span class="spot-count" id="form-spots">20</span> cupos disponibles
+    </div>
     <div id="form-container">
       <h1>Accede a lo que estamos construyendo</h1>
       <p>Déjanos tu nombre y correo y te avisamos de todo lo que pasa en la comunidad.</p>
@@ -205,6 +217,25 @@ document.body.classList.add('loaded');
     requestAnimationFrame(draw);
   }
   init(); draw();
+})();
+
+// Spots counter
+function updateSpots(n) {
+  document.querySelectorAll('.spot-count').forEach(el => el.textContent = n);
+}
+(function animateSpots() {
+  let current = 20;
+  function next() {
+    if (current <= 10) {
+      document.querySelectorAll('.spot-count').forEach(el => el.classList.add('blink'));
+      return;
+    }
+    current--;
+    updateSpots(current);
+    const delay = Math.random() < 0.25 ? 4000 + Math.random() * 5000 : 800 + Math.random() * 1800;
+    setTimeout(next, delay);
+  }
+  setTimeout(next, 1800);
 })();
 
 // Form
