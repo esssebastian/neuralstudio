@@ -50,9 +50,14 @@ body{
   padding:3rem 1.5rem 2.5rem;
 }
 .hero-grid{
-  display:grid;grid-template-columns:1fr 420px;
-  gap:3rem;align-items:start;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  grid-template-areas:"top form" "bottom form";
+  gap:2rem 3rem;align-items:start;
 }
+.hero-top{grid-area:top}
+.hero-bottom{grid-area:bottom}
+.form-card{grid-area:form}
 .live-badge{
   display:inline-flex;align-items:center;gap:.45rem;
   background:#fef2f2;border:1px solid #fecaca;
@@ -66,13 +71,13 @@ body{
 }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-.hero-left h1{
+.hero-top h1{
   font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;
   line-height:1.15;letter-spacing:-.03em;margin-bottom:1rem;color:var(--text);
 }
-.hero-left h1 em{font-style:normal;color:var(--purple)}
+.hero-top h1 em{font-style:normal;color:var(--purple)}
 .hero-sub{
-  font-size:.95rem;color:var(--muted);line-height:1.75;
+  font-size:1.1rem;color:var(--muted);line-height:1.75;
   max-width:520px;margin-bottom:1.75rem;
 }
 .meta-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.75rem}
@@ -281,7 +286,11 @@ footer{
 .footer-copy{font-size:.7rem;color:var(--muted-light)}
 
 @media(max-width:860px){
-  .hero-grid{grid-template-columns:1fr;gap:2rem}
+  .hero-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:"top" "form" "bottom";
+    gap:1.5rem;
+  }
   .form-card{position:static}
   .quien-grid{grid-template-columns:1fr}
   .build-grid{grid-template-columns:1fr 1fr}
@@ -300,8 +309,8 @@ footer{
 <div class="hero-wrap">
   <div class="hero-grid">
 
-    <!-- LEFT: Copy -->
-    <div class="hero-left">
+    <!-- TOP: Badge + Headline + Subtitle -->
+    <div class="hero-top">
       <div class="live-badge">
         Evento gratuito · Online
       </div>
@@ -309,6 +318,10 @@ footer{
       <p class="hero-sub">
         Únete a esta sesión gratuita donde construimos una app en vivo — no para que la copies, sino para que entiendas que puedes construir la tuya.
       </p>
+    </div>
+
+    <!-- BOTTOM: Social proof + checklist -->
+    <div class="hero-bottom">
       <div class="attendees-row">
         <div class="attendee-avatars">
           <div class="av" style="background:linear-gradient(135deg,#667eea,#764ba2)">A</div>
