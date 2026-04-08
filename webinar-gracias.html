@@ -77,10 +77,10 @@ body{
 
 /* EMAIL NOTE */
 .email-note{
-  display:flex;align-items:flex-start;gap:.65rem;
+  display:flex;align-items:center;gap:.65rem;
   background:#f0f9ff;border:1px solid #bae6fd;
-  border-radius:var(--radius-sm);padding:.85rem 1rem;
-  font-size:.8rem;color:#0369a1;line-height:1.55;margin-bottom:1.5rem;
+  border-radius:var(--radius-sm);padding:.75rem 1rem;
+  font-size:.8rem;color:#0369a1;line-height:1.4;margin-bottom:1.5rem;
 }
 .email-note svg{flex-shrink:0;margin-top:.05rem;color:#0284c7}
 
@@ -189,8 +189,8 @@ body{
 
   <!-- EMAIL NOTE -->
   <div class="email-note">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    Si no ves el correo en los próximos minutos, revisa tu carpeta de <strong>spam o promociones</strong>.
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span>¿No ves el correo? Revisa tu carpeta de spam o promociones.</span>
   </div>
 
   <!-- WEBINARKIT TIMER -->
@@ -228,6 +228,16 @@ body{
   <p>© 2025 Neural Studio · Sin spam. Sin gurus. Solo ejecución.</p>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+window.addEventListener('load', function() {
+  confetti({ particleCount: 120, spread: 80, origin: { y: 0.55 }, colors: ['#534AB7','#04A1D4','#f7c458','#ffffff','#a78bfa'] });
+  setTimeout(function() {
+    confetti({ particleCount: 60, spread: 60, origin: { x: 0.1, y: 0.6 } });
+    confetti({ particleCount: 60, spread: 60, origin: { x: 0.9, y: 0.6 } });
+  }, 400);
+});
+</script>
 <!-- WebinarKit Scripts -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/css/intlTelInput.css">
 <link rel="stylesheet" href="https://webinarkit.com/css/ewk_v5.css?cache=5">
