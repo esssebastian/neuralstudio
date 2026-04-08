@@ -43,6 +43,15 @@ body{
   background:var(--bg);color:var(--text);
   min-height:100vh;line-height:1.6;
 }
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(83,74,183,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(83,74,183,.07) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(ellipse 120% 60% at 50% 0%,#000 20%,transparent 70%);
+}
+body > *{position:relative;z-index:1}
 
 /* HERO */
 .hero-wrap{
@@ -165,6 +174,7 @@ body{
 }
 #wk_element_399409224331983c0bb3717d18e66cc0{
   background:transparent !important;padding:0 !important;border:none !important;
+  margin-top:1.25rem !important;
 }
 #wk_element_6aef8c2761d05f7a7fee01f707ee3d9f{
   background:var(--purple) !important;border-color:var(--purple) !important;
