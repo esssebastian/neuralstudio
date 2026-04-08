@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Webinar gratis: Construye tu primera app con IA sin código | Neural Studio</title>
+<meta name="description" content="Sesión en vivo gratuita donde construimos un CRM funcional desde cero usando IA — sin programar, sin experiencia técnica.">
+<link rel="icon" type="image/png" href="ns.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Facebook Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','327790021075185');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=327790021075185&ev=PageView&noscript=1"/></noscript>
+<style>
+:root{
+  --bg:#f4f4f6;
+  --surface:#ffffff;
+  --border:#e5e7eb;
+  --border-subtle:#f0f0f3;
+  --purple:#534AB7;
+  --purple-dim:#eeecf9;
+  --purple-mid:rgba(83,74,183,.15);
+  --cyan:#04A1D4;
+  --cyan-dim:#e8f7fc;
+  --text:#111827;
+  --muted:#6b7280;
+  --muted-light:#9ca3af;
+  --radius:14px;
+  --radius-sm:10px;
+  --radius-xs:8px;
+  --sidebar:340px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  background:var(--bg);color:var(--text);
+  min-height:100vh;line-height:1.6;
+  opacity:0;transition:opacity .35s ease;
+}
+body.loaded{opacity:1}
+a{color:inherit;text-decoration:none}
+
+/* COVER */
+.cover{
+  width:100%;height:260px;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  position:relative;overflow:hidden;
+}
+.cover-glow{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 30% 50%,rgba(83,74,183,.55),transparent),
+    radial-gradient(ellipse 50% 70% at 75% 40%,rgba(4,161,212,.35),transparent);
+}
+.cover-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+.cover-content{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:2rem;
+}
+.cover-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;padding:.3rem .85rem;font-size:.7rem;font-weight:700;
+  color:#fff;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.9rem;
+}
+.live-dot-cover{
+  width:.45rem;height:.45rem;border-radius:50%;background:#ef4444;
+  box-shadow:0 0 8px rgba(239,68,68,.9);animation:blink 1.1s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.cover-title{
+  font-size:clamp(1.35rem,3.5vw,2rem);font-weight:800;
+  color:#fff;line-height:1.2;letter-spacing:-.02em;max-width:600px;
+}
+.cover-title em{font-style:normal;color:rgba(4,161,212,.9)}
+
+/* LAYOUT */
+.page-wrap{
+  max-width:1060px;margin:0 auto;
+  display:grid;grid-template-columns:var(--sidebar) 1fr;
+  gap:2rem;align-items:start;
+  padding:2rem 1.5rem 4rem;
+}
+
+/* SIDEBAR */
+.sidebar{
+  position:sticky;top:1.5rem;
+  display:flex;flex-direction:column;gap:1rem;
+}
+.sidebar-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+}
+.event-brand{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.9rem 1.25rem;border-bottom:1px solid var(--border-subtle);
+}
+.brand-dot{
+  width:32px;height:32px;border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;font-weight:800;color:#fff;letter-spacing:-.02em;flex-shrink:0;
+}
+.brand-name{font-size:.8rem;font-weight:700;color:var(--text)}
+.brand-sub{font-size:.65rem;color:var(--muted)}
+
+.event-meta{padding:1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.meta-row{display:flex;align-items:flex-start;gap:.65rem}
+.meta-icon{
+  width:30px;height:30px;flex-shrink:0;border-radius:var(--radius-xs);
+  background:var(--purple-dim);display:flex;align-items:center;justify-content:center;
+  color:var(--purple);
+}
+.meta-label{font-size:.65rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.1rem}
+.meta-value{font-size:.85rem;font-weight:600;color:var(--text)}
+.meta-sub{font-size:.75rem;color:var(--muted)}
+
+.sidebar-form{padding:1.25rem;border-top:1px solid var(--border-subtle)}
+.sidebar-form-head{
+  font-size:.8rem;font-weight:700;color:var(--text);
+  margin-bottom:.1rem;
+}
+.sidebar-form-sub{font-size:.72rem;color:var(--muted);margin-bottom:1rem}
+.free-tag{
+  display:inline-flex;align-items:center;gap:.3rem;
+  background:var(--cyan-dim);color:var(--cyan);
+  border-radius:999px;padding:.2rem .65rem;font-size:.68rem;font-weight:700;
+  margin-bottom:.85rem;
+}
+.urgency-sm{
+  display:flex;align-items:center;gap:.35rem;
+  font-size:.7rem;color:#dc2626;font-weight:600;margin-top:.75rem;
+}
+
+/* WEBINARKIT OVERRIDES (light) */
+#wk_element_d94017575195c57e80b94bab113f9bdc{
+  background:#ffffff !important;
+  border-color:var(--border) !important;
+  border-radius:var(--radius-sm) !important;
+  box-shadow:none !important;
+}
+#wk_element_0395e8cddb33074c3bdcf16019d90668{
+  background:transparent !important;
+}
+.wk_timer_header,.wk_timer_days_label,.wk_timer_hours_label,
+.wk_timer_minutes_label,.wk_timer_seconds_label{
+  color:var(--muted) !important;font-family:'Plus Jakarta Sans',system-ui,sans-serif !important;
+  font-size:.72rem !important;
+}
+.wk_timer_days,.wk_timer_hours,.wk_timer_minutes,.wk_timer_seconds{
+  color:var(--text) !important;font-family:'Plus Jakarta Sans',system-ui,sans-serif !important;
+  font-weight:700 !important;
+}
+.wk_registration_form_first_name,
+.wk_registration_form_email,
+.wk_registration_form_date{
+  background:#f9fafb !important;
+  border:1px solid var(--border) !important;
+  color:var(--text) !important;
+  border-radius:var(--radius-xs) !important;
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif !important;
+  font-size:.875rem !important;
+}
+.wk_registration_form_first_name:focus,
+.wk_registration_form_email:focus{
+  border-color:var(--purple) !important;
+  box-shadow:0 0 0 3px rgba(83,74,183,.1) !important;
+  outline:none !important;
+}
+#wk_element_6aef8c2761d05f7a7fee01f707ee3d9f{
+  background:var(--purple) !important;
+  border-color:var(--purple) !important;
+  border-radius:var(--radius-xs) !important;
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif !important;
+  font-weight:700 !important;
+  box-shadow:0 4px 14px rgba(83,74,183,.3) !important;
+  transition:box-shadow .2s !important;
+}
+#wk_element_6aef8c2761d05f7a7fee01f707ee3d9f:hover{
+  box-shadow:0 6px 20px rgba(83,74,183,.45) !important;
+}
+#wk_element_399409224331983c0bb3717d18e66cc0{
+  padding:0 !important;
+  background:transparent !important;
+}
+
+/* CONTENT */
+.content{min-width:0}
+.content-section{margin-bottom:2.5rem}
+.content-section:last-child{margin-bottom:0}
+.section-label{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:.65rem;
+}
+.section-label::before{content:'';width:3px;height:14px;background:var(--purple);border-radius:99px}
+.content-section h2{
+  font-size:clamp(1.2rem,2.5vw,1.65rem);font-weight:800;
+  letter-spacing:-.025em;margin-bottom:.75rem;color:var(--text);line-height:1.25;
+}
+.content-section p{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:.65rem}
+.content-section p:last-child{margin-bottom:0}
+
+/* EVENT TITLE BLOCK */
+.event-title-block{margin-bottom:2rem}
+.event-title-block h1{
+  font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:800;
+  letter-spacing:-.03em;line-height:1.15;margin-bottom:.75rem;color:var(--text);
+}
+.event-title-block h1 em{font-style:normal;color:var(--purple)}
+.event-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.pill{
+  display:inline-flex;align-items:center;gap:.35rem;
+  font-size:.72rem;font-weight:600;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:999px;padding:.28rem .75rem;color:var(--muted);
+}
+.pill.live{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2);color:#dc2626}
+.pill.free{background:var(--purple-dim);border-color:rgba(83,74,183,.2);color:var(--purple)}
+
+.organizer-row{
+  display:flex;align-items:center;gap:.65rem;
+  padding:.8rem 1rem;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-xs);
+}
+.org-avatar{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;font-weight:800;color:#fff;
+}
+.org-name{font-size:.8rem;font-weight:700;color:var(--text)}
+.org-role{font-size:.68rem;color:var(--muted)}
+
+/* BULLETS */
+.check-list{display:flex;flex-direction:column;gap:.55rem;margin-top:.75rem}
+.check-item{
+  display:flex;align-items:flex-start;gap:.65rem;
+  font-size:.875rem;color:var(--text);line-height:1.55;
+}
+.check-icon{
+  flex-shrink:0;width:20px;height:20px;border-radius:50%;
+  background:var(--purple-dim);display:flex;align-items:center;justify-content:center;
+  margin-top:.1rem;
+}
+.check-icon svg{color:var(--purple)}
+
+/* QUIEN GRID */
+.quien-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.75rem}
+.quien-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-xs);padding:1.1rem;
+}
+.quien-card.yes{border-top:3px solid var(--purple)}
+.quien-card.no{border-top:3px solid #f87171}
+.quien-head{
+  font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;
+  margin-bottom:.7rem;
+}
+.quien-card.yes .quien-head{color:var(--purple)}
+.quien-card.no .quien-head{color:#dc2626}
+.quien-item{display:flex;gap:.5rem;margin-bottom:.5rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.quien-item:last-child{margin-bottom:0}
+
+/* BIO */
+.bio-block{
+  display:flex;gap:1.25rem;align-items:flex-start;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:1.5rem;margin-top:.75rem;
+}
+.bio-av{
+  flex-shrink:0;width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;font-weight:800;color:#fff;
+}
+.bio-content h3{font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.bio-content p{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem}
+.bio-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.65rem}
+.bio-tag{
+  font-size:.65rem;font-weight:600;color:var(--purple);
+  background:var(--purple-dim);border-radius:999px;padding:.18rem .6rem;
+}
+
+/* BUILD CARDS */
+.build-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:.75rem}
+.build-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-xs);padding:1rem;
+}
+.build-card .ico{font-size:1.25rem;margin-bottom:.4rem}
+.build-card h4{font-size:.82rem;font-weight:700;margin-bottom:.3rem;color:var(--text)}
+.build-card p{font-size:.75rem;color:var(--muted);line-height:1.5}
+
+/* GIRO */
+.giro-block{
+  background:linear-gradient(135deg,var(--purple-dim),var(--cyan-dim));
+  border:1px solid rgba(83,74,183,.15);
+  border-radius:var(--radius-sm);padding:1.75rem;margin-top:.75rem;
+}
+.giro-block h3{font-size:1.1rem;font-weight:800;margin-bottom:.75rem;letter-spacing:-.02em}
+.giro-block p{font-size:.875rem;color:var(--muted);line-height:1.7}
+.giro-block p + p{margin-top:.5rem}
+.giro-block .highlight{color:var(--text);font-weight:600}
+
+/* DIVIDER */
+.divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:.5rem;margin-top:.75rem}
+.faq-item{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-xs);overflow:hidden;
+}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 1.1rem;font-size:.875rem;font-weight:600;color:var(--text);
+  background:none;border:none;cursor:pointer;text-align:left;gap:1rem;font-family:inherit;
+}
+.faq-q svg{flex-shrink:0;color:var(--purple);transition:transform .22s}
+.faq-item.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 1.1rem .9rem;font-size:.82rem;color:var(--muted);line-height:1.7}
+.faq-item.open .faq-a{display:block}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);background:var(--surface);
+  padding:1.5rem;text-align:center;
+}
+.footer-brand{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:.4rem}
+.footer-ns{font-size:.9rem;font-weight:700;color:var(--text)}
+.footer-ns span{color:var(--purple)}
+.footer-copy{font-size:.72rem;color:var(--muted-light)}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  .page-wrap{grid-template-columns:1fr;padding:1.25rem 1rem 3rem}
+  .sidebar{position:static}
+  .quien-grid{grid-template-columns:1fr}
+  .build-grid{grid-template-columns:1fr 1fr}
+  .bio-block{flex-direction:column;gap:1rem}
+}
+@media(max-width:520px){
+  .cover{height:200px}
+  .cover-title{font-size:1.15rem}
+  .build-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-glow"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-content">
+    <div class="cover-badge">
+      <span class="live-dot-cover"></span>
+      Sesión en vivo · Gratuita
+    </div>
+    <div class="cover-title">
+      Construye tu primera app con IA —<br>
+      <em>en vivo, sin código, desde cero</em>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE -->
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+
+      <div class="event-brand">
+        <div class="brand-dot">NS</div>
+        <div>
+          <div class="brand-name">Neural Studio</div>
+          <div class="brand-sub">Comunidad · LATAM</div>
+        </div>
+      </div>
+
+      <div class="event-meta">
+        <!-- REEMPLAZAR FECHA -->
+        <div class="meta-row">
+          <div class="meta-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Fecha</div>
+            <div class="meta-value">Próximamente</div><!-- REEMPLAZAR -->
+            <div class="meta-sub">7:00 PM · Hora Colombia</div><!-- REEMPLAZAR -->
+          </div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Duración</div>
+            <div class="meta-value">~90 minutos</div>
+          </div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div>
+            <div class="meta-label">Formato</div>
+            <div class="meta-value">Online · En vivo</div>
+            <div class="meta-sub">Replay disponible al registrarse</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-form" id="registro">
+        <div class="free-tag">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12l5 5 11-11"/></svg>
+          100% Gratis
+        </div>
+        <div class="sidebar-form-head">Reserva tu lugar ahora</div>
+        <div class="sidebar-form-sub">Sin tarjeta. Sin compromiso.</div>
+
+        <!-- WEBINARKIT FORM -->
+        <style>@media (max-width: 1e+09px) {  #wk_element_399409224331983c0bb3717d18e66cc0 { width: 100%; max-width: 100%; min-height: 16px; padding: 16px; margin: 0px auto; border-style: solid; border-color: rgb(255, 255, 255); border-width: 0px; border-radius: 16px; background: rgb(255, 255, 255); }  #wk_element_889d2c8b54ae5001837c2ec42ca72c7e { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.35; letter-spacing: 0px; display: flex; }  #wk_element_889d2c8b54ae5001837c2ec42ca72c7e :not(:last-child) { margin-bottom: 0px; }  #wk_element_399409224331983c0bb3717d18e66cc0_checkbox { color: rgb(0, 0, 0); }  #wk_element_6aef8c2761d05f7a7fee01f707ee3d9f { width: 100%; max-width: 100%; min-height: 0px; padding: 8px 16px; margin: 0px; color: rgb(255, 255, 255); border-style: solid; border-color: rgb(51, 94, 234); border-width: 0px; border-radius: 6px; background: rgb(51, 94, 234); font-family: HKGroteskPro, serif; font-size: 19px; line-height: 1.5; letter-spacing: 0px; display: flex; }  #wk_element_6aef8c2761d05f7a7fee01f707ee3d9f :not(:last-child) { margin-bottom: 0px; }  #wk_element_0395e8cddb33074c3bdcf16019d90668 { width: 540px; max-width: 100%; min-height: 16px; padding: 16px 0px 0px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_0395e8cddb33074c3bdcf16019d90668_calendar { background: rgb(51, 94, 234); }  #wk_element_d94017575195c57e80b94bab113f9bdc { max-width: 540px; min-height: 16px; padding: 0px; margin: 0px auto; border-style: solid; border-color: rgb(255, 255, 255); border-width: 0px; border-radius: 16px; background: rgb(255, 255, 255); }}@media (max-width: 992px) {}@media (max-width: 768px) {}</style><div class="wk_root" style="width: 100%; z-index: 100000;"> <div class="wk_ascend_tree col-12 col-md my-auto shadow wk_column wk_editor_hide_tooltips" id="wk_element_d94017575195c57e80b94bab113f9bdc" data-custom-css-classes="shadow" data-wk-border-style-desktop="solid" data-wk-background-type-desktop="solid"> <div class="wk_registration_timer" id="wk_element_0395e8cddb33074c3bdcf16019d90668" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default" calendar="hide" data-classes="wk_registration_timer" data-wk-days-label="Días" data-wk-hours-label="Horas" data-wk-in-progress-text="La presentación está en progreso. Regístrate para unirte a la presentación." data-wk-instant-watch-text="Instant watch session available. Join now!" data-wk-minutes-label="Minútos" data-wk-next-session-text="Próxima sesión en:" data-wk-seconds-label="seconds" data-wk-webinar-id="69a8f2a93586021755cb91b0" timer_size="small"> <div class="wk_row_internal"> <div class="col wk_timer"> <div class="mx-auto rounded-2 shadow wk_calendar" style="max-width: 170px; background: #fff; display:none"> <div class="wk_calendar_color" id="wk_element_0395e8cddb33074c3bdcf16019d90668_calendar" style="border-top-left-radius: .375rem; border-top-right-radius: .375rem"> <h5 class="text-center fw-bold py-2 text-uppercase text-white wk_calendar_month">April</h5> </div> <h1 class="text-center fw-bold mb-2 pb-2 wk_calendar_day">8</h1> </div> <h5 class="text-center mb-4 mt-5 wk_calendar_header" style="display:none"><i class="fa-clock fa-regular"></i><span class="wk_calendar_time"> 9:15 AM GMT-5</span></h5> <h6 class="text-center fw-bold wk_timer_header">Próxima sesión en:</h6> <div class="wk_row_internal mx-auto wk_timer_row"> <div class="col-3 px-0"> <h5 class="text-center mb-0 wk_timer_days">0</h5> <h6 class="text-center mb-0 wk_timer_days_label">Días</h6> </div> <div class="col-3 px-0"> <h5 class="text-center mb-0 wk_timer_hours">0</h5> <h6 class="text-center mb-0 wk_timer_hours_label">Horas</h6> </div> <div class="col-3 px-0"> <h5 class="text-center mb-0 wk_timer_minutes">0</h5> <h6 class="text-center mb-0 wk_timer_minutes_label">Minútos</h6> </div> <div class="col-3 px-0"> <h5 class="text-center mb-0 wk_timer_seconds">0</h5> <h6 class="text-center mb-0 wk_timer_seconds_label">seconds</h6> </div> </div> </div> </div> </div> <div class="wk_editor_hide_tooltips shadow shadow-none wk_registration_form" id="wk_element_399409224331983c0bb3717d18e66cc0" data-wk-background-type-desktop="solid" data-wk-border-style-desktop="solid" data-wk-enable-instant-watch="false" data-custom-css-classes="shadow-none" data-wk-date-format-type="en-US" data-wk-webinar-id="69a8f2a93586021755cb91b0" data-wk-number-of-sessions-to-show="1"> <form class="wk_ascend_tree wk_registration_form_element"> <select class="mb-3 bg-light form-select form-select-lg wk_registration_form_date" onchange="set_date_text(event,this.value)"></select><input class="wk_registration_form_date_text" type="hidden"><input class="mb-3 bg-light form-control form-control-lg wk_registration_form_first_name" placeholder="Nombre" required=""><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_last_name" placeholder="Last Name"><input class="mb-3 bg-light form-control form-control-lg wk_registration_form_email" placeholder="Email" oninput="wk_input_change(this)" type="email" required=""><input class="form-control form-control-lg bg-light mb-3 wk_registration_form_phone d-none" type="tel" placeholder="Phone Number" oninput="wk_input_change(this)"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_1" placeholder="Custom Field 1"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_2" placeholder="Custom Field 2"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_3" placeholder="Custom Field 3"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_4" placeholder="Custom Field 4"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_5" placeholder="Custom Field 5"> <div class="mb-3 d-none mx-0 p-0 wk_registration_form_checkbox wk_row_internal"> <div class="my-auto col-auto"> <div class="wk_checkbox"><input class="wk_checkbox_input" type="checkbox" id="wk_element_399409224331983c0bb3717d18e66cc0_checkbox"></div> </div> <div class="my-auto col"> <div class="wk_editor_hide_tooltips wk_text" id="wk_element_889d2c8b54ae5001837c2ec42ca72c7e" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div contenteditable="false" style="width: 100%; margin-top: auto; margin-bottom: auto;"> <p>I consent to receiving emails and/or text message reminders for this event.</p> </div> </div> </div> </div> <div class="wk_editor_hide_tooltips wk_button btn btn-lg wk_button_hide_settings" id="wk_element_6aef8c2761d05f7a7fee01f707ee3d9f" data-wk-background-type-desktop="solid" data-wk-border-style-desktop="solid" onclick="webinar_registration_submit(event)"> <div contenteditable="false" style="width: 100%; margin-top: auto; margin-bottom: auto;"> <p><b>Quiero mi lugar gratis →</b></p> </div> </div> </form> </div> </div> </div>
+
+        <div class="urgency-sm">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Cupos limitados — cierra el registro al llenarse
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- EVENT TITLE -->
+    <div class="event-title-block">
+      <div class="event-pills">
+        <span class="pill live">
+          <span style="width:.4rem;height:.4rem;border-radius:50%;background:#ef4444;animation:blink 1.1s infinite"></span>
+          En vivo
+        </span>
+        <span class="pill free">Gratis</span>
+        <span class="pill">~90 min</span>
+        <span class="pill">En español</span>
+        <span class="pill">Sin experiencia técnica</span>
+      </div>
+      <h1>Construye tu primera app con IA — <em>en vivo,</em> sin código, desde cero</h1>
+      <p style="color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:1rem">
+        Únete a esta sesión gratuita donde construimos un CRM funcional desde cero usando inteligencia artificial — y vas a entender por qué cualquier persona con una idea puede hacer exactamente lo mismo.
+      </p>
+      <div class="organizer-row">
+        <div class="org-avatar">SH</div>
+        <div>
+          <div class="org-name">Sebastián Hortúa</div>
+          <div class="org-role">Fundador · Neural Studio · Applied AI Solutions</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- LO QUE VAS A VER -->
+    <div class="content-section">
+      <div class="section-label">En esta sesión</div>
+      <h2>Lo que vas a ver — en vivo, sin editar</h2>
+      <p>Sin presentaciones de PowerPoint. Sin teoría de relleno. Solo pantalla compartida y ejecución real.</p>
+      <div class="check-list">
+        <div class="check-item">
+          <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5 11-11"/></svg></div>
+          <span>Cómo construir una aplicación real usando IA — en vivo, mientras miras</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5 11-11"/></svg></div>
+          <span>Los 3 principios de un prompt que realmente funciona (y los errores que comete casi todo el mundo)</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5 11-11"/></svg></div>
+          <span>Por qué construir ya no es el obstáculo — y qué es lo que realmente detiene a la mayoría</span>
+        </div>
+        <div class="check-item">
+          <div class="check-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5 11-11"/></svg></div>
+          <span>Las herramientas exactas que usamos para pasar de idea a producto funcional sin contratar a nadie</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- PARA QUIÉN -->
+    <div class="content-section">
+      <div class="section-label">¿Es para ti?</div>
+      <h2>Esta sesión es para ti si…</h2>
+      <div class="quien-grid">
+        <div class="quien-card yes">
+          <div class="quien-head">✓ Sí es para ti</div>
+          <div class="quien-item"><span>→</span><span>Tienes una idea y no sabes por dónde empezar con IA</span></div>
+          <div class="quien-item"><span>→</span><span>Llevas tiempo consumiendo contenido sobre IA sin construir nada</span></div>
+          <div class="quien-item"><span>→</span><span>Crees que necesitas saber programar para hacer algo real</span></div>
+          <div class="quien-item"><span>→</span><span>Eres profesional o emprendedor y quieres crear algo propio</span></div>
+        </div>
+        <div class="quien-card no">
+          <div class="quien-head">✕ No es para ti</div>
+          <div class="quien-item"><span>→</span><span>Buscas un atajo para hacerte rico sin esfuerzo</span></div>
+          <div class="quien-item"><span>→</span><span>Solo quieres consumir contenido sin intención de construir</span></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- SOBRE SEBASTIÁN -->
+    <div class="content-section">
+      <div class="section-label">Tu guía</div>
+      <h2>¿Quién va a guiar la sesión?</h2>
+      <div class="bio-block">
+        <div class="bio-av">SH</div>
+        <div class="bio-content">
+          <h3>Sebastián Hortúa</h3>
+          <p>Pasé más de 12 años en banca y retail corporativo — Banco Falabella, Cencosud — sin haber estudiado ingeniería ni haber escrito una línea de código en mi vida.</p>
+          <p>Hoy construyo soluciones de inteligencia artificial para empresas, fundé Applied AI Solutions en Vancouver y creé Neural Studio — una comunidad en español donde profesionales y emprendedores construyen sus primeras soluciones de IA sin código.</p>
+          <p style="font-weight:600;color:var(--text)">No te voy a enseñar teoría. Te voy a mostrar cómo se hace.</p>
+          <div class="bio-tags">
+            <span class="bio-tag">+12 años corporate</span>
+            <span class="bio-tag">Applied AI Solutions</span>
+            <span class="bio-tag">Neural Studio</span>
+            <span class="bio-tag">Vancouver · LATAM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- LO QUE CONSTRUIMOS -->
+    <div class="content-section">
+      <div class="section-label">El proyecto</div>
+      <h2>Lo que construimos en vivo</h2>
+      <p>Vamos a construir un <strong>CRM / gestor de tareas funcional desde cero</strong> usando Lovable — una de las herramientas de IA más potentes del momento para crear aplicaciones sin código.</p>
+      <div class="build-grid">
+        <div class="build-card">
+          <div class="ico">👥</div>
+          <h4>Gestión de contactos</h4>
+          <p>Registro y seguimiento de clientes en un solo lugar</p>
+        </div>
+        <div class="build-card">
+          <div class="ico">✅</div>
+          <h4>Seguimiento de tareas</h4>
+          <p>Estados: pendiente, en proceso, listo</p>
+        </div>
+        <div class="build-card">
+          <div class="ico">📊</div>
+          <h4>Dashboard general</h4>
+          <p>Vista completa del negocio sin una línea de código</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- EL GIRO -->
+    <div class="content-section">
+      <div class="section-label">Por qué es diferente</div>
+      <h2>La mayoría te enseña a construir. Nadie te enseña lo que viene después.</h2>
+      <div class="giro-block">
+        <h3>El verdadero reto no es construir el producto.</h3>
+        <p>En esta sesión no solo vas a ver cómo se construye un MVP. También vas a entender <span class="highlight">cuál es el verdadero reto una vez que tienes el producto listo</span> — y qué necesitas para que alguien te pague por él.</p>
+        <p>Eso es lo que cambia todo.</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- FAQ -->
+    <div class="content-section">
+      <div class="section-label">Preguntas frecuentes</div>
+      <h2>Lo que todos preguntan</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿Necesito saber programar?
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">No. Todo está diseñado para personas sin experiencia técnica. Si sabes usar un navegador, puedes seguir la sesión.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿Necesito una idea de negocio antes de entrar?
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">No es obligatorio. Construimos un CRM que cualquiera puede replicar. Si tienes una idea propia, vas a salir con mucho más claridad.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿La sesión queda grabada?
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">Sí. Quienes se registren recibirán el replay. Sin embargo, el en vivo te da acceso a hacer preguntas en tiempo real.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿Es realmente gratis?
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">Completamente. Al final presentaré una oportunidad de ir más lejos con Neural Studio, pero sin ninguna obligación. La sesión tiene valor por sí sola.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            ¿En qué idioma es la sesión?
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">En español. Todo el contenido y los ejemplos están adaptados para el contexto latinoamericano.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end content -->
+</div><!-- end page-wrap -->
+
+<footer>
+  <div class="footer-brand">
+    <div class="footer-ns"><span>·</span>NS<span>·</span></div>
+    <span style="font-size:.8rem;font-weight:600;color:var(--muted)">Neural Studio</span>
+  </div>
+  <p class="footer-copy">© 2025 Neural Studio · Sin spam. Sin gurus. Solo ejecución.</p>
+</footer>
+
+<!-- WebinarKit Scripts -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/css/intlTelInput.css">
+<link rel="stylesheet" href="https://webinarkit.com/css/ewk_v5.css?cache=5">
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+<script src="https://webinarkit.com/js/ewk_v7.js?v=6&sv=true"></script>
+
+<script>
+document.body.classList.add('loaded');
+
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
