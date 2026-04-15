@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neural Studio — Construyendo en vivo con IA</title>
-<meta name="description" content="La comunidad donde dejas de aprender sobre IA y empiezas a construir con ella. Herramientas reales, resultados reales — sin teoría, sin humo.">
+<title>Neural Studio — Building Live with AI</title>
+<meta name="description" content="The AI community where you stop learning and start building. Real tools, real results — no theory, no hype.">
 <link rel="icon" type="image/png" href="ns.png">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <!-- Facebook Pixel -->
@@ -79,7 +79,7 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
 .display-text{margin-bottom:2.5rem}
 .display-line{
   font-family:'Archivo Black',sans-serif;
-  font-size:clamp(2.5rem,11vw,10rem);
+  font-size:clamp(2.5rem,12vw,11rem);
   font-weight:400;letter-spacing:-.035em;
   display:block;text-transform:uppercase;
   line-height:.91;
@@ -105,7 +105,9 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
 }
 .hero-lead strong{color:#fff;font-weight:700}
 .hero-cta{display:flex;flex-direction:column;gap:.75rem;align-items:flex-end}
-.stats-row{display:flex;gap:3rem;padding-top:2rem}
+.stats-row{
+  display:flex;gap:3rem;padding-top:2rem;
+}
 .stat strong{
   display:block;font-family:'Archivo Black',sans-serif;
   font-size:clamp(1.5rem,3vw,2.25rem);font-weight:400;color:var(--cyan);line-height:1.1;
@@ -122,7 +124,7 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
   .hero-lower{padding-top:1.5rem}
 }
 @media(max-width:480px){
-  .display-line{-webkit-text-stroke-width:2px;font-size:clamp(2rem,13vw,4rem)}
+  .display-line{-webkit-text-stroke-width:2px;font-size:clamp(2rem,14vw,4rem)}
   .stats-row{flex-wrap:wrap;gap:1rem}
   .hero-cta{flex-direction:column;width:100%}
   .hero-cta .btn{width:100%;text-align:center}
@@ -134,6 +136,7 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
   border-top:1px solid rgba(255,255,255,.07);
   border-bottom:1px solid rgba(255,255,255,.07);
   padding:.85rem 0;position:relative;z-index:1;
+  margin-bottom:0;
 }
 .marquee-track{
   display:inline-flex;align-items:center;
@@ -230,6 +233,7 @@ main{position:relative;z-index:1;display:flex;flex-direction:column;align-items:
 
 /* ── FORM SECTION ── */
 .form-section{padding:4rem 0 5rem;position:relative}
+.form-arrows{pointer-events:none}
 .form-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
   display:flex;flex-direction:column;gap:8px;
@@ -333,7 +337,7 @@ footer{
     <div class="nav-wordmark"><span>·</span>NS<span>·</span></div>
     <span class="nav-sub">Neural Studio</span>
   </div>
-  <a class="btn btn-primary" href="subscribe.html">Quiero entrar →</a>
+  <a class="btn btn-primary" href="subscribe.html">I want in →</a>
 </nav>
 
 <main>
@@ -341,24 +345,24 @@ footer{
   <!-- DISPLAY HERO -->
   <section class="hero-display">
     <div class="display-text sa">
-      <span class="display-line outline">DEJA DE</span>
-      <span class="display-line solid">APRENDER.</span>
-      <span class="display-line outline-cyan">EMPIEZA A</span>
-      <span class="display-line fill-cyan"><span class="h1-live" role="status" aria-label="Construyendo en vivo"><span class="live-dot-wrap live-dot-wrap--hero" aria-hidden="true"><span class="live-dot-ping"></span><span class="live-dot"></span></span>CONSTRUIR.</span></span>
+      <span class="display-line outline">STOP</span>
+      <span class="display-line solid">CONSUMING.</span>
+      <span class="display-line outline-cyan">START</span>
+      <span class="display-line fill-cyan"><span class="h1-live" role="status" aria-label="Building live"><span class="live-dot-wrap live-dot-wrap--hero" aria-hidden="true"><span class="live-dot-ping"></span><span class="live-dot"></span></span>BUILDING.</span></span>
     </div>
 
     <div class="hero-lower sa">
       <div>
-        <p class="hero-lead">Neural Studio es la comunidad donde dejas de consumir contenido de IA y empiezas a construir con ella — <strong>en menos de 30 días</strong>, sin código, sin experiencia técnica previa.</p>
+        <p class="hero-lead">Neural Studio is the community where you stop consuming AI content and start building with it — <strong>in under 30 days</strong>, no code, no technical background required.</p>
         <div class="stats-row" style="margin-top:1.75rem">
-          <div class="stat"><strong>30</strong><span>días al primer resultado</span></div>
-          <div class="stat"><strong>En vivo</strong><span>sin teoría, con ejecución</span></div>
-          <div class="stat"><strong>LATAM</strong><span>construido para la región</span></div>
+          <div class="stat"><strong>30</strong><span>days to your first result</span></div>
+          <div class="stat"><strong>Live</strong><span>no theory, just execution</span></div>
+          <div class="stat"><strong>Global</strong><span>builders everywhere</span></div>
         </div>
       </div>
       <div class="hero-cta">
-        <a class="btn btn-primary btn-lg" href="subscribe.html">Quiero estar adentro →</a>
-        <a class="btn btn-ghost" href="#video">Ver el video</a>
+        <a class="btn btn-primary btn-lg" href="subscribe.html">I want in →</a>
+        <a class="btn btn-ghost" href="#video">Watch the video</a>
       </div>
     </div>
   </section>
@@ -366,86 +370,86 @@ footer{
   <!-- MARQUEE TICKER -->
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-track">
-      <span class="item">CONSTRUYE CON IA</span><span class="dot">·</span>
-      <span class="item">SIN TEORÍA</span><span class="dot">·</span>
-      <span class="item">SOLO EJECUCIÓN</span><span class="dot">·</span>
-      <span class="item">RESULTADOS REALES</span><span class="dot">·</span>
-      <span class="item">30 DÍAS</span><span class="dot">·</span>
-      <span class="item">SIN CÓDIGO</span><span class="dot">·</span>
-      <span class="item">EN VIVO</span><span class="dot">·</span>
-      <span class="item">LANZA ALGO REAL</span><span class="dot">·</span>
+      <span class="item">BUILD WITH AI</span><span class="dot">·</span>
+      <span class="item">NO THEORY</span><span class="dot">·</span>
+      <span class="item">JUST EXECUTION</span><span class="dot">·</span>
+      <span class="item">REAL RESULTS</span><span class="dot">·</span>
+      <span class="item">BUILD IN 30 DAYS</span><span class="dot">·</span>
+      <span class="item">NO CODE REQUIRED</span><span class="dot">·</span>
+      <span class="item">LIVE SESSIONS</span><span class="dot">·</span>
+      <span class="item">SHIP SOMETHING REAL</span><span class="dot">·</span>
       <!-- duplicate for seamless loop -->
-      <span class="item">CONSTRUYE CON IA</span><span class="dot">·</span>
-      <span class="item">SIN TEORÍA</span><span class="dot">·</span>
-      <span class="item">SOLO EJECUCIÓN</span><span class="dot">·</span>
-      <span class="item">RESULTADOS REALES</span><span class="dot">·</span>
-      <span class="item">30 DÍAS</span><span class="dot">·</span>
-      <span class="item">SIN CÓDIGO</span><span class="dot">·</span>
-      <span class="item">EN VIVO</span><span class="dot">·</span>
-      <span class="item">LANZA ALGO REAL</span><span class="dot">·</span>
+      <span class="item">BUILD WITH AI</span><span class="dot">·</span>
+      <span class="item">NO THEORY</span><span class="dot">·</span>
+      <span class="item">JUST EXECUTION</span><span class="dot">·</span>
+      <span class="item">REAL RESULTS</span><span class="dot">·</span>
+      <span class="item">BUILD IN 30 DAYS</span><span class="dot">·</span>
+      <span class="item">NO CODE REQUIRED</span><span class="dot">·</span>
+      <span class="item">LIVE SESSIONS</span><span class="dot">·</span>
+      <span class="item">SHIP SOMETHING REAL</span><span class="dot">·</span>
     </div>
   </div>
 
   <section class="section wrap" id="quien">
     <div class="split">
       <div class="sa">
-        <h2 class="section-head">No somos un curso. <span class="cyan">Somos la comunidad donde ejecutas en vivo.</span></h2>
-        <p class="section-desc">Lo que cambia vidas no son las buenas intenciones — es lo que ejecutas. Neural Studio existe para que pares de consumir contenido sobre IA y empieces a construir con ella: flujos reales, soluciones reales, resultados reales.</p>
-        <p class="section-desc" style="margin-top:1rem;margin-bottom:0">Si tienes experiencia, hambre de construir y estás dispuesto a ejecutar — este es tu lugar.</p>
+        <h2 class="section-head">Not a course. <span class="cyan">A community where you execute live.</span></h2>
+        <p class="section-desc">What changes lives isn't good intentions — it's what you actually ship. Neural Studio exists so you stop consuming AI content and start building with it: real workflows, real solutions, real results.</p>
+        <p class="section-desc" style="margin-top:1rem;margin-bottom:0">If you have drive, hunger to build, and you're ready to execute — this is your place.</p>
       </div>
       <div class="sa" style="display:flex;flex-direction:column;align-items:center;width:100%">
-        <p class="section-desc" style="text-align:center;margin-bottom:1.25rem;font-weight:600;color:rgba(255,255,255,0.85)">Ayudamos a...</p>
+        <p class="section-desc" style="text-align:center;margin-bottom:1.25rem;font-weight:600;color:rgba(255,255,255,0.85)">We help...</p>
         <div class="card-grid" style="width:100%">
-          <div class="card"><p class="tag cyan">01</p><p>Profesionales que quieren construir algo real con IA — desde cero</p></div>
-          <div class="card"><p class="tag gold">02</p><p>Emprendedores que quieren dejar de depender de terceros y hacerlo ellos mismos</p></div>
-          <div class="card"><p class="tag cyan">03</p><p>Personas que consumen IA pero nunca han ejecutado nada con ella</p></div>
-          <div class="card"><p class="tag gold">04</p><p>Quienes están listos para pasar del "quiero hacerlo" al "ya lo hice"</p></div>
+          <div class="card"><p class="tag cyan">01</p><p>Professionals who want to build something real with AI — from scratch</p></div>
+          <div class="card"><p class="tag gold">02</p><p>Entrepreneurs who want to stop depending on developers and do it themselves</p></div>
+          <div class="card"><p class="tag cyan">03</p><p>People who consume AI content but have never shipped anything with it</p></div>
+          <div class="card"><p class="tag gold">04</p><p>Anyone ready to go from "I want to build" to "I already did"</p></div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="section wrap" id="video">
-    <h2 class="section-head sa" style="text-align:center;max-width:none">Mira exactamente qué se construye aquí — <span class="gold">antes de decidir si entras.</span></h2>
-    <p class="section-desc sa" style="text-align:center;margin-left:auto;margin-right:auto">Sin filtros. Sin edición de marketing. Lo que ves es lo que hay.</p>
+    <h2 class="section-head sa" style="text-align:center;max-width:none">See exactly what gets built here — <span class="gold">before you decide to join.</span></h2>
+    <p class="section-desc sa" style="text-align:center;margin-left:auto;margin-right:auto">No filters. No marketing edits. What you see is what you get.</p>
     <div class="video-block sa">
       <div class="inner">
         <iframe src="https://www.tella.tv/video/vid_cmlqrfsak00gp04le4ky30tid/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=0&o=0" allowfullscreen></iframe>
       </div>
     </div>
     <div class="sa" style="text-align:center;margin-top:2rem">
-      <a class="btn btn-primary btn-lg" href="subscribe.html">Quiero unirme →</a>
+      <a class="btn btn-primary btn-lg" href="subscribe.html">I want to join →</a>
     </div>
   </section>
 
   <section class="section wrap">
-    <h2 class="section-head sa" style="text-align:center;max-width:52rem;margin-left:auto;margin-right:auto">Todo lo que necesitas para construir — <span class="cyan">y nada que no necesitas.</span></h2>
-    <p class="section-desc sa" style="text-align:center;margin-left:auto;margin-right:auto;max-width:40rem">Sesiones en vivo, herramientas reales, comunidad activa y acompañamiento práctico. Diseñado para profesionales que quieren resultados reales, no más teoría.</p>
+    <h2 class="section-head sa" style="text-align:center;max-width:52rem;margin-left:auto;margin-right:auto">Everything you need to build — <span class="cyan">and nothing you don't.</span></h2>
+    <p class="section-desc sa" style="text-align:center;margin-left:auto;margin-right:auto;max-width:40rem">Live sessions, real tools, an active community and hands-on guidance. Built for professionals who want real results, not more theory.</p>
     <div class="features-grid sa">
       <div class="feature-card">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <div><h3>Herramientas reales</h3><p>Flujos que funcionan, que puedes replicar y cobrar — desde la primera semana.</p></div>
+        <div><h3>Real tools</h3><p>Workflows that actually work, that you can replicate and charge for — from day one.</p></div>
       </div>
       <div class="feature-card">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
-        <div><h3>Siempre en vivo</h3><p>Lo que se construye hoy — no lo que alguien explicaba hace tres años.</p></div>
+        <div><h3>Always live</h3><p>What we build today — not what someone explained three years ago.</p></div>
       </div>
       <div class="feature-card">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div><h3>Perfil LATAM</h3><p>Una comunidad de hacedores que comparten prompts, flujos y fallas reales — no teoría pulida.</p></div>
+        <div><h3>Global builders</h3><p>A community of doers sharing prompts, workflows and real failures — not polished theory.</p></div>
       </div>
       <div class="feature-card">
         <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <div><h3>Monetización</h3><p>De construir tu primera solución a cobrar por ella. Ese es el camino.</p></div>
+        <div><h3>Monetization</h3><p>From building your first solution to charging for it. That's the path.</p></div>
       </div>
     </div>
   </section>
 
   <section class="wrap">
     <div class="cta-band sa">
-      <h2>Entra antes de que abramos oficialmente.</h2>
-      <p>Sé parte desde el día uno. Únete a la lista y al grupo donde compartimos todo lo que estamos construyendo — en tiempo real, sin filtros.</p>
-      <a class="btn btn-primary btn-lg" href="subscribe.html">Unirme ahora →</a>
+      <h2>Join before we officially launch.</h2>
+      <p>Be part of it from day one. Get on the list and into the group where we share everything we're building — in real time, unfiltered.</p>
+      <a class="btn btn-primary btn-lg" href="subscribe.html">Join now →</a>
     </div>
   </section>
 
@@ -455,12 +459,12 @@ footer{
     </div>
     <div class="form-box sa">
       <div class="urgency-banner" id="form-urgency">
-        🔴 Solo quedan <span class="spot-count" id="form-spots">20</span> cupos disponibles
+        🔴 Only <span class="spot-count" id="form-spots">20</span> spots left
       </div>
       <div id="form-container">
-        <h3>Entra antes de que abramos oficialmente.</h3>
-        <a href="subscribe.html" class="btn btn-primary" style="width:100%;display:block;text-align:center;margin-top:1.25rem">Quiero construir →</a>
-        <p class="form-note">Sin spam. Solo ejecución.</p>
+        <h3>Get in before we officially open.</h3>
+        <a href="subscribe.html" class="btn btn-primary" style="width:100%;display:block;text-align:center;margin-top:1.25rem">I want to build →</a>
+        <p class="form-note">No spam. Just execution.</p>
       </div>
     </div>
     <div class="form-arrow form-arrow--right">
@@ -470,69 +474,69 @@ footer{
 
   <section class="reviews-section wrap sa" aria-labelledby="reviews-heading">
     <div class="reviews-head">
-      <h2 id="reviews-heading">Lo que dice la comunidad</h2>
-      <p>Opiniones reales de quienes ya están adentro.</p>
+      <h2 id="reviews-heading">What the community says</h2>
+      <p>Real opinions from people already inside.</p>
     </div>
     <div class="reviews-grid">
       <article class="review-card">
-        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <p class="review-text">«Llevaba años comprando cursos de IA que terminaban en PDFs y videos de 2021. Acá se ve la pantalla, se arma el flujo y se discute qué falló. En la tercera sesión en vivo ya tenía claridad de qué herramientas sí valen para mi agencia y cuáles eran puro marketing. Por fin algo donde se nota que construyen en serio, no que revenden teoría.»</p>
-        <div><span class="review-author">Mariana G.</span> <span class="review-meta">· CDMX · agencia digital</span></div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="review-text">«I spent years buying AI courses that ended up as PDFs and videos from 2021. Here you see the screen, you build the workflow, and you discuss what went wrong. By the third live session I already knew which tools were worth it for my agency and which were pure marketing. Finally something where they actually build seriously.»</p>
+        <div><span class="review-author">Mariana G.</span> <span class="review-meta">· Digital agency</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <p class="review-text">«Tengo un negocio de importación y cero ganas de aprender a programar. Me armaron el camino para automatizar seguimiento de pedidos y respuestas repetitivas con herramientas que ya existen. Copié el flujo paso a paso, lo adapté a mi CRM y en una semana estaba ahorrando horas. Sin humo, sin "instala Linux".»</p>
-        <div><span class="review-author">Diego R.</span> <span class="review-meta">· Buenos Aires · pymes</span></div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="review-text">«I run an import business and had zero interest in learning to code. They helped me build a path to automate order follow-ups and repetitive responses using existing tools. I copied the workflow step by step, adapted it to my CRM, and in a week I was saving hours. No smoke, no "install Linux".»</p>
+        <div><span class="review-author">Diego R.</span> <span class="review-meta">· SMB owner</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <p class="review-text">«Lo que más valoro es que no te dan la respuesta cerrada: ves cómo alguien se trabaja un error en vivo, qué revisan primero, cómo prueban. Eso no sale en un curso editado. Me pasó con un tema de APIs que en YouTube nadie explicaba bien; acá en 20 minutos quedó resuelto con el chat ayudando. El enfoque en vivo cambia todo.»</p>
-        <div><span class="review-author">Valentina S.</span> <span class="review-meta">· Santiago · ops / proyectos</span></div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="review-text">«What I value most is that they don't give you the closed answer: you see someone debug an error live, what they check first, how they test. That doesn't show up in any edited course. It happened to me with an API issue nobody on YouTube explained well — resolved in 20 minutes. The live approach changes everything.»</p>
+        <div><span class="review-author">Valentina S.</span> <span class="review-meta">· Ops / projects</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="4 de 5 estrellas">★★★★<span class="dim">★</span></div>
-        <p class="review-text">«Vengo de ventas B2B, no de sistemas. Al principio me perdía con nombres de herramientas, pero el lenguaje es muy orientado a negocio: qué problema resuelves, cómo lo cobras, cómo lo explicas al cliente. Me faltó un poco más de material escrito para repasar después (por eso no 5 estrellas), pero volvería a entrar sin duda.»</p>
-        <div><span class="review-author">Andrés M.</span> <span class="review-meta">· Bogotá · comercial</span></div>
+        <div class="review-stars" aria-label="4 out of 5 stars">★★★★<span class="dim">★</span></div>
+        <p class="review-text">«I come from B2B sales, not engineering. At first I got lost with tool names, but the language is very business-oriented: what problem you solve, how you charge for it, how you explain it to clients. I would have liked more written material to review later (hence not 5 stars), but I'd join again without question.»</p>
+        <div><span class="review-author">Andrés M.</span> <span class="review-meta">· Sales</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <p class="review-text">«Mi objetivo era un bot de WhatsApp que califique leads antes de que yo los llame. En dos semanas tenía el flujo funcionando con pruebas reales; en cursos anteriores me quedé atascada en el módulo 4 y nunca desplegué nada. Acá el ritmo es "construye hoy", y si no sale, lo ves en la siguiente sesión. Eso no me pasó con ningún curso grabado.»</p>
-        <div><span class="review-author">Lucía F.</span> <span class="review-meta">· Monterrey · ventas</span></div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="review-text">«My goal was a WhatsApp bot that qualifies leads before I call them. In two weeks I had the workflow running with real tests. In previous courses I got stuck on module 4 and never deployed anything. Here the pace is "build today", and if it doesn't work, you revisit it next session. That never happened with any recorded course.»</p>
+        <div><span class="review-author">Lucía F.</span> <span class="review-meta">· Sales</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <p class="review-text">«El grupo no es silencio y stickers: hay gente de Perú, México, Argentina compartiendo prompts, plantillas y "esto me funcionó en mi rubro". Respondieron una duda mía un domingo sobre facturación y automatización. Se siente LATAM de verdad — mismos idiomas, mismas fricciones bancarias y de clientes, no teoría hecha en Silicon Valley.»</p>
-        <div><span class="review-author">Carlos H.</span> <span class="review-meta">· Lima · emprendedor</span></div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="review-text">«The group isn't silence and stickers: there are people sharing prompts, templates, and "this worked for me in my industry". Someone answered a question of mine on a Sunday about invoicing and automation. It really feels like a builders' community — real problems, real friction, not theory made in Silicon Valley.»</p>
+        <div><span class="review-author">Carlos H.</span> <span class="review-meta">· Entrepreneur</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <p class="review-text">«Estaba en el loop de probar apps de IA y no facturar nada. Acá me enseñaron a empaquetar una oferta simple — informes automáticos para restaurantes — con precio y entregables claros. En el mes siguiente cerré dos clientes chicos. El camino está ordenado: primero valor tangible, luego escalar. De consumir IA a cobrar por un servicio de verdad.»</p>
-        <div><span class="review-author">Paula T.</span> <span class="review-meta">· Medellín · consultora</span></div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="review-text">«I was stuck in the loop of trying AI apps and not billing anything. Here they taught me to package a simple offer — automated reports for restaurants — with a price and clear deliverables. The following month I closed two small clients. The path is clear: first tangible value, then scale. From consuming AI to charging for a real service.»</p>
+        <div><span class="review-author">Paula T.</span> <span class="review-meta">· Consultant</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="4 de 5 estrellas">★★★★<span class="dim">★</span></div>
-        <p class="review-text">«El contenido es denso y útil; cada sesión me deja tareas concretas. Mi única pega es el huso horario de los en vivos para Guadalajara a veces incómodo — ojalá hubiera un replay más corto o un segundo horario. Aun así, lo que aprendí en tres semanas superó seis meses de cursos sueltos.»</p>
-        <div><span class="review-author">Ricardo P.</span> <span class="review-meta">· Guadalajara · marketing</span></div>
+        <div class="review-stars" aria-label="4 out of 5 stars">★★★★<span class="dim">★</span></div>
+        <p class="review-text">«The content is dense and useful; each session leaves me with concrete tasks. My only issue is the live session timing — sometimes inconvenient for my timezone. Even so, what I learned in three weeks beat six months of scattered courses.»</p>
+        <div><span class="review-author">Ricardo P.</span> <span class="review-meta">· Marketing</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <p class="review-text">«Soy de RR.HH. y nunca toqué una API. Me guiaron para usar IA en redacción de descripciones de puesto, primer filtro de CVs y borradores de mails internos — siempre con revisión humana. Sin experiencia técnica entendí dónde encaja la IA en mi trabajo y qué no debería automatizar por compliance. Muy por encima de "pregúntale al ChatGPT".»</p>
-        <div><span class="review-author">Sofía L.</span> <span class="review-meta">· Montevideo · RR.HH.</span></div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="review-text">«I'm in HR and never touched an API. They guided me to use AI for writing job descriptions, initial CV screening and internal email drafts — always with human review. Without any technical background I understood where AI fits in my work and what I shouldn't automate for compliance. Way beyond "just ask ChatGPT".»</p>
+        <div><span class="review-author">Sofía L.</span> <span class="review-meta">· HR</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <p class="review-text">«Estaba harto de tutoriales con interfaces viejas y prompts que ya no funcionan igual. Acá actualizan cuando cambia un modelo o una política de API; en una sesión rehicieron un ejemplo porque la herramienta había cambiado el día anterior. Refreshing comparado con todo lo que hay en YouTube con fecha de 2022.»</p>
-        <div><span class="review-author">Esteban V.</span> <span class="review-meta">· Córdoba · freelance dev</span></div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="review-text">«I was tired of tutorials with outdated interfaces and prompts that no longer work the same way. Here they update when a model or API policy changes; in one session they redid an example because the tool had changed the day before. Refreshing compared to everything on YouTube dated 2022.»</p>
+        <div><span class="review-author">Esteban V.</span> <span class="review-meta">· Freelance dev</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <p class="review-text">«Entré por curiosidad al WhatsApp y me quedé por los hilos: alguien comparte un flujo de n8n, otro un prompt para cotizaciones, otro un fallo con un proveedor de IA. Cosas que no están en ningún video público. El grupo solo ya vale la pena; el resto es bonus.»</p>
-        <div><span class="review-author">Camila N.</span> <span class="review-meta">· Quito · servicios</span></div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="review-text">«I joined out of curiosity and stayed for the threads: someone shares an n8n workflow, another a prompt for quotes, another a failure with an AI provider. Things you won't find in any public video. The group alone is worth it; everything else is a bonus.»</p>
+        <div><span class="review-author">Camila N.</span> <span class="review-meta">· Services</span></div>
       </article>
       <article class="review-card">
-        <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-        <p class="review-text">«Vengo del mundo corporate en España: mucho PowerPoint sobre IA y poca ejecución. Acá es al revés — poco teatro, mucho "esto probé, esto falló". Me sirvió para llevar propuestas concretas a mi jefe (automatizar informes semanales) en lugar de vaguedades. Profesional y directo, sin gurúes.»</p>
-        <div><span class="review-author">Javier O.</span> <span class="review-meta">· Valencia (ES) · corporativo</span></div>
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p class="review-text">«I come from corporate: lots of PowerPoint about AI and very little execution. Here it's the opposite — little theater, lots of "here's what I tried, here's what failed". It helped me bring concrete proposals to my boss (automating weekly reports) instead of vague ideas. Professional, direct, no gurus.»</p>
+        <div><span class="review-author">Javier O.</span> <span class="review-meta">· Corporate</span></div>
       </article>
     </div>
   </section>
@@ -545,7 +549,7 @@ footer{
       <span class="footer-name">Neural Studio</span>
     </div>
     <p class="footer-copy">© 2026 Neural Studio.</p>
-    <p class="footer-tag">Sin spam. Sin gurus. Solo ejecución.</p>
+    <p class="footer-tag">No spam. No gurus. Just execution.</p>
   </div>
 </footer>
 
@@ -558,7 +562,7 @@ const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; obs.unobserve(e.target); }
   });
-}, {threshold:0.08});
+}, {threshold:0.1});
 document.querySelectorAll('.sa').forEach(el => obs.observe(el));
 
 // Particle canvas
