@@ -255,7 +255,6 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
   transition:transform .55s ease;
 }
 .wi:hover img,.wi:hover video{transform:scale(1.03)}
-.wi-video{aspect-ratio:16/9;margin-bottom:1.25rem}
 .cp{margin-bottom:2.5rem}
 .cp-meta{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem}
 .cp-tag{
@@ -265,13 +264,52 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
 }
 .cp-name{font-size:.82rem;font-weight:600;color:var(--muted)}
 .cp-grid{display:grid;gap:1.25rem}
-.cp-grid.c3{grid-template-columns:repeat(3,1fr)}
 .cp-grid.c4{grid-template-columns:repeat(4,1fr)}
 .cp-grid.c7{grid-template-columns:repeat(7,1fr)}
 .cp-grid .wi{aspect-ratio:3/4}
 .cp-grid.ls .wi{aspect-ratio:16/9}
 .cp-grid.sq .wi{aspect-ratio:1}
-.cp-grid.c3 .wi{aspect-ratio:9/16}
+
+/* ── VIDEO SLIDER ── */
+.vid-slider-wrap{position:relative}
+.vid-slider{
+  display:flex;gap:1.25rem;
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.vid-slider::-webkit-scrollbar{display:none}
+.vid-slide{
+  flex:0 0 auto;
+  scroll-snap-align:start;
+  border-radius:var(--radius);overflow:hidden;
+  background:#000;border:1px solid var(--border);
+  display:flex;align-items:center;
+}
+.vid-slide video{
+  display:block;
+  height:auto;
+  width:auto;
+  max-height:min(78vh,680px);
+  max-width:min(75vw,500px);
+}
+.vid-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;flex-wrap:wrap;gap:.75rem}
+.vid-dots{display:flex;gap:.55rem;align-items:center}
+.vid-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,.2);transition:background .25s,transform .25s;cursor:pointer;border:none;padding:0;
+}
+.vid-dot.active{background:var(--purple);transform:scale(1.4)}
+.vid-arrows{display:flex;gap:.65rem}
+.vid-arrow{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text);cursor:pointer;
+  transition:background .2s,border-color .2s,opacity .2s;
+  flex-shrink:0;
+}
+.vid-arrow:hover{background:rgba(124,92,252,.18);border-color:rgba(124,92,252,.4);color:#fff}
+.vid-arrow:disabled{opacity:.25;cursor:default;pointer-events:none}
 
 /* ── FEATURE / QUOTE ── */
 .feature{
@@ -429,7 +467,6 @@ footer{
   .about-grid{grid-template-columns:1fr;gap:4rem}
   .about-visual{height:320px}
   .contact-inner{grid-template-columns:1fr;gap:4rem}
-  .cp-grid.c3{grid-template-columns:repeat(3,1fr)}
   .cp-grid.c4{grid-template-columns:1fr 1fr}
   .cp-grid.c7{grid-template-columns:repeat(4,1fr)}
   .process-steps{grid-template-columns:1fr 1fr;gap:2rem}
@@ -443,7 +480,7 @@ footer{
   /* work grid */
   .work{padding:5rem 0}
   .cp{margin-bottom:1.5rem}
-  .cp-grid.c3{grid-template-columns:repeat(3,1fr)}
+  .vid-slide video{max-height:min(70vh,560px);max-width:min(80vw,420px)}
   .cp-grid.c4{grid-template-columns:1fr 1fr}
   .cp-grid.c7{grid-template-columns:repeat(4,1fr)}
   /* about / process / contact */
@@ -470,7 +507,7 @@ footer{
   .hero-btns{gap:.75rem}
   .hero-scroll{display:none}
   /* work */
-  .cp-grid.c3{grid-template-columns:1fr 1fr}
+  .vid-slide video{max-height:min(65vh,500px);max-width:min(85vw,380px)}
   .cp-grid.c4{grid-template-columns:1fr 1fr}
   .cp-grid.c4.ls{grid-template-columns:1fr}
   .cp-grid.c7{grid-template-columns:repeat(3,1fr)}
@@ -490,10 +527,9 @@ footer{
   .hero h1{font-size:clamp(2rem,10vw,2.8rem)}
   .hero-btns{flex-direction:column;align-items:stretch}
   .btn-primary,.btn-outline{justify-content:center}
-  .cp-grid.c3{grid-template-columns:1fr}
+  .vid-slide video{max-height:min(60vh,460px);max-width:90vw}
   .cp-grid.c4,.cp-grid.c4.ls{grid-template-columns:1fr}
   .cp-grid.c7{grid-template-columns:repeat(2,1fr)}
-  .cp-grid.c3 .wi{aspect-ratio:16/9}
   .nav-logo{font-size:1.05rem}
 }
 </style>
@@ -583,16 +619,45 @@ footer{
       </div>
     </div>
 
-    <!-- AI Cinematic Videos -->
+    <!-- AI Cinematic Videos — slider -->
     <div class="cp reveal">
       <div class="cp-meta">
         <span class="cp-tag">AI Cinematic Video</span>
         <span class="cp-name">Social Media Campaigns</span>
       </div>
-      <div class="cp-grid c3 sq">
-        <div class="wi"><video autoplay muted loop playsinline><source src="images/0505.mp4" type="video/mp4"></video></div>
-        <div class="wi"><video autoplay muted loop playsinline><source src="images/hf_20260507_072834_84992edc-0065-47c6-b2d8-011873dd26a6.mp4" type="video/mp4"></video></div>
-        <div class="wi"><video autoplay muted loop playsinline><source src="images/hf_20260507_075036_8ed21d64-1579-4a38-b732-5881f6b452a1.mp4" type="video/mp4"></video></div>
+      <div class="vid-slider-wrap">
+        <div class="vid-slider" id="vid-slider">
+          <div class="vid-slide">
+            <video autoplay muted loop playsinline>
+              <source src="images/0505.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="vid-slide">
+            <video autoplay muted loop playsinline>
+              <source src="images/hf_20260507_072834_84992edc-0065-47c6-b2d8-011873dd26a6.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="vid-slide">
+            <video autoplay muted loop playsinline>
+              <source src="images/hf_20260507_075036_8ed21d64-1579-4a38-b732-5881f6b452a1.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="vid-footer">
+          <div class="vid-dots">
+            <button class="vid-dot active" data-idx="0" aria-label="Video 1"></button>
+            <button class="vid-dot" data-idx="1" aria-label="Video 2"></button>
+            <button class="vid-dot" data-idx="2" aria-label="Video 3"></button>
+          </div>
+          <div class="vid-arrows">
+            <button class="vid-arrow" id="vid-prev" aria-label="Previous" disabled>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+            </button>
+            <button class="vid-arrow" id="vid-next" aria-label="Next">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -836,6 +901,47 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
     requestAnimationFrame(draw);
   }
   draw();
+})();
+
+// Video slider
+(function(){
+  const slider = document.getElementById('vid-slider');
+  if(!slider) return;
+  const slides = slider.querySelectorAll('.vid-slide');
+  const btnPrev = document.getElementById('vid-prev');
+  const btnNext = document.getElementById('vid-next');
+  const dots = document.querySelectorAll('.vid-dot');
+  let current = 0;
+
+  function syncUI(){
+    dots.forEach((d,i) => d.classList.toggle('active', i === current));
+    btnPrev.disabled = current === 0;
+    btnNext.disabled = current === slides.length - 1;
+  }
+
+  function goTo(idx){
+    current = Math.max(0, Math.min(idx, slides.length - 1));
+    slider.scrollTo({left: slides[current].offsetLeft, behavior: 'smooth'});
+    syncUI();
+  }
+
+  btnPrev.addEventListener('click', () => goTo(current - 1));
+  btnNext.addEventListener('click', () => goTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
+
+  // Sync on native swipe — find whichever slide's left edge is closest to slider's left edge
+  let scrollTimer;
+  slider.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      let minDist = Infinity;
+      slides.forEach((s, i) => {
+        const dist = Math.abs(s.offsetLeft - slider.scrollLeft);
+        if(dist < minDist){ minDist = dist; current = i; }
+      });
+      syncUI();
+    }, 80);
+  });
 })();
 
 // Contact form
