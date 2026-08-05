@@ -373,12 +373,14 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
   font-weight:400;line-height:1.03;letter-spacing:-.025em;margin-bottom:1.5rem;
 }
 .contact-text p{color:var(--muted);font-size:.98rem;line-height:1.8;max-width:400px}
+.form-hint{font-size:.78rem;color:var(--muted2);margin-bottom:1.25rem}
 .form-group{margin-bottom:.9rem}
 .form-group label{
   display:block;font-size:.7rem;font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted2);margin-bottom:.5rem;
 }
+.req{color:var(--purple);font-weight:700}
 .form-group input,
 .form-group select,
 .form-group textarea{
@@ -424,6 +426,15 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
   font-size:1.75rem;font-weight:400;margin-bottom:.75rem;letter-spacing:-.01em;
 }
 .form-success p{color:var(--muted);font-size:.95rem;line-height:1.7}
+.form-error{
+  display:none;margin-top:1rem;padding:1rem 1.25rem;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius-sm);
+  color:var(--muted);font-size:.85rem;line-height:1.6;text-align:center;
+}
+.form-error.show{display:block}
+.form-error a{color:var(--text);text-decoration:underline}
 .form-alt{
   margin-top:2.5rem;padding-top:2rem;
   border-top:1px solid rgba(255,255,255,.07);
@@ -828,10 +839,11 @@ footer{
 
       <div class="reveal reveal-d1">
         <div id="form-wrap">
+          <p class="form-hint">Fields marked <span class="req">*</span> are required — everything else helps us prepare, but isn't a blocker.</p>
           <form id="contact-form">
             <div class="form-row">
               <div class="form-group">
-                <label for="full_name">Full Name</label>
+                <label for="full_name">Full Name <span class="req">*</span></label>
                 <input type="text" id="full_name" name="full_name" placeholder="Jane Smith" required>
               </div>
               <div class="form-group">
@@ -841,11 +853,11 @@ footer{
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Email <span class="req">*</span></label>
                 <input type="email" id="email" name="email" placeholder="jane@company.com" required>
               </div>
               <div class="form-group">
-                <label for="phone">Phone</label>
+                <label for="phone">Phone <span class="req">*</span></label>
                 <input type="tel" id="phone" name="phone" placeholder="123 456 7890" required>
               </div>
             </div>
@@ -880,9 +892,10 @@ footer{
               <textarea id="vision" name="vision" placeholder="Share your idea, goals, and what you're hoping to create..."></textarea>
             </div>
             <button type="submit" class="form-submit">Start the Conversation</button>
+            <p class="form-error" id="form-error" role="alert"></p>
           </form>
         </div>
-        <div class="form-success" id="form-success">
+        <div class="form-success" id="form-success" role="status">
           <h3>✦ We got your message.</h3>
           <p>Thanks for reaching out. We'll get back to you ASAP.</p>
         </div>
@@ -1021,9 +1034,12 @@ window.addEventListener('load', () => {
 document.getElementById('contact-form').addEventListener('submit', async function(e){
   e.preventDefault();
   const btn = this.querySelector('.form-submit');
+  const errorEl = document.getElementById('form-error');
   const orig = btn.textContent;
   btn.textContent = 'Sending...';
   btn.disabled = true;
+  errorEl.classList.remove('show');
+  errorEl.textContent = '';
   const phone = iti ? iti.getNumber() : document.getElementById('phone').value;
   const data = {
     full_name: document.getElementById('full_name').value,
@@ -1037,32 +1053,38 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   };
   try {
     const w3fKey = '6a9a227b-5c54-4fc1-8c59-e5097753d12e';
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        access_key: w3fKey,
-        subject: `New inquiry from ${data.full_name} — Neural Studio`,
-        from_name: data.full_name,
-        email: data.email,
-        phone: data.phone,
-        company: data.company,
-        project_type: data.project_type,
-        budget: data.budget,
-        vision: data.vision
+    const results = await Promise.allSettled([
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          access_key: w3fKey,
+          subject: `New inquiry from ${data.full_name} — Neural Studio`,
+          from_name: data.full_name,
+          email: data.email,
+          phone: data.phone,
+          company: data.company,
+          project_type: data.project_type,
+          budget: data.budget,
+          vision: data.vision
+        })
+      }),
+      fetch('https://n8n.srv864443.hstgr.cloud/webhook/neural-studio-subscribe', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(data)
       })
-    });
-    fetch('https://n8n.srv864443.hstgr.cloud/webhook/neural-studio-subscribe', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(data)
-    });
+    ]);
+    const deliveryFailed = results[0].status === 'rejected' || (results[0].value && !results[0].value.ok);
+    if (deliveryFailed) throw new Error('delivery_failed');
     fbq('track','Lead');
     document.getElementById('form-wrap').style.display = 'none';
     document.getElementById('form-success').classList.add('show');
   } catch {
     btn.textContent = orig;
     btn.disabled = false;
+    errorEl.textContent = "Something went wrong sending your message — please try again, or email us directly at s@neuralst.com and we'll pick it up right away.";
+    errorEl.classList.add('show');
   }
 });
 </script>
