@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Neural Studio — Making AI Feel Human</title>
 <meta name="description" content="Neural Studio is an AI-native creative studio blending design, storytelling, and intelligence into experiences people love.">
+<link rel="canonical" href="https://neuralst.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neuralst.com/">
+<meta property="og:title" content="Neural Studio - Making AI Feel Human">
+<meta property="og:description" content="Neural Studio is an AI-native creative studio blending design, storytelling, and intelligence into experiences people love.">
+<meta property="og:image" content="https://neuralst.com/ns.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Neural Studio - Making AI Feel Human">
+<meta name="twitter:description" content="Neural Studio is an AI-native creative studio blending design, storytelling, and intelligence into experiences people love.">
+<meta name="twitter:image" content="https://neuralst.com/ns.png">
 <link rel="icon" type="image/png" href="ns.png">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/css/intlTelInput.css">
@@ -98,11 +108,16 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
 /* ── HERO ── */
 .hero{
   min-height:100vh;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;padding:9rem 2rem 6rem;
+  display:flex;align-items:center;
+  padding:8rem 0 4rem;
   position:relative;overflow:hidden;z-index:1;
 }
+.hero-inner{
+  display:grid;grid-template-columns:1.05fr .95fr;
+  gap:4rem;align-items:center;
+  position:relative;z-index:1;
+}
+.hero-copy{text-align:left}
 .hero-orb{
   position:absolute;pointer-events:none;border-radius:50%;
   filter:blur(90px);
@@ -110,7 +125,7 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
 .hero-orb-1{
   width:800px;height:600px;
   background:radial-gradient(ellipse,rgba(124,92,252,.22),transparent 68%);
-  top:-160px;left:50%;transform:translateX(-50%);
+  top:-160px;left:-120px;
 }
 .hero-orb-2{
   width:500px;height:400px;
@@ -140,22 +155,30 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
 @keyframes badge-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
 .hero h1{
   font-family:'Archivo Black',sans-serif;
-  font-size:clamp(3.2rem,9vw,8rem);
-  font-weight:400;line-height:.93;letter-spacing:-.04em;
-  max-width:880px;margin:0 auto 2.25rem;
+  font-size:clamp(2.75rem,5.2vw,4.75rem);
+  font-weight:400;line-height:.97;letter-spacing:-.03em;
+  margin:0 0 1.75rem;
   animation:fade-up .9s ease .1s both;
 }
 .hero-sub{
   font-size:clamp(1rem,1.8vw,1.2rem);
-  color:var(--muted);max-width:500px;
-  line-height:1.75;margin:0 auto 3rem;
+  color:var(--muted);max-width:460px;
+  line-height:1.75;margin:0 0 2.5rem;
   font-weight:400;
   animation:fade-up .9s ease .2s both;
 }
 .hero-btns{
-  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  display:flex;gap:1rem;justify-content:flex-start;flex-wrap:wrap;
   animation:fade-up .9s ease .3s both;
 }
+.hero-media{
+  position:relative;z-index:1;
+  border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--border-light);
+  aspect-ratio:4/5;background:#000;
+  box-shadow:0 24px 64px rgba(0,0,0,.45);
+}
+.hero-media video{width:100%;height:100%;object-fit:cover;display:block}
 .btn-primary{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.9rem 2rem;border-radius:999px;
@@ -177,20 +200,6 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
   transition:border-color .2s,background .2s,transform .15s;
 }
 .btn-outline:hover{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.04);transform:translateY(-2px)}
-.hero-scroll{
-  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  font-size:.68rem;font-weight:600;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--muted2);
-  animation:fade-up .9s ease .5s both;
-}
-.hero-scroll-line{
-  width:1px;height:44px;
-  background:linear-gradient(to bottom,var(--muted2),transparent);
-  animation:scroll-pulse 2.2s ease-in-out infinite;
-}
-@keyframes scroll-pulse{0%,100%{opacity:.35}50%{opacity:1}}
-
 /* ── ABOUT ── */
 .about{padding:9rem 0;border-top:1px solid var(--border);position:relative;z-index:1}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center}
@@ -220,24 +229,15 @@ canvas#particle-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-eve
   background:radial-gradient(circle,rgba(124,92,252,.3),transparent);
   bottom:18%;left:12%;filter:blur(1px);
 }
-.vis-card{
+.about-media{
   position:relative;z-index:1;
-  background:rgba(255,255,255,.04);
+  width:88%;height:88%;
+  border-radius:var(--radius);overflow:hidden;
   border:1px solid rgba(255,255,255,.1);
-  border-radius:var(--radius);
-  padding:2rem 1.75rem;width:270px;
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:#000;
   box-shadow:0 24px 64px rgba(0,0,0,.4);
 }
-.vis-card-label{
-  font-size:.68rem;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--purple);margin-bottom:.75rem;
-}
-.vis-card h3{
-  font-family:'Archivo Black',sans-serif;
-  font-size:1.3rem;font-weight:400;line-height:1.2;margin-bottom:.5rem;
-}
-.vis-card p{font-size:.82rem;color:var(--muted);line-height:1.6}
+.about-media video{width:100%;height:100%;object-fit:cover;display:block}
 
 /* ── WORK / PORTFOLIO ── */
 .work{padding:9rem 0;border-top:1px solid var(--border);position:relative;z-index:1}
@@ -491,6 +491,11 @@ footer{
 
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero-copy{text-align:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-btns{justify-content:center}
+  .hero-media{order:2;aspect-ratio:16/10;max-width:520px;margin:0 auto;width:100%}
   .about-grid{grid-template-columns:1fr;gap:4rem}
   .about-visual{height:320px}
   .contact-inner{grid-template-columns:1fr;gap:4rem}
@@ -501,7 +506,7 @@ footer{
 @media(max-width:768px){
   .nav-links{display:none}
   .nav{padding:1rem 1.5rem}
-  .hero{padding:7rem 1.5rem 5rem}
+  .hero{padding:7rem 0 5rem}
   .hero h1{letter-spacing:-.03em}
   .hero-sub{font-size:1rem}
   /* work grid */
@@ -528,11 +533,11 @@ footer{
 @media(max-width:520px){
   .nav{padding:.9rem 1.1rem}
   .nav-cta{padding:.5rem 1.1rem;font-size:.8rem}
-  .hero{padding:6.5rem 1.1rem 4.5rem}
+  .hero{padding:6.5rem 0 4.5rem}
   .hero h1{font-size:clamp(2.4rem,9.5vw,3.6rem);letter-spacing:-.03em}
   .hero-sub{font-size:.92rem;max-width:100%}
   .hero-btns{gap:.75rem}
-  .hero-scroll{display:none}
+  .hero-media{aspect-ratio:4/3}
   /* work */
   .vid-slide video{max-height:min(65vh,500px);max-width:min(85vw,380px)}
   .cp-grid.c4{grid-template-columns:1fr 1fr}
@@ -590,6 +595,15 @@ footer{
 .iti__country.iti__highlight,.iti__country:hover{background:rgba(124,92,252,.15)!important}
 .iti__dial-code{color:var(--muted)!important}
 .iti__country-name{color:var(--text)!important}
+
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  .hero-badge,.hero h1,.hero-sub,.hero-btns{animation:none;opacity:1;transform:none}
+  .badge-dot{animation:none}
+  .reveal{transition:none;opacity:1;transform:none}
+  .wi img,.wi video{transition:none}
+  body{transition:none}
+}
 </style>
 </head>
 <body>
@@ -614,32 +628,37 @@ footer{
   <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
   <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
 
-  <div class="hero-badge">
-    <span class="badge-dot" aria-hidden="true"></span>
-    AI-Native Creative Studio
-  </div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <div class="hero-badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        AI-Native Creative Studio
+      </div>
 
-  <h1>
-    We make AI<br>
-    products feel<br>
-    <span class="gradient-text">human.</span>
-  </h1>
+      <h1>
+        We make AI<br>
+        products feel<br>
+        <span class="gradient-text">human.</span>
+      </h1>
 
-  <p class="hero-sub">
-    Blending design, storytelling, and intelligence<br>into experiences people love.
-  </p>
+      <p class="hero-sub">
+        Blending design, storytelling, and intelligence into experiences people love.
+      </p>
 
-  <div class="hero-btns">
-    <a href="#contact" class="btn-primary">
-      Let's Talk
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-    <a href="#services" class="btn-outline">View Work</a>
-  </div>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">
+          Let's Talk
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn-outline">View Work</a>
+      </div>
+    </div>
 
-  <div class="hero-scroll" aria-hidden="true">
-    <div class="hero-scroll-line"></div>
-    <span>Scroll</span>
+    <div class="hero-media reveal">
+      <video autoplay muted loop playsinline>
+        <source src="images/0505.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
 </section>
 
@@ -653,14 +672,14 @@ footer{
         <p class="reveal reveal-d1">Neural Studio is an AI-native creative studio helping brands, startups, and modern companies create emotional connections through AI-generated visuals, cinematic storytelling, digital branding, and next-generation content production.</p>
         <p class="reveal reveal-d2">We blend design, storytelling, and artificial intelligence to create experiences that feel modern, emotional, and unforgettable.</p>
       </div>
-      <div class="about-visual reveal reveal-d1" aria-hidden="true">
-        <div class="vis-orb vis-orb-1"></div>
-        <div class="vis-orb vis-orb-2"></div>
-        <div class="vis-orb vis-orb-3"></div>
-        <div class="vis-card">
-          <div class="vis-card-label">Our Focus</div>
-          <h3>Design × AI<br>× Storytelling</h3>
-          <p>Where technology becomes a medium for human expression.</p>
+      <div class="about-visual reveal reveal-d1">
+        <div class="vis-orb vis-orb-1" aria-hidden="true"></div>
+        <div class="vis-orb vis-orb-2" aria-hidden="true"></div>
+        <div class="vis-orb vis-orb-3" aria-hidden="true"></div>
+        <div class="about-media">
+          <video autoplay muted loop playsinline aria-label="AI-generated cinematic campaign footage">
+            <source src="images/hf_20260507_075036_8ed21d64-1579-4a38-b732-5881f6b452a1.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
@@ -672,7 +691,6 @@ footer{
   <div class="container">
     <div class="work-hdr">
       <div>
-        <div class="section-label reveal">Our Work</div>
         <h2 class="reveal">What we create.</h2>
       </div>
     </div>
@@ -799,7 +817,6 @@ footer{
 <section class="process" id="process">
   <div class="container">
     <div class="process-header">
-      <div class="section-label reveal">How it works</div>
       <h2 class="reveal">How we work.</h2>
     </div>
     <div class="process-steps">
@@ -832,7 +849,6 @@ footer{
   <div class="container">
     <div class="contact-inner">
       <div class="contact-text">
-        <div class="section-label reveal">Get in touch</div>
         <h2 class="reveal">Let's create<br>something human.</h2>
         <p class="reveal reveal-d1">Have a brand, product, or idea you want to bring to life? We'd love to hear your vision.</p>
       </div>
@@ -937,10 +953,20 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
+// Pause off-screen ambient videos (hero + about) to save battery/GPU
+const ambientVideos = document.querySelectorAll('.hero-media video, .about-media video');
+if (ambientVideos.length) {
+  const videoObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { e.isIntersecting ? e.target.play() : e.target.pause(); });
+  }, { threshold: 0.15 });
+  ambientVideos.forEach(v => videoObs.observe(v));
+}
+
 // Particle canvas — purple palette to match new design
 (function(){
   const canvas = document.getElementById('particle-canvas');
   const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W, H, pts = [], mouse = {x:null, y:null};
   const N = 55, CONN = 150, R=124, G=92, B=252;
   function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
@@ -971,7 +997,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
         }
       }
     }
-    requestAnimationFrame(draw);
+    if (!reduceMotion) requestAnimationFrame(draw);
   }
   draw();
 })();

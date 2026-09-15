@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Webinar gratis: Construye tu primera app con IA sin código | Neural Studio</title>
 <meta name="description" content="Sesión en vivo gratuita donde construimos una app funcional desde cero usando IA — sin programar, sin experiencia técnica, en español.">
+<link rel="canonical" href="https://neuralst.com/webinar.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neuralst.com/webinar.html">
+<meta property="og:title" content="Webinar gratis: Construye tu primera app con IA sin código | Neural Studio">
+<meta property="og:description" content="Sesión en vivo gratuita donde construimos una app funcional desde cero usando IA, sin programar, sin experiencia técnica, en español.">
+<meta property="og:image" content="https://neuralst.com/ns.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Webinar gratis: Construye tu primera app con IA sin código | Neural Studio">
+<meta name="twitter:description" content="Sesión en vivo gratuita donde construimos una app funcional desde cero usando IA, sin programar, sin experiencia técnica, en español.">
+<meta name="twitter:image" content="https://neuralst.com/ns.png">
 <link rel="icon" type="image/png" href="ns.png">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <!-- Facebook Pixel -->
@@ -180,20 +190,6 @@ body::before{
   font-size:.72rem;color:var(--muted2);margin-top:.85rem;
   animation:fade-up .9s ease .45s both;
 }
-.hero-scroll{
-  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  font-size:.65rem;font-weight:600;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--muted2);
-  animation:fade-up .9s ease .6s both;
-}
-.hero-scroll-line{
-  width:1px;height:44px;
-  background:linear-gradient(to bottom,var(--muted2),transparent);
-  animation:scroll-pulse 2.2s ease-in-out infinite;
-}
-@keyframes scroll-pulse{0%,100%{opacity:.35}50%{opacity:1}}
-
 /* ── SECTION BASE ── */
 section.ws{padding:8rem 0;border-top:1px solid var(--border);position:relative;z-index:1}
 .ws-header{margin-bottom:3.5rem}
@@ -494,6 +490,13 @@ footer{
   .hero-meta{gap:.65rem 1.25rem}
   .meta-sep{display:none}
 }
+
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){
+  .hero-eyebrow,.hero h1,.hero-sub,.hero-meta,.hero-cta,.hero-note{animation:none;opacity:1;transform:none}
+  .live-dot{animation:none}
+  .reveal{transition:none;opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -556,11 +559,6 @@ footer{
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
     <p class="hero-note">Sin tarjeta de crédito · Replay disponible · En español</p>
-  </div>
-
-  <div class="hero-scroll" aria-hidden="true">
-    <div class="hero-scroll-line"></div>
-    <span>Ver más</span>
   </div>
 </section>
 
@@ -927,6 +925,7 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 (function(){
   const canvas = document.getElementById('particle-canvas');
   const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W, H, pts = [], mouse = {x:null, y:null};
   const N = 45, CONN = 130, R=124, G=92, B=252;
   function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
@@ -957,7 +956,7 @@ document.querySelectorAll('.faq-q').forEach(btn => {
         }
       }
     }
-    requestAnimationFrame(draw);
+    if (!reduceMotion) requestAnimationFrame(draw);
   }
   draw();
 })();
