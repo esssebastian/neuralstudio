@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Neural Studio Apps</title>
+<meta name="description" content="Privacy policy for Posture Panda and Fix My Face, Mac apps by Neural Studio. No data is collected: the camera is analyzed on your Mac and never recorded or sent.">
+<link rel="canonical" href="https://neuralst.com/apps/privacy/">
+<link rel="icon" type="image/png" href="/ns.png">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080912;
+  --border:rgba(255,255,255,0.07);
+  --border-light:rgba(255,255,255,0.12);
+  --purple:#7c5cfc;
+  --purple-glow:rgba(124,92,252,0.3);
+  --text:#f0f4ff;
+  --muted:rgba(240,244,255,0.5);
+  --muted2:rgba(240,244,255,0.3);
+  --max:1160px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+::selection{background:rgba(124,92,252,0.3);color:#fff}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{max-width:var(--max);margin:0 auto;padding:0 2rem}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 2rem;
+  background:rgba(8,9,18,0.8);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.nav-logo{font-family:'Archivo Black',sans-serif;font-size:1.2rem;color:var(--text);text-decoration:none;letter-spacing:-.01em}
+.nav-logo span{color:var(--purple)}
+.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--text)}
+.nav-cta{
+  display:inline-flex;align-items:center;padding:.55rem 1.35rem;border-radius:999px;
+  background:var(--purple);color:#fff;font-size:.85rem;font-weight:600;text-decoration:none;
+  box-shadow:0 0 20px var(--purple-glow);transition:opacity .2s,box-shadow .2s;
+}
+.nav-cta:hover{opacity:.88;box-shadow:0 0 35px var(--purple-glow)}
+a:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
+
+/* ── POLICY ── */
+.policy{padding:10rem 0 7rem}
+.policy-inner{max-width:720px}
+.policy h1{
+  font-family:'Archivo Black',sans-serif;font-weight:400;
+  font-size:clamp(2.4rem,5vw,3.75rem);line-height:1.03;letter-spacing:-.025em;margin-bottom:1.25rem;
+}
+.updated{font-size:.85rem;color:var(--muted2);margin-bottom:3rem}
+.summary{
+  border:1px solid rgba(124,92,252,.28);background:rgba(124,92,252,.08);
+  border-radius:20px;padding:1.5rem 1.75rem;margin-bottom:3.5rem;
+  font-size:1.05rem;line-height:1.7;
+}
+.policy h2{
+  font-family:'Archivo Black',sans-serif;font-weight:400;
+  font-size:1.35rem;letter-spacing:-.01em;margin:3rem 0 1rem;
+}
+.policy p,.policy li{color:rgba(240,244,255,.72);font-size:.98rem;line-height:1.8}
+.policy p + p{margin-top:1rem}
+.policy ul{padding-left:1.25rem;display:grid;gap:.5rem}
+.policy strong{color:var(--text);font-weight:600}
+.policy a{color:var(--text)}
+
+/* ── FOOTER ── */
+footer{padding:2.5rem 0;border-top:1px solid var(--border)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.25rem}
+.footer-logo{font-family:'Archivo Black',sans-serif;font-size:1.1rem;color:var(--text);text-decoration:none}
+.footer-logo span{color:var(--purple)}
+.footer-copy{font-size:.75rem;color:var(--muted2)}
+.footer-links{display:flex;gap:1.75rem;list-style:none}
+.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none}
+.footer-links a:hover{color:var(--text)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav{padding:1rem 1.5rem}
+  .policy{padding:7.5rem 0 5rem}
+  .footer-inner{flex-direction:column;text-align:center}
+  .container{padding:0 1.25rem}
+}
+@media(max-width:520px){
+  .nav{padding:.9rem 1.1rem}
+  .nav-cta{padding:.5rem 1.1rem;font-size:.8rem}
+  .summary{padding:1.25rem}
+  .container{padding:0 1rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo" aria-label="Neural Studio home"><span>·</span>NS<span>·</span></a>
+  <ul class="nav-links">
+    <li><a href="/#services">Work</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/apps/" aria-current="page">Apps</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Let's Talk</a>
+</nav>
+
+<main class="policy">
+  <div class="container">
+    <div class="policy-inner">
+      <h1>Privacy Policy</h1>
+      <p class="updated">Posture Panda and Fix My Face · Last updated October 7, 2026</p>
+
+      <p class="summary"><strong>The short version:</strong> our apps don't collect, store or share any of your data. The camera image is analyzed on your Mac, in real time, and is never recorded or sent anywhere.</p>
+
+      <p>This policy covers the Mac apps <strong>Posture Panda</strong> (formerly Dr. Panda) and <strong>Fix My Face</strong>, made by Neural Studio ("we"). It applies to both the Mac App Store versions and the versions downloaded from our website.</p>
+
+      <h2>Camera</h2>
+      <p>Both apps need your camera to work. Posture Panda uses it to detect your head and shoulder position; Fix My Face uses it to detect frowning and other facial tension.</p>
+      <ul>
+        <li>Every video frame is processed on your Mac by an on-device AI model and then discarded.</li>
+        <li>Video and images are never recorded, saved to disk, or uploaded.</li>
+        <li>When Fix My Face shows an alert, the banner includes a snapshot of your face at that moment. The snapshot stays in memory only, and is discarded when the banner closes.</li>
+        <li>The apps only access the camera after you allow it in macOS. You can revoke access at any time in System Settings → Privacy &amp; Security → Camera.</li>
+      </ul>
+
+      <h2>Data stored on your Mac</h2>
+      <p>The apps save a small amount of information locally, on your Mac only: your language choice and a daily summary for the history view (time spent in good and poor posture in Posture Panda, the number of alerts in Fix My Face). Nothing else is stored, and none of it ever leaves your device. Deleting the app removes it.</p>
+
+      <h2>No data collection</h2>
+      <p>The apps have no accounts, no analytics, no advertising, no tracking and no servers. They work without an internet connection. We do not collect, sell or share any personal information, and nothing is sent to us or to third parties.</p>
+
+      <h2>Feedback</h2>
+      <p>If you choose to send feedback from inside the app, it opens your own email app with a draft addressed to us. Nothing is sent unless you send that email yourself. We use emails we receive only to reply and to improve the apps.</p>
+
+      <h2>Children</h2>
+      <p>The apps don't collect personal information from anyone, including children.</p>
+
+      <h2>Changes</h2>
+      <p>If we ever change how the apps handle data, we will update this page and the date above before the change takes effect.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about privacy: <a href="mailto:s@neuralst.com">s@neuralst.com</a></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="/" class="footer-logo" aria-label="Neural Studio home"><span>·</span>NS<span>·</span></a>
+      <p class="footer-copy">© 2026 Neural Studio. Making AI feel human.</p>
+      <ul class="footer-links">
+        <li><a href="/apps/">Apps</a></li>
+        <li><a href="https://www.linkedin.com/company/neuralstca/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:s@neuralst.com">Email</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
