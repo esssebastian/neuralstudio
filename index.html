@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://neuralst.com/">
 <meta property="og:title" content="Neural Studio — We build apps. And builders.">
-<meta property="og:description" content="Apps, web apps and a community of builders. Meet Panda Streaks, Cringe to Star, Golden Abs, Posture Panda and Fix My Face.">
+<meta property="og:description" content="Apps, web apps and a community of builders. Meet Panda Streaks, Cringe to Star, Golden Abs, Outy, Calma, Posture Panda and Fix My Face.">
 <meta property="og:image" content="https://neuralst.com/images/apps/panda-streaks-header.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Neural Studio — We build apps. And builders.">
@@ -189,6 +189,14 @@ section{scroll-margin-top:90px}
 .app-posture{background:var(--sky)}
 .app-posture .app-art,.app-face .app-art{background:radial-gradient(120% 90% at 30% 10%,#3a2a8a 0%,var(--night) 70%)}
 .app-face{background:var(--pink)}
+.app-outy{background:var(--peach)}
+.app-outy .app-art{background:linear-gradient(170deg,#f6b36f 0%,#c9748f 38%,#5a3f8c 70%,#1d1838 100%)}
+.app-outy .phone{bottom:-8%}
+.app-outy .phone-b{bottom:-14%}
+.app-calma{background:var(--sage)}
+.app-calma .app-art{background:#F4EDE4}
+a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-underline-offset:3px}
+[data-theme="dark"] a.app-note{color:#9d85ff}
 .app-golden{background:var(--gold)}
 .app-golden .app-art{background:radial-gradient(110% 90% at 50% 20%,#ffd36b 0%,#ff9d2e 55%,#f07a12 100%);display:flex;align-items:center;justify-content:center;padding:40px 5%}
 .journey{display:flex;align-items:center;justify-content:center;width:100%}
@@ -420,7 +428,7 @@ section{scroll-margin-top:90px}
       <div class="float-icon fi-1"><img src="/images/apps/cringe-to-star.png" alt=""></div>
       <div class="float-icon fi-2"><img src="/images/apps/dr-panda.png" alt=""></div>
       <div class="float-icon fi-3"><img src="/images/apps/fix-my-face.png" alt=""></div>
-      <div class="sticker sticker-1" data-i18n="sticker1">5 apps<br>built</div>
+      <div class="sticker sticker-1" data-i18n="sticker1">7 apps<br>built</div>
       <div class="sticker sticker-2" data-i18n="sticker2">Shipped,<br>not pitched</div>
     </div>
   </div>
@@ -566,6 +574,69 @@ section{scroll-margin-top:90px}
           <span class="app-note" data-i18n="review">Arriving now, in Apple review</span>
         </div>
         <p class="app-links"><a href="/apps/golden-abs/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="/apps/golden-abs/privacy/" data-i18n="privacy_link">Privacy</a></p>
+      </div>
+    </article>
+
+    <!-- Outy -->
+    <article class="app app-outy flip reveal" id="outy">
+      <div class="app-art">
+        <div class="phone phone-a"><img src="/images/apps/outy-1.jpg" alt="Outy: swipe through plans" loading="lazy"></div>
+        <div class="phone phone-b"><img src="/images/apps/outy-3.jpg" alt="Outy: see who's going" loading="lazy"></div>
+      </div>
+      <div class="app-body">
+        <div class="app-top">
+          <img src="/images/apps/outy.png" alt="Outy app icon" loading="lazy">
+          <div>
+            <h3><a href="/apps/outy/" style="text-decoration:none">Outy</a></h3>
+            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_plans">Plans</span></div>
+          </div>
+        </div>
+        <p class="app-tagline" data-i18n="outy_tag">Something to do. Right when you're free.</p>
+        <p class="how-label" data-i18n="how">How it works</p>
+        <ol class="steps">
+          <li><span data-i18n="outy_1"><strong>Tell it when you're free.</strong> Weekdays, weekends or a specific day, anywhere in British Columbia.</span></li>
+          <li><span data-i18n="outy_2"><strong>Swipe through plans.</strong> Right to save, left to skip. Can't decide? Shake your phone and Outy picks one.</span></li>
+          <li><span data-i18n="outy_3"><strong>Go, with people.</strong> Turn a plan into a meetup, chat with who's going and find it on the map.</span></li>
+        </ol>
+        <div class="app-cta">
+          <span class="btn btn-soon" aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
+            <span data-i18n="soon">Coming soon to the App Store</span>
+          </span>
+          <a class="app-note" href="https://outy.vercel.app" target="_blank" rel="noopener" data-i18n="outy_site">Visit the Outy website</a>
+        </div>
+        <p class="app-links"><a href="/apps/outy/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="https://outy.vercel.app/privacy" target="_blank" rel="noopener" data-i18n="privacy_link">Privacy</a></p>
+      </div>
+    </article>
+
+    <!-- Calma -->
+    <article class="app app-calma reveal" id="calma">
+      <div class="app-art">
+        <img class="cover" style="object-fit:contain" src="/images/apps/calma-square.jpg" alt="A calm cloud next to the four steps of Calma: who needs you, what's happening, breathe together, what to say" data-i18n-alt="calma_alt" loading="lazy">
+      </div>
+      <div class="app-body">
+        <div class="app-top">
+          <img src="/images/apps/calma.png" alt="Calma app icon" loading="lazy">
+          <div>
+            <h3><a href="/apps/calma/" style="text-decoration:none">Calma</a></h3>
+            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_parenting">Parenting</span></div>
+          </div>
+        </div>
+        <p class="app-tagline" data-i18n="calma_tag">Calm words for the hardest moments of parenting.</p>
+        <p class="how-label" data-i18n="how">How it works</p>
+        <ol class="steps">
+          <li><span data-i18n="calma_1"><strong>Who needs you?</strong> Pick the child who's having a hard time.</span></li>
+          <li><span data-i18n="calma_2"><strong>What's happening?</strong> Choose the situation, so Calma finds the right words.</span></li>
+          <li><span data-i18n="calma_3"><strong>Breathe, then say this.</strong> A short guided breath and a few calm lines to say, in English, Spanish or both.</span></li>
+        </ol>
+        <div class="app-cta">
+          <span class="btn btn-soon" aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
+            <span data-i18n="soon">Coming soon to the App Store</span>
+          </span>
+          <span class="app-note" data-i18n="calma_note">In development</span>
+        </div>
+        <p class="app-links"><a href="/apps/calma/" data-i18n="more_app">See the app page</a></p>
       </div>
     </article>
 
@@ -800,7 +871,7 @@ const ES = {
   hero_sub: '<strong>Neural Studio</strong> es una pequeña fábrica de ideas con mucha hambre. Convertimos las ideas que no nos dejan dormir en apps y web apps que la gente de verdad usa, y tenemos una comunidad que te ayuda a volverte builder tú también: de apps, de servicios, de productos y de ti mismo.',
   hero_btn1: 'Ver nuestras apps',
   hero_btn2: 'Únete a los builders',
-  sticker1: '5 apps<br>creadas',
+  sticker1: '7 apps<br>creadas',
   sticker2: 'Lanzadas,<br>no prometidas',
   mq1: 'Builders de apps',
   mq2: 'Builders de servicios',
@@ -841,6 +912,20 @@ const ES = {
   ga_1: '<strong>Haz la prueba de plancha.</strong> Una plancha rápida elige tu nivel: principiante, intermedio o avanzado.',
   ga_2: '<strong>Haz un entrenamiento corto al día.</strong> De 8 a 12 minutos con demos para seguir, y la cámara de tu celular cuenta tus repeticiones. Los días de descanso también cuentan.',
   ga_3: '<strong>Pasa de Tambaleante a Dorado.</strong> Gana XP y mantén tu racha mientras tu personaje crece de Principiante Tambaleante a Core Dorado.',
+  pill_plans: 'Planes',
+  outy_tag: 'Algo que hacer. Justo cuando estás libre.',
+  outy_1: '<strong>Dile cuándo estás libre.</strong> Entre semana, fin de semana o un día específico, en cualquier parte de British Columbia.',
+  outy_2: '<strong>Desliza entre planes.</strong> A la derecha para guardar, a la izquierda para pasar. ¿No te decides? Agita el celular y Outy elige uno.',
+  outy_3: '<strong>Ve con gente.</strong> Convierte un plan en un parche, habla con quienes van y encuéntralo en el mapa.',
+  soon: 'Muy pronto en el App Store',
+  outy_site: 'Visitar el sitio de Outy',
+  pill_parenting: 'Crianza',
+  calma_alt: 'Una nube tranquila junto a los cuatro pasos de Calma: quién te necesita, qué está pasando, respiren juntos, qué decir',
+  calma_tag: 'Palabras calmadas para los momentos más difíciles de la crianza.',
+  calma_1: '<strong>¿Quién te necesita?</strong> Elige al niño que está pasando un mal momento.',
+  calma_2: '<strong>¿Qué está pasando?</strong> Elige la situación para que Calma encuentre las palabras correctas.',
+  calma_3: '<strong>Respira y luego di esto.</strong> Una respiración guiada corta y unas frases calmadas para decir, en español, inglés o ambos.',
+  calma_note: 'En desarrollo',
   pill_free: 'Gratis',
   pp_tag: 'Siéntate derecho sin tener que pensarlo.',
   pp_1: '<strong>Calibra una vez.</strong> Siéntate como quieres sentarte y presiona un botón.',
