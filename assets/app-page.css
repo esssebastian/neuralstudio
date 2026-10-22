@@ -151,7 +151,7 @@
   .hero-art{min-height:320px}
   .phone{width:38%}
   .phone-a{left:8%}.phone-b{right:8%}
-  .journey figcaption{font-size:10px;left:5px;bottom:5px;padding:4px 7px}
+  .journey figcaption{font-size:12px;left:5px;bottom:5px;padding:4px 7px}
   .steps-grid,.feat-grid,.more-grid,.hub-grid,.gallery-wide{grid-template-columns:1fr}
   .step:nth-child(2){transform:none}
   .g-phone{width:190px}

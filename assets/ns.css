@@ -50,6 +50,8 @@ body{
   -webkit-font-smoothing:antialiased;
   transition:background-color .3s ease, color .3s ease;
 }
+html,body{max-width:100%}
+@supports (overflow:clip){html,body{overflow-x:clip}}
 img,video{display:block;max-width:100%}
 a{color:inherit}
 .container{width:100%;max-width:1200px;margin:0 auto;padding:0 28px}
@@ -201,7 +203,7 @@ button.btn{font-family:var(--body)}
   .nav-links{display:none}
   .nav-inner{padding-left:18px}
   .nav .btn{padding:9px 14px;font-size:13px}
-  .icon-btn{height:36px;min-width:36px;padding:0 8px}
+  .icon-btn{height:42px;min-width:42px;padding:0 9px}
   .card{padding:24px 20px}
   .page-hero{padding:44px 0 28px}
 }

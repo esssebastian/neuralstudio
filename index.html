@@ -208,7 +208,7 @@ section{scroll-margin-top:90px}
   font-family:var(--display);font-size:12px;line-height:1;
   background:#fff;border:2px solid var(--ink);border-radius:999px;padding:5px 9px;white-space:nowrap;
 }
-@media (max-width:720px){.journey figcaption{font-size:10px;left:5px;bottom:5px;padding:4px 7px}}
+@media (max-width:720px){.journey figcaption{font-size:12px;left:5px;bottom:5px;padding:4px 7px}}
 .journey figure:nth-child(3) figcaption{background:var(--sun)}
 .btn-soon{background:var(--surface);color:var(--fg);cursor:default;border-style:dashed}
 .btn-soon:hover,.btn-soon:active{transform:none;box-shadow:var(--pop)}
@@ -282,6 +282,30 @@ section{scroll-margin-top:90px}
 .timeline li:last-child b{color:var(--violet)}
 .signature{font-family:var(--display);font-size:20px;margin-top:28px}
 
+/* ── based / global ── */
+.based{background:var(--sky);border-top:var(--line);border-bottom:var(--line);overflow:hidden}
+.based-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+.globe-wrap{position:relative;max-width:420px;width:100%;margin:0 auto}
+.globe{width:100%;height:auto;overflow:visible;filter:drop-shadow(8px 8px 0 var(--shadow))}
+.globe .g-sea{fill:#7c5cfc}
+.globe .g-land path{fill:#c6f0d8;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.globe .g-lines *{fill:none;stroke:rgba(255,255,255,.35);stroke-width:2}
+.globe .g-edge{fill:none;stroke:var(--ink);stroke-width:4}
+.globe .g-dots circle{fill:var(--sun);stroke:var(--ink);stroke-width:3}
+.globe .g-arc{fill:none;stroke:var(--sun);stroke-width:3;stroke-dasharray:8 8;stroke-linecap:round;animation:dash 2.4s linear infinite}
+.globe .g-pin path{fill:#ff5d8f;stroke:var(--ink);stroke-width:3;stroke-linejoin:round}
+.globe .g-pin circle{fill:#fff;stroke:var(--ink);stroke-width:3}
+@keyframes dash{to{stroke-dashoffset:-32}}
+.based-pin{position:absolute;left:-4%;top:8%;transform:rotate(-8deg)}
+.based-remote{position:absolute;right:-2%;bottom:10%;transform:rotate(7deg)}
+.based h2{font-size:clamp(38px,5.2vw,66px);margin-bottom:22px}
+.based-p{font-size:19px;font-weight:500;color:var(--fg-soft);max-width:560px;margin-bottom:26px}
+.based-chips{list-style:none;display:flex;flex-wrap:wrap;gap:12px}
+.based-chips li{
+  background:var(--surface);border:var(--line);border-radius:999px;padding:9px 16px;
+  font-weight:800;font-size:15px;box-shadow:3px 3px 0 var(--shadow);
+}
+
 /* ── contact ── */
 .contact{padding:130px 0 110px;text-align:center;position:relative;overflow:hidden}
 .contact h2{font-size:clamp(44px,7.4vw,104px);max-width:1000px;margin:0 auto}
@@ -301,7 +325,7 @@ section{scroll-margin-top:90px}
 
 /* ── responsive ── */
 @media (max-width:1000px){
-  .hero-grid,.story-grid{grid-template-columns:1fr;gap:56px}
+  .hero-grid,.story-grid,.based-grid{grid-template-columns:1fr;gap:56px}
   .collage{margin:0 auto;max-width:480px}
   .builders{grid-template-columns:1fr 1fr}
   .app,.app.flip{grid-template-columns:1fr}
@@ -311,11 +335,13 @@ section{scroll-margin-top:90px}
   .story-text{order:2}
 }
 @media (max-width:720px){
+  .based-grid{grid-template-columns:1fr;gap:44px}
+  .globe-wrap{max-width:300px}
   .container{padding:0 16px}
   .nav-links{display:none}
   .nav-inner{padding-left:18px}
   .nav .btn{padding:9px 14px;font-size:13px}
-  .icon-btn{height:36px;min-width:36px;padding:0 8px}
+  .icon-btn{height:42px;min-width:42px;padding:0 9px}
   .hero{padding:44px 0 70px}
   .section{padding:84px 0}
   .builders{grid-template-columns:1fr}
@@ -373,7 +399,7 @@ section{scroll-margin-top:90px}
     <div>
       <h1 data-i18n="hero_h1">We build apps.<span class="line2">And builders.</span></h1>
       <p class="hero-sub" data-i18n="hero_sub">
-        <strong>Neural Studio</strong> is my studio in Vancouver. We make apps and web apps out of the ideas that won't leave us alone, and we run a community that helps you become a builder too: of apps, services, products, and yourself.
+        <strong>Neural Studio</strong> is a small idea factory with a big appetite. We turn the ideas that won't leave us alone into apps and web apps people actually use, and we run a community that helps you become a builder too: of apps, services, products, and yourself.
       </p>
       <div class="hero-btns">
         <a href="#apps" class="btn btn-ink" data-i18n="hero_btn1">See our apps</a>
@@ -395,7 +421,7 @@ section{scroll-margin-top:90px}
       <div class="float-icon fi-2"><img src="/images/apps/dr-panda.png" alt=""></div>
       <div class="float-icon fi-3"><img src="/images/apps/fix-my-face.png" alt=""></div>
       <div class="sticker sticker-1" data-i18n="sticker1">5 apps<br>built</div>
-      <div class="sticker sticker-2" data-i18n="sticker2">Made in<br>Vancouver</div>
+      <div class="sticker sticker-2" data-i18n="sticker2">Shipped,<br>not pitched</div>
     </div>
   </div>
 </section>
@@ -643,7 +669,7 @@ section{scroll-margin-top:90px}
         <h3 data-i18n="cta_h">Come build with us.</h3>
         <p data-i18n="cta_p">A members-only space with live builds, honest lessons, and people who'll push you to hit publish.</p>
       </div>
-      <a href="/leads.html" class="btn" data-i18n="cta_btn">Join the community</a>
+      <a href="https://www.skool.com/neural-studio-3710/about" target="_blank" rel="noopener" class="btn" id="community-cta" data-i18n="cta_btn">Join the community</a>
     </div>
   </div>
 </section>
@@ -678,6 +704,51 @@ section{scroll-margin-top:90px}
   </div>
 </section>
 
+<!-- BASED / GLOBAL -->
+<section class="section based" id="based">
+  <div class="container based-grid">
+    <div class="globe-wrap reveal" aria-hidden="true">
+      <svg class="globe" viewBox="0 0 400 400">
+        <circle cx="200" cy="200" r="170" class="g-sea"/>
+        <g class="g-land">
+          <path d="M92 132c18-24 52-36 82-32 20 3 30 18 26 34-4 15-22 18-30 30-9 14 6 30-4 44-12 16-38 8-52-6-14-13-30-28-36-46-4-10 6-17 14-24Z"/>
+          <path d="M168 238c16-6 34 2 42 16 10 18 4 42-6 60-8 15-22 26-34 20-12-7-8-26-10-40-2-16-10-30-4-44 3-6 7-10 12-12Z"/>
+          <path d="M236 116c20-14 52-16 74-4 18 10 30 30 24 46-6 14-26 14-40 22-12 7-14 24-28 26-16 2-28-12-34-26-8-20-12-48 4-64Z"/>
+          <path d="M268 236c14-4 30 4 34 18 4 12-4 26-16 30-12 5-26-2-28-14-2-12-2-30 10-34Z"/>
+        </g>
+        <g class="g-lines">
+          <ellipse cx="200" cy="200" rx="170" ry="60"/>
+          <ellipse cx="200" cy="200" rx="70" ry="170"/>
+          <line x1="30" y1="200" x2="370" y2="200"/>
+          <line x1="200" y1="30" x2="200" y2="370"/>
+        </g>
+        <circle cx="200" cy="200" r="170" class="g-edge"/>
+        <g class="g-dots">
+          <circle cx="250" cy="150" r="7"/><circle cx="190" cy="285" r="7"/><circle cx="290" cy="255" r="7"/><circle cx="160" cy="215" r="7"/>
+        </g>
+        <path class="g-arc" d="M118 128 Q170 60 250 150"/>
+        <path class="g-arc" d="M118 128 Q120 230 190 285"/>
+        <path class="g-arc" d="M118 128 Q230 170 290 255"/>
+        <g class="g-pin" transform="translate(118 128)">
+          <path d="M0 0c-14-16-22-26-22-38a22 22 0 0 1 44 0c0 12-8 22-22 38Z"/>
+          <circle cy="-38" r="8"/>
+        </g>
+      </svg>
+      <span class="sticker based-pin">Vancouver, BC</span>
+      <span class="sticker sticker-pink based-remote" data-i18n="based_remote">Remote-first</span>
+    </div>
+    <div class="reveal">
+      <h2 data-i18n="based_h2">Based in Vancouver.<br><span class="hl">Working worldwide.</span></h2>
+      <p class="based-p" data-i18n="based_p">Neural Studio's home is Vancouver, Canada. Our team works globally: remote-first, across time zones, in English and Spanish. Wherever you are, we can build with you.</p>
+      <ul class="based-chips">
+        <li data-i18n="based_c1">Home base: Vancouver, BC</li>
+        <li data-i18n="based_c2">Team: global and remote</li>
+        <li data-i18n="based_c3">We work in English &amp; Spanish</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-icons" aria-hidden="true">
@@ -706,6 +777,7 @@ section{scroll-margin-top:90px}
       <li><a href="https://www.linkedin.com/in/sebastian-hortua-leal/" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a href="https://www.linkedin.com/company/neuralstca/" target="_blank" rel="noopener" data-i18n="f_company">Neural Studio on LinkedIn</a></li>
       <li><a href="https://instagram.com/neuralstudioca" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.skool.com/neural-studio-3710/about" target="_blank" rel="noopener" data-i18n="f_skool">Community</a></li>
       <li><a href="/apps/" data-i18n="f_mac">All apps</a></li>
     </ul>
   </div>
@@ -725,11 +797,11 @@ const ES = {
   nav_story: 'Mi historia',
   nav_cta: 'Trabaja conmigo',
   hero_h1: 'Construimos apps.<span class="line2">Y builders.</span>',
-  hero_sub: '<strong>Neural Studio</strong> es mi estudio en Vancouver. Convertimos en apps y web apps las ideas que no nos dejan dormir, y tenemos una comunidad que te ayuda a volverte builder tú también: de apps, de servicios, de productos y de ti mismo.',
+  hero_sub: '<strong>Neural Studio</strong> es una pequeña fábrica de ideas con mucha hambre. Convertimos las ideas que no nos dejan dormir en apps y web apps que la gente de verdad usa, y tenemos una comunidad que te ayuda a volverte builder tú también: de apps, de servicios, de productos y de ti mismo.',
   hero_btn1: 'Ver nuestras apps',
   hero_btn2: 'Únete a los builders',
   sticker1: '5 apps<br>creadas',
-  sticker2: 'Hecho en<br>Vancouver',
+  sticker2: 'Lanzadas,<br>no prometidas',
   mq1: 'Builders de apps',
   mq2: 'Builders de servicios',
   mq3: 'Builders de productos',
@@ -812,6 +884,13 @@ const ES = {
   contact_btn: 'Escríbeme por LinkedIn',
   more_app: 'Ver la app',
   privacy_link: 'Privacidad',
+  based_h2: 'Con base en Vancouver.<br><span class="hl">Trabajando en todo el mundo.</span>',
+  based_p: 'La casa de Neural Studio es Vancouver, Canadá. Nuestro equipo trabaja de forma global: remoto, en distintas zonas horarias, en español y en inglés. Estés donde estés, podemos construir contigo.',
+  based_remote: '100% remoto',
+  based_c1: 'Base: Vancouver, BC',
+  based_c2: 'Equipo: global y remoto',
+  based_c3: 'Trabajamos en español e inglés',
+  f_skool: 'Comunidad',
   f_company: 'Neural Studio en LinkedIn',
   f_mac: 'Todas las apps'
 };
@@ -844,11 +923,12 @@ langBtn.addEventListener('click', () => {
 // Hero loops stay paused for reduced motion
 if (reduceMotion) document.querySelectorAll('video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
 
-document.querySelectorAll('[data-download], #linkedin-cta').forEach(a => {
+document.querySelectorAll('[data-download], #linkedin-cta, #community-cta').forEach(a => {
   a.addEventListener('click', e => {
     burst(e.clientX || innerWidth / 2, e.clientY || innerHeight / 2);
     if (!window.fbq) return;
     if (a.dataset.download) fbq('trackCustom', 'AppDownload', { app: a.dataset.download });
+    else if (a.id === 'community-cta') fbq('trackCustom', 'JoinCommunity');
     else fbq('track', 'Contact');
   });
 });
