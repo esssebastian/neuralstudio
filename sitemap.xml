@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://neuralst.com/</loc>
-  </url>
-  <url>
-    <loc>https://neuralst.com/webinar.html</loc>
-  </url>
-  <url>
-    <loc>https://neuralst.com/apps/</loc>
-  </url>
+  <url><loc>https://neuralst.com/</loc></url>
+  <url><loc>https://neuralst.com/apps/</loc></url>
+  <url><loc>https://neuralst.com/apps/panda-streaks/</loc></url>
+  <url><loc>https://neuralst.com/apps/cringe-to-star/</loc></url>
+  <url><loc>https://neuralst.com/apps/golden-abs/</loc></url>
+  <url><loc>https://neuralst.com/apps/posture-panda/</loc></url>
+  <url><loc>https://neuralst.com/apps/fix-my-face/</loc></url>
+  <url><loc>https://neuralst.com/apps/privacy/</loc></url>
+  <url><loc>https://neuralst.com/apps/panda-streaks/privacy/</loc></url>
+  <url><loc>https://neuralst.com/apps/cringe-to-star/privacy/</loc></url>
+  <url><loc>https://neuralst.com/apps/golden-abs/privacy/</loc></url>
+  <url><loc>https://neuralst.com/webinar.html</loc></url>
 </urlset>

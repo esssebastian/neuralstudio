@@ -4,11 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Neural Studio — Únete</title>
-<meta name="description" content="El grupo que ejecuta mientras otros hablan de IA. Herramientas, proyectos reales y builders que hacen.">
+<meta name="description" content="El grupo que ejecuta mientras otros solo hablan. Herramientas, proyectos reales y builders que hacen.">
+<meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="ns.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ns.css">
+<script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem('ns-theme')}catch(e){}if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t)})();</script>
 <!-- Facebook Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,152 +24,160 @@ fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=327790021075185&ev=PageView&noscript=1"/></noscript>
 <style>
-:root{
-  --bg:#f4f4f6;
-  --purple:#534AB7;
-  --cyan:#04A1D4;
-  --text:#111827;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --radius-sm:10px;
+/* ── funnel layout ── */
+.funnel{padding:56px 0 100px;overflow:hidden}
+.funnel-grid{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center;
+  max-width:1080px;margin:0 auto;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%}
-body{
-  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
-  background:var(--bg);color:var(--text);
-  min-height:100vh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:2rem 1.25rem;
-  text-align:center;
-}
-body::before{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:
-    linear-gradient(rgba(83,74,183,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(83,74,183,.07) 1px,transparent 1px);
-  background-size:48px 48px;
-  mask-image:radial-gradient(ellipse 120% 60% at 50% 0%,#000 20%,transparent 70%);
-}
-.wrap{
-  position:relative;z-index:1;
-  max-width:440px;width:100%;
-}
+.funnel-card{position:relative;padding:40px 38px 34px}
+.funnel-card h1{font-size:clamp(38px,4.6vw,58px);margin-bottom:16px}
+.funnel-card .lead{font-size:18px;color:var(--fg-soft);font-weight:500;margin-bottom:26px;max-width:480px}
+.kicker{transform:rotate(-3deg);margin-bottom:22px;font-size:14px}
 
-/* Logo */
-.ns-logo{
-  display:inline-block;
-  width:72px;height:72px;border-radius:18px;
-  overflow:hidden;margin-bottom:1.5rem;
-}
-.ns-logo img{width:100%;height:100%;object-fit:cover;display:block}
+#sub-form .form-row .btn{justify-content:center;font-size:17px;padding:15px 30px;flex:0 0 auto}
+.terms{font-size:14px;color:var(--fg-soft);font-weight:600;margin-top:14px;line-height:1.5}
+.msg{display:none;margin-top:12px}
+.msg.error{color:#e0447a;font-weight:700;font-size:15px}
 
-h1{
-  font-size:1.65rem;font-weight:800;letter-spacing:-.035em;
-  color:var(--text);margin-bottom:.6rem;
-}
-.desc{
-  font-size:.95rem;color:var(--muted);line-height:1.75;
-  margin-bottom:.5rem;
-}
-.author-row{
-  display:flex;align-items:center;justify-content:center;gap:.6rem;
-  margin-bottom:2rem;
-}
-.author-av{
-  width:32px;height:32px;border-radius:50%;
-  object-fit:cover;border:2px solid var(--border);flex-shrink:0;
-}
-.meta{font-size:.78rem;font-weight:600;color:var(--muted)}
-.meta span{color:var(--purple)}
-
-/* Form */
-form{display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.25rem}
-
-.input-row{
-  display:flex;gap:.5rem;
-}
-input[type="email"]{
-  flex:1;min-width:0;
-  padding:.72rem 1rem;
-  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
-  font-size:.9rem;color:var(--text);
-  background:#fff;border:1px solid var(--border);
-  border-radius:var(--radius-sm);outline:none;
-  transition:border-color .18s,box-shadow .18s;
-}
-input[type="email"]:focus{
-  border-color:var(--purple);
-  box-shadow:0 0 0 3px rgba(83,74,183,.1);
-}
-input[type="email"]::placeholder{color:#9ca3af}
-
-button[type="submit"]{
-  flex-shrink:0;
-  padding:.72rem 1.25rem;
-  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
-  font-size:.9rem;font-weight:700;color:#fff;
-  background:var(--purple);border:none;border-radius:var(--radius-sm);
-  cursor:pointer;white-space:nowrap;
-  box-shadow:0 4px 14px rgba(83,74,183,.3);
-  transition:box-shadow .18s,transform .12s;
-}
-button[type="submit"]:hover{
-  box-shadow:0 6px 20px rgba(83,74,183,.45);
-  transform:translateY(-1px);
-}
-button[type="submit"]:active{transform:translateY(0)}
-
-.terms{font-size:.7rem;color:var(--muted);line-height:1.6}
-
-.msg{
-  display:none;padding:.55rem .9rem;border-radius:var(--radius-sm);
-  font-size:.78rem;font-weight:600;
-}
-.msg.error{background:#fef2f2;color:#b91c1c;border:1px solid #fca5a5}
-
+/* community line */
 .skip{
-  display:inline-flex;align-items:center;gap:.25rem;
-  font-size:.82rem;color:var(--muted);text-decoration:none;
-  transition:color .15s;
+  display:block;margin-top:24px;padding:14px 18px;border-radius:18px;
+  background:var(--lilac);border:2px solid var(--edge);
+  font-weight:700;font-size:15px;line-height:1.45;
 }
-.skip:hover{color:var(--text)}
+[data-theme="dark"] .skip{border-color:#3a3166}
 
-@media(max-width:420px){
-  .input-row{flex-direction:column}
-  button[type="submit"]{width:100%}
+/* author row */
+.by{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:20px;border-top:2px dashed var(--edge)}
+[data-theme="dark"] .by{border-top-color:#3a3166}
+.by img{width:44px;height:44px;border-radius:50%;border:3px solid var(--edge);object-fit:cover;flex-shrink:0}
+.by p{font-size:14px;font-weight:600;color:var(--fg-soft);line-height:1.4}
+.by strong{color:var(--fg)}
+.by span{color:var(--violet);font-weight:800}
+[data-theme="dark"] .by span{color:#9d85ff}
+
+/* ── portrait (same language as the homepage story) ── */
+.portrait{position:relative;max-width:420px;width:100%;margin:0 auto}
+.portrait-frame{
+  border:var(--line);border-radius:30px;overflow:hidden;box-shadow:10px 10px 0 var(--shadow);
+  transform:rotate(3deg);background:var(--ink);
+}
+[data-theme="dark"] .portrait-frame{box-shadow:10px 10px 0 var(--sun)}
+.portrait-frame img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.badge{
+  position:absolute;z-index:2;color:var(--ink);
+  font-family:var(--display);font-size:15px;line-height:1.15;text-align:center;
+  border:3px solid var(--ink);border-radius:999px;padding:12px 18px;box-shadow:3px 3px 0 var(--ink);
+}
+.badge-a{left:-6%;top:9%;background:#fff;transform:rotate(-9deg)}
+.badge-a s{text-decoration-thickness:2px;text-decoration-color:#e0447a}
+.badge-b{right:-5%;bottom:10%;background:#c6f0d8;transform:rotate(7deg)}
+.app-icon{
+  position:absolute;width:76px;height:76px;border-radius:24%;border:3px solid var(--ink);
+  overflow:hidden;box-shadow:3px 3px 0 var(--ink);z-index:2;
+  animation:bob 5s ease-in-out infinite;cursor:pointer;
+}
+.app-icon img{width:100%;height:100%;object-fit:cover}
+.ai-1{right:-3%;top:-6%}
+.ai-2{left:6%;bottom:-7%;animation-delay:-2s}
+.ai-3{left:-9%;top:48%;width:62px;height:62px;animation-delay:-3.4s}
+.ai-4{right:14%;bottom:-9%;width:60px;height:60px;animation-delay:-1.2s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
+
+footer .footer-links{gap:18px}
+
+@media (max-width:900px){
+  .funnel{padding:44px 0 80px}
+  .funnel-grid{grid-template-columns:1fr;gap:70px}
+  .portrait{max-width:330px}
+}
+@media (max-width:720px){
+  .funnel-card{padding:30px 20px 24px}
+  .funnel-card .lead{font-size:16px}
+  .funnel-card .lead br{display:none}
+  #sub-form .form-row .btn{flex:1 1 100%}
+  .badge{font-size:13px;padding:10px 14px}
+  .badge-a{left:-2%}.badge-b{right:-2%}
+  .app-icon{width:62px;height:62px}
+  .ai-3{left:-3%;width:52px;height:52px}
+  .ai-4{width:50px;height:50px}
 }
 </style>
 </head>
-<body>
+<body class="no-js">
 
-<div class="wrap">
-
-  <div class="ns-logo">
-    <img src="ns.png" alt="Neural Studio">
-  </div>
-
-  <h1>Neural Studio</h1>
-  <p class="desc">Las buenas intenciones no construyeron nada.<br>La ejecución sí. Aquí construimos en vivo.</p>
-  <div class="author-row">
-    <img class="author-av" src="sebastian.png" alt="Sebastián Hortúa">
-    <p class="meta">Por Sebastián Hortúa · <span>Regístrate 100% Gratis</span></p>
-  </div>
-
-  <form id="sub-form">
-    <div class="input-row">
-      <input type="email" id="email" placeholder="tu@email.com" required autocomplete="email">
-      <button type="submit">Unirme</button>
+<header class="nav nav-simple">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="Neural Studio inicio"><span>·</span>NS<span>·</span></a>
+    <div class="nav-right">
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Cambiar a modo oscuro">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+      </button>
     </div>
-    <p class="terms">Al suscribirte aceptas recibir contenido de Neural Studio. Sin spam.</p>
-    <div class="msg" id="msg"></div>
-  </form>
+  </div>
+</header>
 
-  <p class="skip">La comunidad gratuita para construir, validar y lanzar productos con IA.</p>
+<main class="funnel">
+  <div class="container funnel-grid">
 
-</div>
+    <div class="card funnel-card">
+      <span class="sticker kicker">Comunidad de builders</span>
+      <h1>Neural <span class="hl">Studio</span></h1>
+      <p class="lead">Las buenas intenciones no construyeron nada.<br> La ejecución sí. Aquí construimos en vivo.</p>
 
+      <form id="sub-form">
+        <div class="form-row">
+          <input class="field" type="email" id="email" placeholder="tu@email.com" required autocomplete="email">
+          <button type="submit" class="btn btn-violet">Unirme</button>
+        </div>
+        <p class="terms">Al suscribirte aceptas recibir contenido de Neural Studio. Sin spam.</p>
+        <div class="msg" id="msg"></div>
+      </form>
+
+      <p class="skip">La comunidad para construir, validar y lanzar tus productos.</p>
+
+      <div class="by">
+        <img src="/images/story/sebastian.jpg" alt="" width="44" height="44">
+        <p><strong>Por Sebastián Hortúa</strong> · <span>Fundador de Neural Studio</span></p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="portrait">
+        <div class="badge badge-a"><s>Solo ideas</s></div>
+        <div class="portrait-frame">
+          <img src="/images/story/sebastian.jpg" alt="Sebastián Hortúa, fundador de Neural Studio" width="900" height="900">
+        </div>
+        <div class="badge badge-b">Builders<br>en vivo</div>
+        <div class="app-icon ai-1"><img src="/images/apps/golden-abs.png" alt=""></div>
+        <div class="app-icon ai-2"><img src="/images/apps/panda-streaks.png" alt=""></div>
+        <div class="app-icon ai-3"><img src="/images/apps/dr-panda.png" alt=""></div>
+        <div class="app-icon ai-4"><img src="/images/apps/cringe-to-star.png" alt=""></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a href="/" class="logo" aria-label="Neural Studio inicio"><span>·</span>NS<span>·</span></a>
+    <p class="footer-copy">© 2026 Neural Studio · Vancouver, BC</p>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/sebastian-hortua-leal/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://www.linkedin.com/company/neuralstca/" target="_blank" rel="noopener">Neural Studio en LinkedIn</a></li>
+      <li><a href="https://instagram.com/neuralstudioca" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="/assets/ns.js"></script>
 <script>
+// App icons pop confetti, like on the homepage
+document.querySelectorAll('.app-icon').forEach(el => el.addEventListener('click', e => NS.burst(e.clientX, e.clientY)));
+
 document.getElementById('sub-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const email = document.getElementById('email').value.trim();
