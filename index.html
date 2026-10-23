@@ -214,7 +214,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
 .journey figure:nth-child(3){transform:rotate(7deg) translateY(-14px);z-index:2}
 .app-art:hover .journey figure:nth-child(1){transform:rotate(-4deg) translateY(4px)}
 .app-art:hover .journey figure:nth-child(3){transform:rotate(4deg) translateY(-24px)}
-.journey img{width:100%;aspect-ratio:1;object-fit:cover}
+.journey img,.journey video{width:100%;aspect-ratio:1;object-fit:cover;display:block}
 .journey figcaption{
   position:absolute;left:8px;bottom:8px;color:var(--ink);
   font-family:var(--display);font-size:12px;line-height:1;
@@ -427,7 +427,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
         <video src="/images/apps/cringe-to-star-loop.mp4" poster="/images/apps/cringe-to-star-poster.jpg" autoplay muted loop playsinline></video>
       </div>
       <div class="tile tile-golden">
-        <img src="/images/apps/golden-abs-3.jpg" alt="">
+        <video src="/images/apps/golden-abs-loop.mp4" poster="/images/apps/golden-abs-poster.jpg" autoplay muted loop playsinline></video>
       </div>
       <div class="tile tile-squirrel">
         <video src="/images/apps/nerd-squirrel-loop.mp4" poster="/images/apps/nerd-squirrel-poster.jpg" autoplay muted loop playsinline></video>
@@ -552,9 +552,9 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     <article class="app app-golden reveal" id="golden-abs">
       <div class="app-art">
         <div class="journey">
-          <figure><img src="/images/apps/golden-abs-1.jpg" alt="Wobbly beginner holding a shaky plank" data-i18n-alt="ga_alt1" loading="lazy"><figcaption data-i18n="ga_cap1">Day 1</figcaption></figure>
-          <figure><img src="/images/apps/golden-abs-2.jpg" alt="Steady core stage, standing confident after a workout" data-i18n-alt="ga_alt2" loading="lazy"><figcaption data-i18n="ga_cap2">Day 42</figcaption></figure>
-          <figure><img src="/images/apps/golden-abs-3.jpg" alt="Golden Core stage with a gold medal and sparkles" data-i18n-alt="ga_alt3" loading="lazy"><figcaption data-i18n="ga_cap3">Golden Core</figcaption></figure>
+          <figure><video src="/images/apps/golden-abs-day1.mp4" poster="/images/apps/golden-abs-1.jpg" autoplay muted loop playsinline aria-label="Wobbly beginner holding a shaky plank"></video><figcaption data-i18n="ga_cap1">Day 1</figcaption></figure>
+          <figure><video src="/images/apps/golden-abs-day42.mp4" poster="/images/apps/golden-abs-2.jpg" autoplay muted loop playsinline aria-label="Steady core stage, standing confident after a workout"></video><figcaption data-i18n="ga_cap2">Day 42</figcaption></figure>
+          <figure><video src="/images/apps/golden-abs-loop.mp4" poster="/images/apps/golden-abs-3.jpg" autoplay muted loop playsinline aria-label="Golden Core stage with a gold medal and sparkles"></video><figcaption data-i18n="ga_cap3">Golden Core</figcaption></figure>
         </div>
       </div>
       <div class="app-body">

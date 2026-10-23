@@ -58,7 +58,7 @@
 .journey figure:nth-child(1){transform:rotate(-7deg) translateY(14px)}
 .journey figure:nth-child(2){transform:rotate(2deg);z-index:1}
 .journey figure:nth-child(3){transform:rotate(7deg) translateY(-14px);z-index:2}
-.journey img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.journey img,.journey video{width:100%;height:auto;aspect-ratio:1;object-fit:cover;display:block}
 .journey figcaption{
   position:absolute;left:8px;bottom:8px;color:var(--ink);white-space:nowrap;
   font-family:var(--display);font-size:12px;line-height:1;
