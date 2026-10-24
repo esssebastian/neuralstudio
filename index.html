@@ -270,7 +270,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
   font-family:var(--display);font-size:15px;line-height:1.15;text-align:center;
   border:3px solid var(--ink);border-radius:999px;padding:12px 18px;box-shadow:3px 3px 0 var(--ink);
 }
-.badge-then{left:-6%;top:8%;background:#fff;transform:rotate(-10deg)}
+.badge-then{right:-5%;top:16%;background:#fff;transform:rotate(-10deg)}
 .badge-then s{text-decoration-thickness:3px;text-decoration-color:#e0447a}
 .badge-now{right:-6%;bottom:9%;background:#c6f0d8;transform:rotate(8deg)}
 .story-icon{
@@ -293,6 +293,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
 .timeline li:last-child{background:var(--fg);color:var(--bg)}
 .timeline li:last-child b{color:var(--violet)}
 .signature{font-family:var(--display);font-size:20px;margin-top:28px}
+.story-more{margin-top:22px}
 
 /* ── based / global ── */
 .based{background:var(--sky);border-top:var(--line);border-bottom:var(--line);overflow:hidden}
@@ -369,7 +370,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
   .contact-icons img:nth-child(3),.contact-icons img:nth-child(4){bottom:3%}
   .sticker{font-size:12px;padding:9px 13px}
   .badge{font-size:13px}
-  .badge-then{left:-2%}.badge-now{right:-2%}
+  .badge-then{right:-2%}.badge-now{right:-2%}
 }
 @media (max-width:380px){
   .logo{font-size:19px}
@@ -810,6 +811,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
         <li><b data-i18n="t4_b">Today</b><span data-i18n="t4">Building whatever comes to mind</span></li>
       </ol>
       <p class="signature" data-i18n="signature">Sebastián Hortúa, founder</p>
+      <a href="/sebas/" class="btn btn-ink story-more" data-i18n="story_more">Read my full story →</a>
     </div>
   </div>
 </section>
@@ -1009,6 +1011,7 @@ const ES = {
   t4_b: 'Hoy',
   t4: 'Construyendo lo que se me ocurra',
   signature: 'Sebastián Hortúa, fundador',
+  story_more: 'Lee mi historia completa →',
   contact_h2: '¿Tienes una idea? <span class="hl">Construyámosla.</span>',
   contact_p: '¿Quieres una app o una web app, alguien con quien construir, o un lugar en el equipo? Escríbeme por LinkedIn. Ahí es donde respondo.',
   contact_btn: 'Escríbeme por LinkedIn',
