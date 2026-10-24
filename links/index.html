@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neural Studio — Links</title>
+<meta name="description" content="Neural Studio by Sebastián Hortúa: our apps, the builders community and my story, all in one place.">
+<link rel="canonical" href="https://neuralst.com/links/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neuralst.com/links/">
+<meta property="og:title" content="Neural Studio — We build apps. And builders.">
+<meta property="og:description" content="Our apps, the builders community and my story, all in one place.">
+<meta property="og:image" content="https://neuralst.com/images/apps/panda-streaks-header.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="/ns.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ns.css">
+<script>
+(function(){
+  var d = document.documentElement, t, l;
+  try { t = localStorage.getItem('ns-theme'); l = localStorage.getItem('ns-lang'); } catch (e) {}
+  if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  var q = new URLSearchParams(location.search).get('lang');
+  if (q === 'es' || q === 'en') l = q;
+  if (l !== 'es') l = 'en';
+  d.setAttribute('data-theme', t);
+  d.setAttribute('lang', l);
+})();
+</script>
+<!-- Facebook Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','327790021075185');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=327790021075185&ev=PageView&noscript=1"/></noscript>
+<style>
+body{min-height:100vh}
+.dots{position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(rgba(28,22,49,.07) 2px,transparent 2.5px);background-size:30px 30px}
+[data-theme="dark"] .dots{background-image:radial-gradient(rgba(255,255,255,.05) 2px,transparent 2.5px)}
+.wrap{position:relative;max-width:520px;margin:0 auto;padding:22px 18px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.top .logo{font-size:20px}
+.top .tools{display:flex;gap:8px}
+
+/* profile */
+.profile{text-align:center;margin-bottom:28px}
+.avatar{position:relative;width:132px;height:132px;margin:8px auto 18px}
+.avatar .face{width:100%;height:100%;border-radius:50%;border:var(--line);box-shadow:5px 5px 0 var(--shadow);overflow:hidden;transform:rotate(-4deg);background:var(--ink)}
+.avatar .face img{width:100%;height:100%;object-fit:cover}
+.avatar .sticker{position:absolute;right:-46px;top:-4px;font-size:12px;padding:6px 10px;transform:rotate(10deg);box-shadow:2px 2px 0 var(--ink);border-width:2.5px}
+.profile h1{font-size:34px}
+.profile .handle{font-weight:700;color:var(--fg-soft);margin-top:6px;font-size:15px}
+.profile p{font-size:17px;font-weight:500;color:var(--fg-soft);margin:14px auto 0;max-width:400px;line-height:1.5}
+.profile p strong{color:var(--fg)}
+
+/* links */
+.links{display:grid;gap:16px}
+.link{
+  display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--ink);
+  border:var(--line);border-radius:22px;padding:14px 18px 14px 14px;box-shadow:var(--pop);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.link:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--shadow)}
+.link:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
+.link:focus-visible{outline:3px solid var(--violet);outline-offset:4px}
+.link .em{flex:none;width:52px;height:52px;border-radius:16px;border:3px solid var(--ink);background:#fff;display:grid;place-items:center;font-size:26px;overflow:hidden}
+.link .em img{width:100%;height:100%;object-fit:cover}
+.link .tx{flex:1;min-width:0}
+.link b{display:block;font-family:var(--display);font-weight:400;font-size:19px;line-height:1.15}
+.link small{display:block;font-size:14px;font-weight:600;opacity:.75;margin-top:3px}
+.link .arr{flex:none;font-family:var(--display);font-size:22px}
+.l-mint{background:#c6f0d8}.l-sky{background:#cfe9f7}.l-pink{background:#ffc6e4}.l-lilac{background:#e3d9ff}.l-sun{background:#ffd65c}.l-white{background:#fff}
+.featured{background:var(--violet);color:#fff;padding:18px 20px 18px 16px;transform:rotate(-1deg)}
+[data-theme="dark"] .featured{box-shadow:5px 5px 0 var(--sun)}
+.featured .em{background:#ffd65c}
+.featured b{font-size:22px}
+.featured small{opacity:.9}
+.featured .badge{position:absolute;top:-14px;right:18px;font-family:var(--display);font-size:12px;color:var(--ink);background:var(--sun);border:2.5px solid var(--ink);border-radius:999px;padding:4px 10px;transform:rotate(4deg)}
+.featured{position:relative}
+
+/* apps */
+.section-title{font-family:var(--display);font-size:22px;margin:38px 4px 16px;display:flex;align-items:center;justify-content:space-between}
+.section-title a{font-family:var(--body);font-weight:800;font-size:14px;color:var(--violet);text-underline-offset:3px}
+[data-theme="dark"] .section-title a{color:#9d85ff}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 12px}
+.app{text-decoration:none;text-align:center;color:var(--fg)}
+.app img{width:100%;aspect-ratio:1;border-radius:24%;border:3px solid var(--ink);box-shadow:3px 3px 0 var(--shadow);transition:transform .25s cubic-bezier(.2,.9,.3,1.4)}
+.app:nth-child(odd) img{transform:rotate(-4deg)}
+.app:nth-child(even) img{transform:rotate(4deg)}
+.app:hover img{transform:rotate(0) translateY(-4px)}
+.app span{display:block;font-weight:800;font-size:12px;line-height:1.2;margin-top:8px}
+
+/* socials */
+.socials{display:flex;justify-content:center;gap:14px;margin-top:38px}
+.social{width:54px;height:54px;border-radius:50%;border:var(--line);background:var(--surface);box-shadow:3px 3px 0 var(--shadow);display:grid;place-items:center;color:var(--fg);transition:transform .15s}
+.social:hover{transform:translateY(-3px) rotate(-6deg)}
+.social svg{width:24px;height:24px}
+.foot{text-align:center;margin-top:30px;font-size:13px;font-weight:600;color:var(--fg-soft)}
+.foot a{color:inherit}
+</style>
+</head>
+<body class="no-js">
+<div class="dots" aria-hidden="true"></div>
+<main class="wrap">
+  <div class="top">
+    <a href="/" class="logo" aria-label="Neural Studio home"><span>·</span>NS<span>·</span></a>
+    <div class="tools">
+      <button type="button" class="icon-btn" id="lang-toggle" aria-label="Ver en español">ES</button>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch dark mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <section class="profile">
+    <div class="avatar">
+      <div class="face"><img src="/images/story/sebastian-face.jpg" alt="Sebastián Hortúa" width="400" height="400"></div>
+      <span class="sticker sticker-mint" data-i18n="st">Builder now</span>
+    </div>
+    <h1>Neural Studio</h1>
+    <div class="handle">by Sebastián Hortúa · @neuralstudioca</div>
+    <p data-i18n="bio"><strong>We build apps. And builders.</strong> 17 years as an office guy, now shipping the ideas that pop into my head. Come build yours.</p>
+  </section>
+
+  <nav class="links" aria-label="Links">
+    <a class="link featured" data-link="skool" href="https://www.skool.com/neural-studio-3710/about" target="_blank" rel="noopener">
+      <span class="badge" data-i18n="new">Join us</span>
+      <span class="em" aria-hidden="true">🚀</span>
+      <span class="tx"><b data-i18n="l1">Join the builders community</b><small data-i18n="l1s">Brand, product, service, on camera. On Skool.</small></span>
+      <span class="arr" aria-hidden="true">→</span>
+    </a>
+    <a class="link l-sun" data-link="story" href="/sebas/">
+      <span class="em"><img src="/images/story/sebastian-face.jpg" alt=""></span>
+      <span class="tx"><b data-i18n="l2">My story: office guy → builder</b><small data-i18n="l2s">17 years in offices. Here's how I left.</small></span>
+      <span class="arr" aria-hidden="true">→</span>
+    </a>
+    <a class="link l-mint" data-link="apps" href="/apps/">
+      <span class="em" aria-hidden="true">📱</span>
+      <span class="tx"><b data-i18n="l3">All our apps</b><small data-i18n="l3s">8 apps for iPhone and Mac</small></span>
+      <span class="arr" aria-hidden="true">→</span>
+    </a>
+    <a class="link l-lilac" data-link="linkedin" href="https://www.linkedin.com/in/sebastian-hortua-leal/" target="_blank" rel="noopener">
+      <span class="em" aria-hidden="true">🤝</span>
+      <span class="tx"><b data-i18n="l4">Work with me</b><small data-i18n="l4s">Got an idea? Message me on LinkedIn.</small></span>
+      <span class="arr" aria-hidden="true">→</span>
+    </a>
+    <a class="link l-sky" data-link="website" href="/">
+      <span class="em"><img src="/ns.png" alt=""></span>
+      <span class="tx"><b data-i18n="l5">Visit the website</b><small>neuralst.com</small></span>
+      <span class="arr" aria-hidden="true">→</span>
+    </a>
+  </nav>
+
+  <h2 class="section-title"><span data-i18n="apps_t">Our apps</span><a href="/apps/" data-link="apps-all" data-i18n="apps_all">See all</a></h2>
+  <div class="apps">
+    <a class="app" data-link="app-panda-streaks" href="/apps/panda-streaks/"><img src="/images/apps/panda-streaks.png" alt=""><span>Panda Streaks</span></a>
+    <a class="app" data-link="app-cringe-to-star" href="/apps/cringe-to-star/"><img src="/images/apps/cringe-to-star.png" alt=""><span>Cringe to Star</span></a>
+    <a class="app" data-link="app-golden-abs" href="/apps/golden-abs/"><img src="/images/apps/golden-abs.png" alt=""><span>Golden Abs</span></a>
+    <a class="app" data-link="app-nerd-squirrel" href="/apps/nerd-squirrel/"><img src="/images/apps/nerd-squirrel.png" alt=""><span>Nerd Squirrel</span></a>
+    <a class="app" data-link="app-outy" href="/apps/outy/"><img src="/images/apps/outy.png" alt=""><span>Outy</span></a>
+    <a class="app" data-link="app-calma" href="/apps/calma/"><img src="/images/apps/calma.png" alt=""><span>Calma</span></a>
+    <a class="app" data-link="app-posture-panda" href="/apps/posture-panda/"><img src="/images/apps/dr-panda.png" alt=""><span>Posture Panda</span></a>
+    <a class="app" data-link="app-fix-my-face" href="/apps/fix-my-face/"><img src="/images/apps/fix-my-face.png" alt=""><span>Fix My Face</span></a>
+  </div>
+
+  <div class="socials">
+    <a class="social" data-link="instagram" href="https://instagram.com/neuralstudioca" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a class="social" data-link="linkedin-me" href="https://www.linkedin.com/in/sebastian-hortua-leal/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+    </a>
+    <a class="social" data-link="linkedin-company" href="https://www.linkedin.com/company/neuralstca/" target="_blank" rel="noopener" aria-label="Neural Studio on LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01"/></svg>
+    </a>
+    <a class="social" data-link="email" href="mailto:s@neuralst.com" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+    </a>
+  </div>
+  <p class="foot">© 2026 Neural Studio · Vancouver, BC</p>
+</main>
+
+<script src="/assets/ns.js"></script>
+<script>
+const root = document.documentElement;
+const { store, burst } = window.NS;
+const ES = {
+  title: 'Neural Studio — Links',
+  description: 'Neural Studio de Sebastián Hortúa: nuestras apps, la comunidad de builders y mi historia, todo en un solo lugar.',
+  st: 'Builder ahora',
+  bio: '<strong>Construimos apps. Y builders.</strong> 17 años como man de oficina, ahora lanzando las ideas que se me vienen a la cabeza. Ven a construir las tuyas.',
+  new: 'Únete',
+  l1: 'Únete a la comunidad de builders', l1s: 'Marca, producto, servicio, en cámara. En Skool.',
+  l2: 'Mi historia: de man de oficina a builder', l2s: '17 años en oficinas. Así me salí.',
+  l3: 'Todas nuestras apps', l3s: '8 apps para iPhone y Mac',
+  l4: 'Trabaja conmigo', l4s: '¿Tienes una idea? Escríbeme por LinkedIn.',
+  l5: 'Visita el sitio web',
+  apps_t: 'Nuestras apps', apps_all: 'Ver todas'
+};
+const metaDesc = document.querySelector('meta[name="description"]');
+const nodes = [...document.querySelectorAll('[data-i18n]')];
+const EN = { title: document.title, description: metaDesc.content };
+nodes.forEach(n => { EN[n.dataset.i18n] = n.innerHTML; });
+const langBtn = document.getElementById('lang-toggle');
+function setLang(lang){
+  const dict = lang === 'es' ? ES : EN;
+  nodes.forEach(n => { const v = dict[n.dataset.i18n]; if (v != null) n.innerHTML = v; });
+  document.title = dict.title; metaDesc.content = dict.description;
+  root.lang = lang;
+  langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+  langBtn.setAttribute('aria-label', lang === 'es' ? 'View in English' : 'Ver en español');
+  window.NS.labelTheme();
+}
+setLang(root.lang === 'es' ? 'es' : 'en');
+langBtn.addEventListener('click', () => { const next = root.lang === 'es' ? 'en' : 'es'; setLang(next); store.set('ns-lang', next); });
+
+// Every tap is a Pixel event, so you can see which links your bio actually sells
+document.querySelectorAll('[data-link]').forEach(a => a.addEventListener('click', e => {
+  burst(e.clientX, e.clientY, 40);
+  if (window.fbq) fbq('trackCustom', 'BioLinkClick', { link: a.dataset.link });
+  if (a.dataset.link === 'skool' && window.fbq) fbq('trackCustom', 'JoinCommunity');
+}));
+</script>
+</body>
+</html>
