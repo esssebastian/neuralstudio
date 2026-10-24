@@ -70,5 +70,33 @@
   // Anything with data-confetti bursts on click
   document.querySelectorAll('[data-confetti]').forEach(el => el.addEventListener('click', e => burst(e.clientX, e.clientY)));
 
+
+  // Promo videos: muted autoplay while on screen, tap the pill for sound
+  const SPK_ON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+  const SPK_OFF = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6M21 9l-5 6"/></svg>';
+  const es = () => root.lang === 'es';
+  document.querySelectorAll('.promo').forEach(box => {
+    const v = box.querySelector('video');
+    const sound = box.querySelector('.promo-sound');
+    const play = box.querySelector('.promo-play');
+    const label = () => { sound.innerHTML = (v.muted ? SPK_OFF : SPK_ON) + '<span>' + (v.muted ? (es() ? 'Activar sonido' : 'Sound on') : (es() ? 'Silenciar' : 'Mute')) + '</span>'; sound.setAttribute('aria-pressed', String(!v.muted)); };
+    const sync = () => box.classList.toggle('paused', v.paused);
+    v.muted = true; label(); sync();
+    v.addEventListener('play', sync); v.addEventListener('pause', sync);
+    sound.addEventListener('click', () => {
+      v.muted = !v.muted; label();
+      if (v.paused) v.play().catch(() => {});
+      if (!v.muted && window.fbq) fbq('trackCustom', 'PromoSound', { video: box.dataset.promo });
+    });
+    play.addEventListener('click', () => { v.play().catch(() => {}); });
+    v.addEventListener('click', () => { v.paused ? v.play().catch(() => {}) : v.pause(); });
+    if (reduceMotion) return;
+    new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) v.play().catch(sync);
+      else { v.pause(); if (!v.muted) { v.muted = true; label(); } }
+    }), { threshold: 0.45 }).observe(box);
+    new MutationObserver(label).observe(root, { attributes: true, attributeFilter: ['lang'] });
+  });
+
   window.NS = { burst, store, reduceMotion, labelTheme };
 })();

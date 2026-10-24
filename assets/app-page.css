@@ -158,3 +158,11 @@
   .g-square{width:230px}
   .final{padding:24px 20px}
 }
+
+/* promo section */
+.promo-sec{background:var(--app-bg);border-top:var(--line);border-bottom:var(--line)}
+.promo-grid{display:grid;grid-template-columns:1fr .8fr;gap:60px;align-items:center}
+.promo-grid > *{min-width:0}
+.promo-h{font-size:clamp(34px,4.6vw,56px);margin-bottom:18px}
+.promo-p{font-size:19px;color:var(--fg-soft);font-weight:500;max-width:520px;margin-bottom:28px}
+@media (max-width:1000px){.promo-grid{grid-template-columns:1fr;gap:44px}}

@@ -130,6 +130,19 @@ section{scroll-margin-top:90px}
 .build-card h3{font-size:28px;margin-bottom:10px}
 .build-card p{color:var(--fg-soft);font-weight:500}
 
+/* ── film ── */
+.film{background:var(--lilac);border-top:var(--line)}
+.film-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+.film-grid > *{min-width:0}
+.film h2{font-size:clamp(42px,6vw,80px);margin-bottom:24px}
+.film-p{font-size:19px;color:var(--fg-soft);font-weight:500;max-width:520px;margin-bottom:30px}
+.film-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:480px}
+.film-list a{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;background:var(--surface);border:var(--line);border-radius:18px;padding:10px 14px;box-shadow:3px 3px 0 var(--shadow);transition:transform .15s}
+.film-list a:hover{transform:translate(-2px,-2px)}
+.film-list img{width:40px;height:40px;border-radius:24%;border:2px solid var(--ink)}
+.film-all{display:inline-block;margin-top:22px;font-weight:800;color:var(--violet);text-underline-offset:3px}
+[data-theme="dark"] .film-all{color:#9d85ff}
+
 /* ── apps ── */
 .apps{background:var(--surface);border-top:var(--line);border-bottom:var(--line)}
 [data-theme="dark"] .apps{background:#161130}
@@ -338,6 +351,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
 
 /* ── responsive ── */
 @media (max-width:1000px){
+  .film-grid{grid-template-columns:1fr;gap:50px}
   .hero-grid,.story-grid,.based-grid{grid-template-columns:1fr;gap:56px}
   .collage{margin:0 auto;max-width:480px}
   .builders{grid-template-columns:1fr 1fr}
@@ -358,6 +372,8 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
   .hero{padding:44px 0 70px}
   .section{padding:84px 0}
   .builders{grid-template-columns:1fr}
+  .film-list{grid-template-columns:1fr}
+  .film h2{font-size:clamp(30px,8.2vw,44px)}
   .app-body{padding:30px 22px}
   .app .app-art{min-height:300px}
   .phone{width:38%}
@@ -470,6 +486,31 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
         <div class="num">03</div>
         <h3 data-i18n="b3_h">Builders</h3>
         <p data-i18n="b3_p">A community where we build in public and show you how, so the next app is yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILM -->
+<section class="section film" id="watch">
+  <div class="container film-grid">
+    <div class="reveal">
+      <h2 data-i18n="film_h2">Watch them<br><span class="hl">glow up.</span></h2>
+      <p class="film-p" data-i18n="film_p">Cringe to Star. Wobbly to Golden. Sad panda to Legend. Distracted to Done. Our apps come with characters that grow when you do. Here are four of them in 30 seconds.</p>
+      <ul class="film-list">
+        <li><a href="/apps/cringe-to-star/"><img src="/images/apps/cringe-to-star.png" alt=""><span>Cringe to Star</span></a></li>
+        <li><a href="/apps/golden-abs/"><img src="/images/apps/golden-abs.png" alt=""><span>Golden Abs</span></a></li>
+        <li><a href="/apps/panda-streaks/"><img src="/images/apps/panda-streaks.png" alt=""><span>Panda Streaks</span></a></li>
+        <li><a href="/apps/nerd-squirrel/"><img src="/images/apps/nerd-squirrel.png" alt=""><span>Nerd Squirrel</span></a></li>
+      </ul>
+      <a href="#apps" class="film-all" data-i18n="film_all">See all 8 apps →</a>
+    </div>
+    <div class="reveal">
+      <div class="promo" data-promo="neural-studio">
+        <span class="sticker" data-i18n="film_st">Watch ✨</span>
+        <div class="promo-frame"><video src="/videos/neural-studio-promo.mp4" poster="/videos/neural-studio-promo.jpg" muted loop playsinline preload="metadata" aria-label="Neural Studio promo video"></video></div>
+        <button type="button" class="promo-btn promo-play" aria-label="Play video">▶ <span data-i18n="play">Play</span></button>
+        <button type="button" class="promo-btn promo-sound" aria-pressed="false"></button>
       </div>
     </div>
   </div>
@@ -953,6 +994,11 @@ const ES = {
   ga_1: '<strong>Haz la prueba de plancha.</strong> Una plancha rápida elige tu nivel: principiante, intermedio o avanzado.',
   ga_2: '<strong>Haz un entrenamiento corto al día.</strong> De 8 a 12 minutos con demos para seguir, y la cámara de tu celular cuenta tus repeticiones. Los días de descanso también cuentan.',
   ga_3: '<strong>Pasa de Tambaleante a Dorado.</strong> Gana XP y mantén tu racha mientras tu personaje crece de Principiante Tambaleante a Core Dorado.',
+  film_h2: 'Míralos<br><span class="hl">transformarse.</span>',
+  film_p: 'De Cringe a Estrella. De Tambaleante a Dorado. De panda triste a Leyenda. De distraído a Listo. Nuestras apps tienen personajes que crecen cuando tú creces. Aquí van cuatro de ellos en 30 segundos.',
+  film_all: 'Ver las 8 apps →',
+  film_st: 'Míralo ✨',
+  play: 'Ver',
   pill_focus: 'Enfoque',
   sq_alt: 'La casa del árbol de Nerd Squirrel, cada vez más acogedora con cada mejora',
   sq_tag: 'Un temporizador pomodoro acogedor con un compañero de estudio que se concentra contigo.',
