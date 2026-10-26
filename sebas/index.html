@@ -117,7 +117,7 @@ section{scroll-margin-top:90px}
 }
 
 /* apps */
-.apps-row{display:grid;grid-template-columns:repeat(8,1fr);gap:18px}
+.apps-row{display:grid;grid-template-columns:repeat(9,1fr);gap:16px}
 .app-tile{display:block;text-decoration:none;text-align:center}
 .app-tile img{width:100%;aspect-ratio:1;border-radius:24%;border:var(--line);box-shadow:4px 4px 0 var(--shadow);transition:transform .25s cubic-bezier(.2,.9,.3,1.4)}
 .app-tile:nth-child(odd) img{transform:rotate(-4deg)}
@@ -146,7 +146,7 @@ section{scroll-margin-top:90px}
 @media (max-width:1000px){
   .me-grid{grid-template-columns:1fr;gap:56px}
   .facts-grid{grid-template-columns:1fr 1fr}
-  .apps-row{grid-template-columns:repeat(4,1fr)}
+  .apps-row{grid-template-columns:repeat(3,1fr);max-width:520px}
   .beliefs{grid-template-columns:1fr}
 }
 @media (max-width:720px){
@@ -216,7 +216,7 @@ section{scroll-margin-top:90px}
     <div class="fact"><b>17+</b><span data-i18n="f1">years in marketing, retail and banking</span></div>
     <div class="fact"><b>68</b><span data-i18n="f2">stores I bought for at Cencosud</span></div>
     <div class="fact"><b>2M+</b><span data-i18n="f3">customers reached with my campaigns</span></div>
-    <div class="fact"><b>8</b><span data-i18n="f4">apps built since leaving the office</span></div>
+    <div class="fact"><b>9</b><span data-i18n="f4">apps built since leaving the office</span></div>
   </div>
 </div>
 
@@ -294,13 +294,14 @@ section{scroll-margin-top:90px}
   <div class="container">
     <div class="head reveal">
       <h2 data-i18n="built_h2">What I've <span class="hl-violet">built so far.</span></h2>
-      <p data-i18n="built_p">Eight apps and counting. Tap one to see how it works.</p>
+      <p data-i18n="built_p">Nine apps and counting. Tap one to see how it works.</p>
     </div>
     <div class="apps-row reveal">
       <a class="app-tile" href="/apps/panda-streaks/"><img src="/images/apps/panda-streaks.png" alt=""><span>Panda Streaks</span></a>
       <a class="app-tile" href="/apps/cringe-to-star/"><img src="/images/apps/cringe-to-star.png" alt=""><span>Cringe to Star</span></a>
       <a class="app-tile" href="/apps/golden-abs/"><img src="/images/apps/golden-abs.png" alt=""><span>Golden Abs</span></a>
       <a class="app-tile" href="/apps/nerd-squirrel/"><img src="/images/apps/nerd-squirrel.png" alt=""><span>Nerd Squirrel</span></a>
+      <a class="app-tile" href="/apps/mochi-days/"><img src="/images/apps/mochi-days.png" alt=""><span>Mochi Days</span></a>
       <a class="app-tile" href="/apps/outy/"><img src="/images/apps/outy.png" alt=""><span>Outy</span></a>
       <a class="app-tile" href="/apps/calma/"><img src="/images/apps/calma.png" alt=""><span>Calma</span></a>
       <a class="app-tile" href="/apps/posture-panda/"><img src="/images/apps/dr-panda.png" alt=""><span>Posture Panda</span></a>
@@ -399,7 +400,7 @@ const ES = {
   turn_h2: 'Las buenas intenciones <span class="hl">no construyeron nada.</span>',
   turn_p: 'Durante años tuve las ideas pero no la valentía, ni el tiempo, ni "el momento correcto". Lo que cambió no fue el talento. Simplemente empecé a lanzar cosas pequeñas, en público, antes de sentirlas listas. Cada una hizo más fácil la siguiente.',
   quote: '"Tu experiencia no es un peso. Es tu ventaja injusta."',
-  built_h2: 'Lo que he <span class="hl-violet">construido.</span>', built_p: 'Ocho apps y contando. Toca una para ver cómo funciona.',
+  built_h2: 'Lo que he <span class="hl-violet">construido.</span>', built_p: 'Nueve apps y contando. Toca una para ver cómo funciona.',
   bel_h2: 'En lo que <span class="hl">creo.</span>',
   b1_h: 'Lanza antes de estar listo.', b1_p: 'Algo pequeño en manos de la gente te enseña más que un plan perfecto en un cajón.',
   b2_h: 'Muestra tu trabajo.', b2_p: 'Habla a la cámara, comparte tus avances, muestra lo que vales. El cringe pasa. Los resultados se quedan.',
