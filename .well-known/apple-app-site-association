@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["2S5KN6LW8C.com.sebastianhortua.mochidays"],
+        "components": [
+          { "/": "/mochi/*", "comment": "Shared Mochi Days countdowns" },
+          { "/": "/mochi", "comment": "Shared Mochi Days countdowns" }
+        ]
+      }
+    ]
+  }
+}

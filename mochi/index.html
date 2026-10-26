@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A countdown for you 💌 · Mochi Days</title>
+<meta name="description" content="Someone shared a countdown with you. Count down to it with Mochi on Mochi Days.">
+<meta property="og:title" content="A countdown for you 💌">
+<meta property="og:description" content="Count down together with Mochi on Mochi Days.">
+<meta property="og:image" content="https://neuralst.com/images/apps/mochi/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://neuralst.com/mochi/">
+<link rel="icon" type="image/png" href="/ns.png">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/ns.css">
+<script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem('ns-theme')}catch(e){}if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t)})();</script>
+<style>
+.mochi-wrap{min-height:70vh;display:flex;align-items:center;justify-content:center;padding:40px 16px 60px}
+.mochi-card{width:100%;max-width:440px;text-align:center;background:var(--surface);border:var(--line);border-radius:32px;box-shadow:var(--pop);padding:26px 22px 28px}
+.mochi-note{font-weight:800;color:var(--fg-soft);font-size:15px}
+.mochi-pic{width:240px;height:240px;margin:16px auto 18px;border-radius:28px;overflow:hidden;border:var(--line);box-shadow:4px 4px 0 var(--shadow)}
+.mochi-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.mochi-card h1{font-size:clamp(28px,7vw,36px);overflow-wrap:anywhere}
+.mochi-date{margin-top:6px;font-weight:700;color:var(--fg-soft)}
+.mochi-boxes{display:flex;gap:8px;margin:20px 0 6px}
+.mochi-box{flex:1;border:var(--line);border-radius:18px;padding:10px 0;color:#fff;box-shadow:3px 3px 0 var(--shadow)}
+.mochi-box b{display:block;font-family:var(--display);font-size:28px;font-weight:400;font-variant-numeric:tabular-nums}
+.mochi-box span{font-size:12px;font-weight:800;opacity:.9}
+.mochi-today{font-family:var(--display);font-size:34px;margin:18px 0 6px}
+.mochi-line{font-weight:700;color:var(--fg-soft);margin:10px 0 20px}
+.mochi-btns{display:flex;flex-direction:column;gap:12px}
+.mochi-small{margin-top:14px;font-size:13px;color:var(--fg-soft);font-weight:600}
+</style>
+</head>
+<body class="no-js">
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="Neural Studio home"><span>·</span>NS<span>·</span></a>
+    <ul class="nav-links">
+      <li><a href="/#apps">Apps</a></li>
+      <li><a href="/#community">Community</a></li>
+      <li><a href="/sebas/">My story</a></li>
+    </ul>
+    <div class="nav-right">
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch dark mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+      </button>
+      <a href="/#contact" class="btn btn-violet">Work with me</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="mochi-wrap">
+    <article class="mochi-card" id="card">
+      <p class="mochi-note" id="note">💌 Someone shared a countdown with you</p>
+      <div class="mochi-pic"><img id="pic" src="/images/apps/mochi/mochi_week.jpg" alt="Mochi, a fluffy lavender monster, getting excited" width="240" height="240"></div>
+      <h1 id="title">Mochi Days</h1>
+      <p class="mochi-date" id="date">Count down to your big days with Mochi.</p>
+      <div id="count"></div>
+      <p class="mochi-line" id="line">Mochi gets more excited the closer your day gets.</p>
+      <div class="mochi-btns">
+        <a class="btn btn-violet" id="open" href="mochidays://">Open in Mochi Days</a>
+        <a class="btn" id="get" href="/apps/">Get Mochi Days for iPhone</a>
+      </div>
+      <p class="mochi-small">Mochi Days is a countdown app by Neural Studio. Coming soon to the App Store.</p>
+    </article>
+  </section>
+</main>
+
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var title = (q.get('t') || '').trim().slice(0, 60), day = q.get('d') || '', yearly = q.get('y') === '1';
+  var emoji = (q.get('e') || '🎉').slice(0, 4), color = parseInt(q.get('c') || '0', 10) || 0;
+  var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(day);
+  if (!title || !m) return; // no valid countdown: keep the generic Mochi Days card
+  var colors = ['#9B7BE0', '#FFB993', '#F2708A', '#6FC59A', '#6FA8E8', '#FFC94D'];
+  var fill = colors[((color % 6) + 6) % 6];
+  var year = +m[1], month = +m[2] - 1, date = +m[3];
+
+  // Midnight at the start of the next occurrence (yearly events roll over; Feb 29 falls on Feb 28).
+  function occurrence(now) {
+    function make(y) {
+      var d = new Date(y, month, date);
+      return d.getDate() === date ? d : new Date(y, month, date - 1);
+    }
+    if (!yearly) return new Date(year, month, date);
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var d = make(now.getFullYear());
+    return d >= today ? d : make(now.getFullYear() + 1);
+  }
+  function mood(days) {
+    return days <= 0 ? ['today', "It's TODAY! Let's celebrate! 🎉"] : days === 1 ? ['tomorrow', "TOMORROW!! I can't sleep! 🤩"]
+      : days <= 7 ? ['week', "Less than a week! I'm already packing 🧳"] : days <= 30 ? ['month', 'It\u2019s getting closer… I keep checking the calendar 👀']
+      : ['far', "Plenty of time. I'm just dreaming about it ☁️"];
+  }
+
+  document.getElementById('title').textContent = emoji + ' ' + title;
+  document.title = emoji + ' ' + title + ' · Mochi Days';
+  document.getElementById('open').href = 'mochidays://add' + location.search;
+  var target = occurrence(new Date());
+  document.getElementById('date').textContent = target.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }) + (yearly ? ' · every year' : '');
+
+  function tick() {
+    var now = new Date(), t = occurrence(now);
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var days = Math.round((t - today) / 86400000);
+    var md = mood(days);
+    var pic = document.getElementById('pic');
+    if (pic.getAttribute('data-mood') !== md[0]) { pic.src = '/images/apps/mochi/mochi_' + md[0] + '.jpg'; pic.setAttribute('data-mood', md[0]); }
+    document.getElementById('line').textContent = days < 0 ? 'This already happened 💜' : md[1];
+    var box = document.getElementById('count');
+    if (days < 0) { box.innerHTML = ''; return; }
+    if (days === 0) { box.innerHTML = '<p class="mochi-today">It\u2019s today! 🎉</p>'; return; }
+    var s = Math.max(0, Math.floor((t - now) / 1000));
+    var parts = [[Math.floor(s / 86400), 'days'], [Math.floor(s / 3600) % 24, 'hours'], [Math.floor(s / 60) % 60, 'min'], [s % 60, 'sec']];
+    box.innerHTML = '<div class="mochi-boxes">' + parts.map(function (p) {
+      return '<div class="mochi-box" style="background:' + fill + '"><b>' + p[0] + '</b><span>' + p[1] + '</span></div>';
+    }).join('') + '</div>';
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+<footer>
+  <div class="container footer-inner">
+    <a href="/" class="logo" aria-label="Neural Studio home"><span>·</span>NS<span>·</span></a>
+    <p class="footer-copy">© 2026 Neural Studio · Vancouver, BC</p>
+    <ul class="footer-links">
+      <li><a href="https://www.linkedin.com/in/sebastian-hortua-leal/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://www.linkedin.com/company/neuralstca/" target="_blank" rel="noopener">Neural Studio on LinkedIn</a></li>
+      <li><a href="https://instagram.com/neuralstudioca" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.skool.com/neural-studio-3710/about" target="_blank" rel="noopener">Community</a></li>
+      <li><a href="/apps/">All apps</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="/assets/ns.js"></script>
+</body>
+</html>
