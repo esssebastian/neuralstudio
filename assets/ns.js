@@ -32,7 +32,7 @@
     if (bits.length) requestAnimationFrame(tick); else running = false;
   }
   function burst(x, y, count) {
-    if (reduceMotion) return;
+    if (reduceMotion || root.dataset.mode === 'serious') return;
     x = x || innerWidth / 2; y = y || innerHeight / 2;
     for (let i = 0; i < (count || 70); i++) {
       const a = Math.random() * Math.PI * 2, s = 4 + Math.random() * 8;
@@ -59,6 +59,55 @@
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
     if (store.get('ns-theme')) return;
     root.dataset.theme = e.matches ? 'dark' : 'light'; labelTheme();
+  });
+
+  // Serious mode (#mode-toggle, added next to the theme toggle): same studio, corporate costume.
+  // Pages listen for the 'ns:mode' event to swap in their serious copy.
+  const TIE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 3h5l-1.3 3.2 2.3 9.3L12 21l-3.5-5.5 2.3-9.3L9.5 3Z"/><path d="M10.8 6.2h2.4"/></svg>';
+  const SMILE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 14a4 4 0 0 0 7 0"/><path d="M9 9.5h.01M15 9.5h.01"/></svg>';
+  const MODE_TXT = {
+    en: { serious: 'Serious', fun: 'Fun', toSerious: 'Switch to serious mode', toFun: 'Switch back to fun mode',
+      on: ['👔', 'Serious mode on.', 'Fun has been rescheduled to Q3.'], off: ['🎉', 'Fun mode restored.', 'Sorry about that.'] },
+    es: { serious: 'Serio', fun: 'Chévere', toSerious: 'Cambiar a modo serio', toFun: 'Volver al modo chévere',
+      on: ['👔', 'Modo serio activado.', 'La diversión quedó agendada para el Q3.'], off: ['🎉', 'Volvió la diversión.', 'Perdón por eso.'] }
+  };
+  const mt = k => MODE_TXT[root.lang === 'es' ? 'es' : 'en'][k];
+  let modeBtn = null;
+  if (themeBtn) {
+    modeBtn = document.createElement('button');
+    modeBtn.type = 'button'; modeBtn.id = 'mode-toggle'; modeBtn.className = 'icon-btn mode-btn';
+    themeBtn.before(modeBtn);
+  }
+  function labelMode() {
+    if (!modeBtn) return;
+    const serious = root.dataset.mode === 'serious';
+    modeBtn.innerHTML = (serious ? SMILE : TIE) + '<span class="mode-txt">' + mt(serious ? 'fun' : 'serious') + '</span>';
+    modeBtn.setAttribute('aria-label', mt(serious ? 'toFun' : 'toSerious'));
+    modeBtn.setAttribute('aria-pressed', String(serious));
+    modeBtn.title = mt(serious ? 'toFun' : 'toSerious');
+  }
+  let toast = null, toastTimer = null;
+  function say([emoji, title, sub]) {
+    if (!toast) {
+      toast = document.createElement('div'); toast.className = 'ns-toast'; toast.setAttribute('role', 'status');
+      toast.innerHTML = '<span class="ns-toast-emoji" aria-hidden="true"></span><strong></strong><span class="ns-toast-sub"></span>';
+      toast.addEventListener('click', () => toast.classList.remove('show'));
+      document.body.appendChild(toast);
+    }
+    toast.children[0].textContent = emoji; toast.children[1].textContent = title; toast.children[2].textContent = sub;
+    toast.classList.remove('show'); void toast.offsetWidth; toast.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+  }
+  labelMode();
+  new MutationObserver(labelMode).observe(root, { attributes: true, attributeFilter: ['lang'] });
+  if (modeBtn) modeBtn.addEventListener('click', e => {
+    const serious = root.dataset.mode !== 'serious';
+    if (serious) root.dataset.mode = 'serious'; else delete root.dataset.mode;
+    labelMode();
+    document.dispatchEvent(new CustomEvent('ns:mode', { detail: { serious } }));
+    say(mt(serious ? 'on' : 'off'));
+    if (!serious) burst(e.clientX, e.clientY, 110);
+    if (window.fbq) fbq('trackCustom', 'SeriousMode', { on: serious });
   });
 
   // Reveal on scroll

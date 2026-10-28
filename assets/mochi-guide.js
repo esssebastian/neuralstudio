@@ -31,7 +31,31 @@
       close: 'Ocultar a Mochi'
     }
   };
-  const t = k => (COPY[root.lang === 'es' ? 'es' : 'en'])[k];
+  // Serious mode: same Mochi, now in middle management
+  const SERIOUS = {
+    en: {
+      start: 'Please continue scrolling at your earliest convenience.',
+      a: 'Kindly proceed downward.',
+      b: 'You are 50% through this document.',
+      c: 'Final section approaching. Thank you for your patience.',
+      end: 'Scroll completed. A follow-up meeting has been scheduled.',
+      up: 'Please note: that is the wrong direction.',
+      nudge: 'Per my last message, please scroll down.'
+    },
+    es: {
+      start: 'Por favor continúe bajando cuando le sea posible.',
+      a: 'Le agradecemos seguir hacia abajo.',
+      b: 'Usted ha completado el 50% de este documento.',
+      c: 'Se aproxima la sección final. Gracias por su paciencia.',
+      end: 'Lectura completada. Se agendó una reunión de seguimiento.',
+      up: 'Le informamos que esa no es la dirección correcta.',
+      nudge: 'Según mi último mensaje, por favor baje.'
+    }
+  };
+  const t = k => {
+    const lang = root.lang === 'es' ? 'es' : 'en';
+    return (root.dataset.mode === 'serious' && SERIOUS[lang][k]) || COPY[lang][k];
+  };
 
   let hidden = false;
   try { hidden = sessionStorage.getItem('ns-mochi-hidden') === '1'; } catch (e) {}
@@ -45,6 +69,16 @@
   .mg.intro{transition:transform 1.6s linear}
   .mg-sprite{width:64px;height:64px;background:url(/images/mochi-sprite.png) 0 0/384px 192px no-repeat;image-rendering:pixelated;image-rendering:crisp-edges;
     filter:drop-shadow(3px 3px 0 rgba(28,22,49,.25));pointer-events:auto;cursor:pointer;transition:transform .25s cubic-bezier(.2,.9,.3,1.4)}
+  .mg-sprite{position:relative}
+  .mg-sprite::after{content:"";position:absolute;left:50%;top:62%;width:16%;height:30%;margin-left:-8%;opacity:0;transition:opacity .3s;
+    background:#1f3a68;clip-path:polygon(30% 0,70% 0,60% 18%,85% 78%,50% 100%,15% 78%,40% 18%)}
+  [data-mode="serious"] .mg-sprite{filter:grayscale(1) drop-shadow(3px 3px 0 rgba(20,33,61,.2))}
+  [data-mode="serious"] .mg-sprite::after{opacity:1}
+  [data-mode="serious"] .mg-bubble{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-style:italic;border-width:1px;border-radius:3px;box-shadow:none}
+  [data-mode="serious"] .mg-bubble::after{border-width:1px}
+  [data-mode="serious"] .mg-bubble,[data-mode="serious"] .mg-bubble.end{background:var(--surface);color:var(--fg);border-color:var(--edge)}
+  [data-mode="serious"] .mg-bubble::after,[data-mode="serious"] .mg-bubble.end::after{background:var(--surface);border-color:var(--edge)}
+  [data-mode="serious"] .mg-x{color:var(--fg)}
   .mg-sprite:hover{transform:scale(1.12) rotate(-4deg)}
   .mg.jump .mg-sprite{animation:mg-jump .5s ease-out 3}
   @keyframes mg-jump{0%,100%{transform:translateY(0)}40%{transform:translateY(-22px)}}
@@ -101,7 +135,7 @@
     if (shown && !bubble.classList.contains('off')) text.textContent = t(shown);
   }
   labels();
-  new MutationObserver(labels).observe(root, { attributes: true, attributeFilter: ['lang'] });
+  new MutationObserver(labels).observe(root, { attributes: true, attributeFilter: ['lang', 'data-mode'] });
 
   // ── scroll ──
   let lastY = window.scrollY, milestone = -1;

@@ -236,3 +236,55 @@ button.btn{font-family:var(--body)}
 .promo-play{left:50%;top:50%;transform:translate(-50%,-50%);font-size:17px;padding:12px 20px;display:none}
 .promo.paused .promo-play{display:inline-flex}
 .promo .sticker{position:absolute;left:-18px;top:26px;z-index:2;transform:rotate(-8deg);font-size:14px}
+
+/* ── serious mode: same studio, corporate costume (toggled by #mode-toggle) ── */
+.mode-btn{display:flex;gap:6px;padding:0 12px}
+.mode-txt{font-size:12px}
+.ns-toast{
+  position:fixed;left:50%;top:50%;z-index:60;transform:translate(-50%,-50%) scale(.6);opacity:0;pointer-events:none;cursor:pointer;
+  width:min(440px,calc(100% - 40px));text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;
+  background:var(--surface);color:var(--fg);border:var(--line);border-radius:30px;
+  padding:34px 30px 30px;box-shadow:8px 8px 0 var(--violet);
+  transition:opacity .25s ease, transform .4s cubic-bezier(.2,.9,.3,1.4);
+}
+.ns-toast.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+.ns-toast-emoji{font-size:64px;line-height:1;margin-bottom:6px}
+.ns-toast strong{font-family:var(--display);font-weight:400;font-size:clamp(26px,6vw,34px);line-height:1.1}
+.ns-toast-sub{font-size:18px;font-weight:600;color:var(--fg-soft)}
+:root[data-mode="serious"]{
+  --bg:#f6f6f3;--surface:#ffffff;--fg:#14213d;--fg-soft:#4a5568;--edge:#c9ced6;--shadow:transparent;
+  --mint:#eef1f4;--sky:#eef1f4;--pink:#eef1f4;--lilac:#e8ebf0;--story:#eceae4;--gold:#eceae4;--peach:#eceae4;--sage:#eef1f4;--acorn:#eceae4;
+  --band:#14213d;--footer:#14213d;--violet:#1f3a68;--sun:#e4e7ec;--candy:#e4e7ec;--ink:#14213d;
+  --line:1px solid var(--edge);--pop:none;--radius:3px;
+  --display:Georgia,'Times New Roman',Times,serif;--body:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+:root[data-mode="serious"][data-theme="dark"]{
+  --bg:#0f1620;--surface:#16202c;--fg:#e6e9ee;--fg-soft:#9aa5b4;--edge:#2c3848;
+  --mint:#1a2533;--sky:#1a2533;--pink:#1a2533;--lilac:#1c2838;--story:#18222e;--gold:#18222e;--peach:#18222e;--sage:#1a2533;--acorn:#18222e;
+  --band:#0a1018;--footer:#0a1018;--violet:#8fb3e8;--sun:#2a3646;--candy:#2a3646;--ink:#e6e9ee;
+}
+@media (prefers-color-scheme:dark){
+  :root[data-mode="serious"]:not([data-theme="light"]){
+    --bg:#0f1620;--surface:#16202c;--fg:#e6e9ee;--fg-soft:#9aa5b4;--edge:#2c3848;
+    --mint:#1a2533;--sky:#1a2533;--pink:#1a2533;--lilac:#1c2838;--story:#18222e;--gold:#18222e;--peach:#18222e;--sage:#1a2533;--acorn:#18222e;
+    --band:#0a1018;--footer:#0a1018;--violet:#8fb3e8;--sun:#2a3646;--candy:#2a3646;--ink:#e6e9ee;
+  }
+}
+[data-mode="serious"] body *:not(.mg):not(.mg *):not(.marquee-track):not(.ns-toast){transform:none!important;animation:none!important;box-shadow:none!important}
+[data-mode="serious"] body *:not(.mg *){border-radius:3px!important}
+[data-mode="serious"] .marquee{transform:none;margin:0}
+[data-mode="serious"] .marquee-track{animation-duration:120s}
+[data-mode="serious"] .marquee span{font-family:var(--display);font-style:italic;color:#e6e9ee!important}
+[data-mode="serious"] .marquee span::after{content:"·";color:#9aa5b4}
+[data-mode="serious"] h1,[data-mode="serious"] h2,[data-mode="serious"] h3{font-weight:400;letter-spacing:-0.015em;line-height:1.1}
+[data-mode="serious"] .hl{background:none;color:var(--violet);padding:0;font-style:italic}
+[data-mode="serious"] :is(img,video){filter:grayscale(1) contrast(1.05)}
+[data-mode="serious"] .btn{font-weight:700;letter-spacing:.01em}
+[data-mode="serious"] .btn-violet,[data-mode="serious"] .btn-ink{background:var(--violet);color:#fff;border-color:var(--violet)}
+[data-mode="serious"][data-theme="dark"] .btn-violet,[data-mode="serious"][data-theme="dark"] .btn-ink{color:#0f1620}
+[data-mode="serious"] .sticker{font-family:var(--body)!important;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:11px!important;background:var(--surface)!important;color:var(--fg)!important}
+[data-mode="serious"] .logo span{color:var(--fg-soft)}
+[data-mode="serious"] .ns-toast{box-shadow:0 20px 60px rgba(20,33,61,.18)}
+[data-mode="serious"] .ns-toast strong{font-style:italic}
+:root[data-mode="serious"] body,:root[data-mode="serious"] body *:not(.ns-toast){transition:background-color .4s ease,color .4s ease,border-color .4s ease}
+@media (max-width:720px){.mode-txt{display:none}.mode-btn{padding:0 9px}}

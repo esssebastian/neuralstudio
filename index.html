@@ -90,6 +90,39 @@ fbq('track','PageView');
 .sticker-1{left:38%;top:-2%;transform:rotate(8deg)}
 .collage .sticker-2{right:-2%;bottom:6%;background:var(--candy);transform:rotate(-7deg)}
 
+/* ── hero flow ── */
+.hero-flow{list-style:none;display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 0;margin:0 0 26px;
+  background:var(--surface);border:3px solid var(--edge);border-radius:999px;padding:8px 18px;box-shadow:3px 3px 0 var(--shadow);transform:rotate(-1.5deg)}
+.hero-flow li{display:flex;align-items:center;gap:6px;white-space:nowrap;font-weight:800;font-size:14px}
+.hero-flow li + li::before{content:"→";color:var(--violet);margin:0 10px}
+.hero-flow i{font-style:normal;font-size:15px;line-height:1}
+
+/* ── strategy ── */
+.strategy{background:var(--peach);border-top:var(--line);border-bottom:var(--line)}
+.strat-grid{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;counter-reset:strat}
+.strat-step{position:relative;border:var(--line);border-radius:var(--radius);padding:28px 24px;box-shadow:var(--pop);background:var(--surface)}
+.strat-step:nth-child(1){background:var(--sky)}
+.strat-step:nth-child(2){background:var(--mint);transform:rotate(1deg)}
+.strat-step:nth-child(3){background:var(--lilac)}
+.strat-step:nth-child(4){background:var(--pink);transform:rotate(-1deg)}
+.strat-step:not(:last-child)::after{
+  content:"→";position:absolute;right:-24px;top:50%;transform:translateY(-50%);z-index:1;
+  font-family:var(--display);font-size:24px;color:var(--violet);
+}
+.strat-emoji{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--surface);border:var(--line);font-size:24px;margin-bottom:16px}
+.strat-step small{display:block;font-family:var(--display);font-size:13px;letter-spacing:.04em;color:var(--fg-soft);margin-bottom:4px}
+.strat-step h3{font-size:24px;margin-bottom:8px}
+.strat-step p{color:var(--fg-soft);font-weight:500;font-size:16px}
+.strat-cta{
+  display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-top:44px;
+  background:var(--sun);color:var(--ink);border:var(--line);border-radius:30px;
+  padding:36px 44px;box-shadow:8px 8px 0 var(--ink);
+}
+[data-theme="dark"] .strat-cta{border-color:var(--ink);box-shadow:8px 8px 0 var(--violet)}
+.strat-cta h3{font-size:clamp(26px,3vw,38px);max-width:640px}
+.strat-cta p{font-weight:600;margin-top:8px;max-width:620px;color:#3a3350}
+.strat-cta .btn{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:5px 5px 0 var(--violet)}
+
 /* ── marquee ── */
 .marquee{
   background:var(--band);color:#fff8ec;
@@ -360,6 +393,8 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
   .app,.app.flip{grid-template-columns:1fr}
   .app .app-art,.app.flip .app-art{order:0;border-right:0;border-left:0;border-bottom:var(--line);min-height:380px}
   .build-grid{grid-template-columns:1fr}
+  .strat-grid{grid-template-columns:1fr 1fr}
+  .strat-step:nth-child(2)::after{display:none}
   .timeline{grid-template-columns:1fr 1fr}
   .story-text{order:2}
 }
@@ -374,6 +409,15 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
   .hero{padding:44px 0 70px}
   .section{padding:84px 0}
   .builders{grid-template-columns:1fr}
+  .strat-grid{grid-template-columns:1fr;gap:34px}
+  .strat-step::after{display:block!important;content:"↓"!important;right:auto!important;left:50%;top:auto!important;bottom:-32px;transform:translateX(-50%)!important}
+  .strat-step:last-child::after{display:none!important}
+  .strat-step:nth-child(2),.strat-step:nth-child(4){transform:none}
+  .strat-cta{padding:28px 24px}
+  .hero-flow{flex-wrap:nowrap;padding:7px 14px;margin-bottom:20px}
+  .hero-flow li{font-size:12px}
+  .hero-flow li + li::before{margin:0 6px}
+  .hero-flow i{display:none}
   .film-list{grid-template-columns:1fr}
   .film h2{font-size:clamp(30px,8.2vw,44px)}
   .app-body{padding:30px 22px}
@@ -391,6 +435,9 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
   .badge-then{right:-2%}.badge-now{right:-2%}
 }
 @media (max-width:380px){
+  .hero-flow{padding:6px 10px}
+  .hero-flow li{font-size:11px}
+  .hero-flow li + li::before{margin:0 4px}
   .logo{font-size:19px}
   .nav .btn{padding:8px 11px;font-size:12px}
 }
@@ -413,6 +460,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
   <div class="nav-inner">
     <a href="/" class="logo" aria-label="Neural Studio home"><span>·</span>NS<span>·</span></a>
     <ul class="nav-links">
+      <li><a href="#strategy" data-i18n="nav_strategy">Strategy</a></li>
       <li><a href="#apps" data-i18n="nav_apps">Apps</a></li>
       <li><a href="#community" data-i18n="nav_community">Community</a></li>
       <li><a href="#about" data-i18n="nav_story">My story</a></li>
@@ -433,9 +481,15 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
 <section class="hero">
   <div class="container hero-grid">
     <div>
+      <ol class="hero-flow" aria-label="How we work: data, analysis, strategy, then we build">
+        <li><i aria-hidden="true">📊</i><span data-i18n="flow1">Data</span></li>
+        <li><i aria-hidden="true">🔍</i><span data-i18n="flow2">Analysis</span></li>
+        <li><i aria-hidden="true">🧭</i><span data-i18n="flow3">Strategy</span></li>
+        <li><i aria-hidden="true">🚀</i><span data-i18n="flow4">Build</span></li>
+      </ol>
       <h1 data-i18n="hero_h1">We create apps, games<span class="line2">and cool stuff.</span></h1>
       <p class="hero-sub" data-i18n="hero_sub">
-        <strong>Neural Studio</strong> is a small idea factory with a big appetite. We turn the ideas that won't leave us alone into apps, games and web apps people actually use, with characters you'll want to come back to every day.
+        <strong>Neural Studio</strong> is a small idea factory with a big appetite. We turn the ideas that won't leave us alone into apps, games and web apps people actually use. Nothing starts with a hunch: first the data, then the strategy, then the build.
       </p>
       <div class="hero-btns">
         <a href="#apps" class="btn btn-ink" data-i18n="hero_btn1">See our apps</a>
@@ -470,6 +524,49 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     <span data-i18n="mq1">App builders</span><span data-i18n="mq2">Service builders</span><span data-i18n="mq3">Product builders</span><span data-i18n="mq4">Personal builders</span>
   </div>
 </div>
+
+<!-- STRATEGY -->
+<section class="section strategy" id="strategy">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 data-i18n="st_h2">Data first.<br><span class="hl">Then we build.</span></h2>
+      <p data-i18n="st_p">Every app, game and web app you see here started the same way: not with a hunch, but with data. We study it, find the opportunity, turn it into a strategy, and only then build.</p>
+    </div>
+    <ol class="strat-grid">
+      <li class="strat-step reveal">
+        <div class="strat-emoji" aria-hidden="true">📊</div>
+        <small>01</small>
+        <h3 data-i18n="s1_h">Data</h3>
+        <p data-i18n="s1_p">We collect the signals: what people search for, what they pay for, what they complain about in reviews, and what the competition is missing.</p>
+      </li>
+      <li class="strat-step reveal">
+        <div class="strat-emoji" aria-hidden="true">🔍</div>
+        <small>02</small>
+        <h3 data-i18n="s2_h">Analysis</h3>
+        <p data-i18n="s2_p">We dig into the numbers until the real problem and the real opportunity show up. No vanity metrics.</p>
+      </li>
+      <li class="strat-step reveal">
+        <div class="strat-emoji" aria-hidden="true">🧭</div>
+        <small>03</small>
+        <h3 data-i18n="s3_h">Strategy</h3>
+        <p data-i18n="s3_p">Who it's for, why they'll care, how it makes money and what to build first. One clear plan.</p>
+      </li>
+      <li class="strat-step reveal">
+        <div class="strat-emoji" aria-hidden="true">🚀</div>
+        <small>04</small>
+        <h3 data-i18n="s4_h">Build</h3>
+        <p data-i18n="s4_p">Then comes the app, the game or the web app. We launch, measure, and let the data tell us what's next.</p>
+      </li>
+    </ol>
+    <div class="strat-cta reveal">
+      <div>
+        <h3 data-i18n="sc_h">Your idea deserves a strategy too.</h3>
+        <p data-i18n="sc_p">Got an idea, a product or a business that needs direction? We help you read your data and build the strategy behind it, before you spend a single dollar building.</p>
+      </div>
+      <a href="https://www.linkedin.com/in/sebastian-hortua-leal/" target="_blank" rel="noopener" class="btn" id="strategy-cta" data-i18n="sc_btn">Let's talk strategy</a>
+    </div>
+  </div>
+</section>
 
 <!-- WHAT WE BUILD -->
 <section class="section">
@@ -986,12 +1083,30 @@ const { store, burst, reduceMotion } = window.NS;
 const ES = {
   title: 'Neural Studio — Creamos apps, juegos y cosas chéveres.',
   description: 'Neural Studio es el estudio de Sebastián Hortúa en Vancouver. Construimos apps y web apps, y tenemos una comunidad que ayuda a la gente a volverse builder de apps, servicios, productos y de sí misma.',
+  nav_strategy: 'Estrategia',
   nav_apps: 'Apps',
   nav_community: 'Comunidad',
   nav_story: 'Mi historia',
   nav_cta: 'Trabaja con nosotros',
   hero_h1: 'Creamos apps, juegos<span class="line2">y cosas chéveres.</span>',
-  hero_sub: '<strong>Neural Studio</strong> es una pequeña fábrica de ideas con mucha hambre. Convertimos las ideas que no nos dejan dormir en apps, juegos y web apps que la gente de verdad usa, con personajes a los que vas a querer volver todos los días.',
+  hero_sub: '<strong>Neural Studio</strong> es una pequeña fábrica de ideas con mucha hambre. Convertimos las ideas que no nos dejan dormir en apps, juegos y web apps que la gente de verdad usa. Nada arranca por corazonada: primero los datos, después la estrategia y luego la construcción.',
+  flow1: 'Datos',
+  flow2: 'Análisis',
+  flow3: 'Estrategia',
+  flow4: 'Construir',
+  st_h2: 'Primero los datos.<br><span class="hl">Después construimos.</span>',
+  st_p: 'Cada app, juego y web app que ves aquí empezó igual: no con una corazonada, sino con datos. Los estudiamos, encontramos la oportunidad, la volvemos estrategia y solo entonces construimos.',
+  s1_h: 'Datos',
+  s1_p: 'Recogemos las señales: qué busca la gente, por qué paga, de qué se queja en las reseñas y qué le falta a la competencia.',
+  s2_h: 'Análisis',
+  s2_p: 'Le metemos el diente a los números hasta que aparecen el problema real y la oportunidad real. Nada de métricas de vanidad.',
+  s3_h: 'Estrategia',
+  s3_p: 'Para quién es, por qué le va a importar, cómo gana plata y qué construir primero. Un plan claro.',
+  s4_h: 'Construcción',
+  s4_p: 'Ahí sí llega la app, el juego o la web app. Lanzamos, medimos y dejamos que los datos nos digan qué sigue.',
+  sc_h: 'Tu idea también merece una estrategia.',
+  sc_p: '¿Tienes una idea, un producto o un negocio que necesita rumbo? Te ayudamos a leer tus datos y a armar la estrategia detrás, antes de gastar un solo peso construyendo.',
+  sc_btn: 'Hablemos de estrategia',
   hero_btn1: 'Ver nuestras apps',
   hero_btn2: 'Trabaja con nosotros',
   sticker1: '9 apps<br>creadas',
@@ -1122,6 +1237,46 @@ const ES = {
   f_mac: 'Todas las apps'
 };
 
+// ── Serious mode copy (the 👔 button): same studio, corporate costume ──
+const SERIOUS = {
+  en: {
+    nav_cta: 'Contact sales',
+    hero_h1: 'We deliver scalable<span class="line2">digital solutions.</span>',
+    hero_sub: '<strong>Neural Studio</strong> is a results-driven organization that leverages data-informed methodologies to deliver best-in-class applications, games and web platforms that maximize stakeholder value. (Yes, we can talk like this too.)',
+    hero_btn1: 'View portfolio',
+    hero_btn2: 'Schedule a call',
+    sticker1: '9 deliverables<br>shipped',
+    sticker2: 'Q4<br>aligned',
+    mq1: 'Synergy', mq2: 'Scalability', mq3: 'Stakeholder value', mq4: 'Best practices',
+    st_h2: 'A data-driven<br><span class="hl">methodology.</span>',
+    sc_btn: 'Request a consultation',
+    build_h2: 'Our core<br><span class="hl">competencies.</span>',
+    film_h2: 'Quarterly<br><span class="hl">highlights.</span>',
+    apps_h2: 'Product <span class="hl-violet">portfolio.</span>',
+    com_h2: 'Professional development <span class="hl">program.</span>',
+    contact_h2: 'Let\'s schedule <span class="hl">a meeting.</span>',
+    contact_btn: 'Connect on LinkedIn'
+  },
+  es: {
+    nav_cta: 'Contactar ventas',
+    hero_h1: 'Entregamos soluciones<span class="line2">digitales escalables.</span>',
+    hero_sub: '<strong>Neural Studio</strong> es una organización orientada a resultados que apalanca metodologías basadas en datos para entregar aplicaciones, juegos y plataformas web de clase mundial que maximizan el valor para los grupos de interés. (Sí, también sabemos hablar así).',
+    hero_btn1: 'Ver portafolio',
+    hero_btn2: 'Agendar reunión',
+    sticker1: '9 entregables<br>lanzados',
+    sticker2: 'Alineados<br>al Q4',
+    mq1: 'Sinergia', mq2: 'Escalabilidad', mq3: 'Valor agregado', mq4: 'Mejores prácticas',
+    st_h2: 'Una metodología<br><span class="hl">basada en datos.</span>',
+    sc_btn: 'Solicitar una consultoría',
+    build_h2: 'Nuestras competencias<br><span class="hl">clave.</span>',
+    film_h2: 'Resultados<br><span class="hl">del trimestre.</span>',
+    apps_h2: 'Portafolio de <span class="hl-violet">productos.</span>',
+    com_h2: 'Programa de <span class="hl">desarrollo profesional.</span>',
+    contact_h2: 'Agendemos <span class="hl">una reunión.</span>',
+    contact_btn: 'Conectar en LinkedIn'
+  }
+};
+
 const metaDesc = document.querySelector('meta[name="description"]');
 const textNodes = [...document.querySelectorAll('[data-i18n]')];
 const altNodes = [...document.querySelectorAll('[data-i18n-alt]')];
@@ -1131,7 +1286,8 @@ altNodes.forEach(n => { EN[n.dataset.i18nAlt] = n.alt; });
 
 const langBtn = document.getElementById('lang-toggle');
 function setLang(lang){
-  const dict = lang === 'es' ? ES : EN;
+  const base = lang === 'es' ? ES : EN;
+  const dict = root.dataset.mode === 'serious' ? { ...base, ...SERIOUS[lang] } : base;
   textNodes.forEach(n => { const v = dict[n.dataset.i18n]; if (v != null) n.innerHTML = v; });
   altNodes.forEach(n => { const v = dict[n.dataset.i18nAlt]; if (v != null) n.alt = v; });
   document.title = dict.title;
@@ -1142,6 +1298,7 @@ function setLang(lang){
   window.NS.labelTheme();
 }
 setLang(root.lang === 'es' ? 'es' : 'en');
+document.addEventListener('ns:mode', () => setLang(root.lang === 'es' ? 'es' : 'en'));
 langBtn.addEventListener('click', () => {
   const next = root.lang === 'es' ? 'en' : 'es';
   setLang(next); store.set('ns-lang', next);
@@ -1150,7 +1307,7 @@ langBtn.addEventListener('click', () => {
 // Hero loops stay paused for reduced motion
 if (reduceMotion) document.querySelectorAll('video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
 
-document.querySelectorAll('[data-download], #linkedin-cta, #community-cta').forEach(a => {
+document.querySelectorAll('[data-download], #linkedin-cta, #community-cta, #strategy-cta').forEach(a => {
   a.addEventListener('click', e => {
     burst(e.clientX || innerWidth / 2, e.clientY || innerHeight / 2);
     if (!window.fbq) return;
