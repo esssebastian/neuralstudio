@@ -117,7 +117,8 @@ section{scroll-margin-top:90px}
 }
 
 /* apps */
-.apps-row{display:grid;grid-template-columns:repeat(10,1fr);gap:16px}
+.apps-row{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+.apps-row .app-tile{flex:0 0 calc((100% - 80px) / 6)}
 .app-tile{display:block;text-decoration:none;text-align:center}
 .app-tile img{width:100%;aspect-ratio:1;border-radius:24%;border:var(--line);box-shadow:4px 4px 0 var(--shadow);transition:transform .25s cubic-bezier(.2,.9,.3,1.4)}
 .app-tile:nth-child(odd) img{transform:rotate(-4deg)}
@@ -146,7 +147,8 @@ section{scroll-margin-top:90px}
 @media (max-width:1000px){
   .me-grid{grid-template-columns:1fr;gap:56px}
   .facts-grid{grid-template-columns:1fr 1fr}
-  .apps-row{grid-template-columns:repeat(5,1fr);max-width:560px}
+  .apps-row{max-width:560px}
+  .apps-row .app-tile{flex-basis:calc((100% - 64px) / 5)}
   .beliefs{grid-template-columns:1fr}
 }
 @media (max-width:720px){
@@ -221,7 +223,7 @@ section{scroll-margin-top:90px}
     <div class="fact"><b>17+</b><span data-i18n="f1">years in marketing, retail and banking</span></div>
     <div class="fact"><b>68</b><span data-i18n="f2">stores I bought for at Cencosud</span></div>
     <div class="fact"><b>2M+</b><span data-i18n="f3">customers reached with my campaigns</span></div>
-    <div class="fact"><b>10</b><span data-i18n="f4">apps built since leaving the office</span></div>
+    <div class="fact"><b>11</b><span data-i18n="f4">apps and games built since leaving the office</span></div>
   </div>
 </div>
 
@@ -299,10 +301,11 @@ section{scroll-margin-top:90px}
   <div class="container">
     <div class="head reveal">
       <h2 data-i18n="built_h2">What I've <span class="hl-violet">built so far.</span></h2>
-      <p data-i18n="built_p">Ten apps and counting. Tap one to see how it works.</p>
+      <p data-i18n="built_p">Ten apps, one game and counting. Tap one to see how it works.</p>
     </div>
     <div class="apps-row reveal">
       <a class="app-tile" href="/apps/focus-mate/"><img src="/images/apps/focus-mate.png" alt=""><span>Focus Mate</span></a>
+      <a class="app-tile" href="/apps/mochis-big-city/"><img src="/images/apps/mochis-big-city.png" alt="" style="image-rendering:pixelated"><span>Mochi's Big City</span></a>
       <a class="app-tile" href="/apps/panda-streaks/"><img src="/images/apps/panda-streaks.png" alt=""><span>Panda Streaks</span></a>
       <a class="app-tile" href="/apps/cringe-to-star/"><img src="/images/apps/cringe-to-star.png" alt=""><span>Cringe to Star</span></a>
       <a class="app-tile" href="/apps/golden-abs/"><img src="/images/apps/golden-abs.png" alt=""><span>Golden Abs</span></a>
@@ -388,7 +391,7 @@ const ES = {
   btn_story: 'Leer mi historia', btn_li: 'Salúdame en LinkedIn',
   photo_alt: 'Sebastián Hortúa recostado en una pared de baldosas de noche, con una bebida en la mano',
   st_1: 'Builder<br>ahora', st_2: '<s>Man de oficina</s>',
-  f1: 'años en marketing, retail y banca', f2: 'tiendas para las que compraba en Cencosud', f3: 'clientes alcanzados con mis campañas', f4: 'apps construidas desde que dejé la oficina',
+  f1: 'años en marketing, retail y banca', f2: 'tiendas para las que compraba en Cencosud', f3: 'clientes alcanzados con mis campañas', f4: 'apps y juegos construidos desde que dejé la oficina',
   story_h2: 'El camino largo <span class="hl">a construir.</span>',
   story_p: 'Cada trabajo me enseñó algo que uso hoy. Ninguno me dejó construir mis propias ideas.',
   c1_role: 'Trade marketing', c1_h: 'Mi primer trabajo de oficina.',
@@ -406,7 +409,7 @@ const ES = {
   turn_h2: 'Las buenas intenciones <span class="hl">no construyeron nada.</span>',
   turn_p: 'Durante años tuve las ideas pero no la valentía, ni el tiempo, ni "el momento correcto". Lo que cambió no fue el talento. Simplemente empecé a lanzar cosas pequeñas, en público, antes de sentirlas listas. Cada una hizo más fácil la siguiente.',
   quote: '"Tu experiencia no es un peso. Es tu ventaja injusta."',
-  built_h2: 'Lo que he <span class="hl-violet">construido.</span>', built_p: 'Diez apps y contando. Toca una para ver cómo funciona.',
+  built_h2: 'Lo que he <span class="hl-violet">construido.</span>', built_p: 'Diez apps, un juego y contando. Toca una para ver cómo funciona.',
   bel_h2: 'En lo que <span class="hl">creo.</span>',
   b1_h: 'Lanza antes de estar listo.', b1_p: 'Algo pequeño en manos de la gente te enseña más que un plan perfecto en un cajón.',
   b2_h: 'Muestra tu trabajo.', b2_p: 'Habla a la cámara, comparte tus avances, muestra lo que vales. El cringe pasa. Los resultados se quedan.',
