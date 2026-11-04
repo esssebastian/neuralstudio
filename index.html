@@ -237,6 +237,8 @@ section{scroll-margin-top:90px}
 .app-posture{background:var(--sky)}
 .app-posture .app-art,.app-face .app-art{background:radial-gradient(120% 90% at 30% 10%,#3a2a8a 0%,var(--night) 70%)}
 .app-face{background:var(--pink)}
+.app-focus{background:var(--sky)}
+.app-focus .app-art{background:#2a2560}
 .app-squirrel{background:var(--acorn)}
 .app-squirrel .app-art{background:#f4c48e}
 .app-mochi{background:var(--lilac)}
@@ -499,7 +501,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
 
     <div class="collage" aria-hidden="true">
       <div class="tile tile-panda">
-        <video src="/images/apps/panda-streaks-loop.mp4" poster="/images/apps/panda-streaks-poster.jpg" autoplay muted loop playsinline></video>
+        <video src="/images/apps/focus-mate-loop.mp4" poster="/images/apps/focus-mate-poster.jpg" autoplay muted loop playsinline></video>
       </div>
       <div class="tile tile-star">
         <video src="/images/apps/cringe-to-star-loop.mp4" poster="/images/apps/cringe-to-star-poster.jpg" autoplay muted loop playsinline></video>
@@ -510,9 +512,9 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
       <div class="tile tile-squirrel">
         <video src="/images/apps/nerd-squirrel-loop.mp4" poster="/images/apps/nerd-squirrel-poster.jpg" autoplay muted loop playsinline></video>
       </div>
-      <div class="float-icon fi-2"><img src="/images/apps/dr-panda.png" alt=""></div>
+      <div class="float-icon fi-2"><img src="/images/apps/panda-streaks.png" alt=""></div>
       <div class="float-icon fi-3"><img src="/images/apps/fix-my-face.png" alt=""></div>
-      <div class="sticker sticker-1" data-i18n="sticker1">9 apps<br>built</div>
+      <div class="sticker sticker-1" data-i18n="sticker1">10 apps<br>built</div>
       <div class="sticker sticker-2" data-i18n="sticker2">Shipped,<br>not pitched</div>
     </div>
   </div>
@@ -607,7 +609,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
         <li><a href="/apps/panda-streaks/"><img src="/images/apps/panda-streaks.png" alt=""><span>Panda Streaks</span></a></li>
         <li><a href="/apps/nerd-squirrel/"><img src="/images/apps/nerd-squirrel.png" alt=""><span>Nerd Squirrel</span></a></li>
       </ul>
-      <a href="#apps" class="film-all" data-i18n="film_all">See all 9 apps →</a>
+      <a href="#apps" class="film-all" data-i18n="film_all">See all 10 apps →</a>
     </div>
     <div class="reveal">
       <div class="promo" data-promo="neural-studio">
@@ -628,8 +630,41 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
       <p data-i18n="apps_p">Small apps with big personalities. Each one started as a "what if…" on a random Tuesday.</p>
     </div>
 
+    <!-- Focus Mate -->
+    <article class="app app-focus reveal" id="focus-mate">
+      <div class="app-art">
+        <img class="cover" src="/images/apps/focus-mate-hero.jpg" alt="Bloop, Hoot and Lumo, the three Focus Mate pets" data-i18n-alt="fmate_alt" loading="lazy">
+        <div class="phone phone-a"><img src="/images/apps/focus-mate-1.jpg" alt="Focus Mate focus session" loading="lazy"></div>
+        <div class="phone phone-b"><img src="/images/apps/focus-mate-3.jpg" alt="Focus Mate goals for today" loading="lazy"></div>
+      </div>
+      <div class="app-body">
+        <div class="app-top">
+          <img src="/images/apps/focus-mate.png" alt="Focus Mate app icon" loading="lazy">
+          <div>
+            <h3><a href="/apps/focus-mate/" style="text-decoration:none">Focus Mate</a></h3>
+            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_focus">Focus</span><span class="pill" data-i18n="pill_new">New ✨</span></div>
+          </div>
+        </div>
+        <p class="app-tagline" data-i18n="fmate_tag">Your apps stay locked until today's goals are done. A focus mate cheers you on.</p>
+        <p class="how-label" data-i18n="how">How it works</p>
+        <ol class="steps">
+          <li><span data-i18n="fmate_1"><strong>Set today's goals.</strong> Write down the few things that matter today: reading, a workout, that report you keep pushing.</span></li>
+          <li><span data-i18n="fmate_2"><strong>Lock your distractions.</strong> Pick the apps that steal your day. They stay locked until your goals are done.</span></li>
+          <li><span data-i18n="fmate_3"><strong>Focus, finish and grow.</strong> Start a focus session with your mate, check off your goals and watch Hoot, Bloop or Lumo grow.</span></li>
+        </ol>
+        <div class="app-cta">
+          <span class="btn btn-soon" aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
+            <span data-i18n="soon">Coming soon to the App Store</span>
+          </span>
+          <span class="app-note" data-i18n="mochi_note">Almost ready</span>
+        </div>
+        <p class="app-links"><a href="/apps/focus-mate/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="/apps/focus-mate/privacy/" data-i18n="privacy_link">Privacy</a></p>
+      </div>
+    </article>
+
     <!-- Panda Streaks -->
-    <article class="app app-panda reveal" id="panda-streaks">
+    <article class="app app-panda flip reveal" id="panda-streaks">
       <div class="app-art">
         <img class="cover" src="/images/apps/panda-streaks-header.jpg" alt="The Panda Streaks pandas celebrating in a bamboo field" data-i18n-alt="ps_alt" loading="lazy">
         <div class="phone phone-a"><img src="/images/apps/panda-streaks-1.jpg" alt="Panda Streaks home screen with daily goals" loading="lazy"></div>
@@ -662,7 +697,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Cringe to Star -->
-    <article class="app app-star flip reveal" id="cringe-to-star">
+    <article class="app app-star reveal" id="cringe-to-star">
       <div class="app-art">
         <img class="cover" src="/images/apps/cringe-to-star-header.jpg" alt="Two characters going from hiding behind their phones to performing on stage" data-i18n-alt="cs_alt" loading="lazy">
         <div class="phone phone-a"><img src="/images/apps/cringe-to-star-1.jpg" alt="Cringe to Star daily mission screen" loading="lazy"></div>
@@ -695,7 +730,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Golden Abs -->
-    <article class="app app-golden reveal" id="golden-abs">
+    <article class="app app-golden flip reveal" id="golden-abs">
       <div class="app-art">
         <div class="journey">
           <figure><video src="/images/apps/golden-abs-day1.mp4" poster="/images/apps/golden-abs-1.jpg" autoplay muted loop playsinline aria-label="Wobbly beginner holding a shaky plank"></video><figcaption data-i18n="ga_cap1">Day 1</figcaption></figure>
@@ -730,7 +765,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Nerd Squirrel -->
-    <article class="app app-squirrel flip reveal" id="nerd-squirrel">
+    <article class="app app-squirrel reveal" id="nerd-squirrel">
       <div class="app-art">
         <img class="cover" src="/images/apps/nerd-squirrel-header.jpg" alt="The Nerd Squirrel treehouse getting cozier with each upgrade" data-i18n-alt="sq_alt" loading="lazy">
         <div class="phone phone-a"><img src="/images/apps/nerd-squirrel-1.jpg" alt="Nerd Squirrel focus timer" loading="lazy"></div>
@@ -763,7 +798,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Mochi Days -->
-    <article class="app app-mochi reveal" id="mochi-days">
+    <article class="app app-mochi flip reveal" id="mochi-days">
       <div class="app-art">
         <img class="cover" src="/images/apps/mochi-days-tomorrow.jpg" alt="Mochi, a fluffy lavender monster, jumping with excitement next to a calendar and a gift" data-i18n-alt="mochi_alt" loading="lazy">
         <div class="phone phone-a"><img src="/images/apps/mochi-days-1.jpg" alt="Mochi Days home screen with upcoming countdowns" loading="lazy"></div>
@@ -796,7 +831,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Outy -->
-    <article class="app app-outy flip reveal" id="outy">
+    <article class="app app-outy reveal" id="outy">
       <div class="app-art">
         <div class="phone phone-a"><img src="/images/apps/outy-1.jpg" alt="Outy: swipe through plans" loading="lazy"></div>
         <div class="phone phone-b"><img src="/images/apps/outy-3.jpg" alt="Outy: see who's going" loading="lazy"></div>
@@ -828,7 +863,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Calma -->
-    <article class="app app-calma reveal" id="calma">
+    <article class="app app-calma flip reveal" id="calma">
       <div class="app-art">
         <img class="cover" style="object-fit:contain" src="/images/apps/calma-square.jpg" alt="A calm cloud next to the four steps of Calma: who needs you, what's happening, breathe together, what to say" data-i18n-alt="calma_alt" loading="lazy">
       </div>
@@ -859,7 +894,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Posture Panda -->
-    <article class="app app-posture flip reveal" id="posture-panda">
+    <article class="app app-posture reveal" id="posture-panda">
       <div class="app-art">
         <div class="mac-shot"><img src="/images/apps/posture-panda-shot.jpg" alt="Posture Panda showing a posture alert on a Mac" loading="lazy"></div>
       </div>
@@ -890,7 +925,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Fix My Face -->
-    <article class="app app-face reveal" id="fix-my-face">
+    <article class="app app-face flip reveal" id="fix-my-face">
       <div class="app-art">
         <div class="mac-shot"><img src="/images/apps/fix-my-face-shot.jpg" alt="Fix My Face catching a frown on a Mac" loading="lazy"></div>
       </div>
@@ -1109,7 +1144,7 @@ const ES = {
   sc_btn: 'Hablemos de estrategia',
   hero_btn1: 'Ver nuestras apps',
   hero_btn2: 'Trabaja con nosotros',
-  sticker1: '9 apps<br>creadas',
+  sticker1: '10 apps<br>creadas',
   sticker2: 'Lanzadas,<br>no prometidas',
   mq1: 'Builders de apps',
   mq2: 'Builders de servicios',
@@ -1152,7 +1187,7 @@ const ES = {
   ga_3: '<strong>Pasa de Tambaleante a Dorado.</strong> Gana XP y mantén tu racha mientras tu personaje crece de Principiante Tambaleante a Core Dorado.',
   film_h2: 'Míralos<br><span class="hl">transformarse.</span>',
   film_p: 'De Cringe a Estrella. De Tambaleante a Dorado. De panda triste a Leyenda. De distraído a Listo. Nuestras apps tienen personajes que crecen cuando tú creces. Aquí van cuatro de ellos en 30 segundos.',
-  film_all: 'Ver las 9 apps →',
+  film_all: 'Ver las 10 apps →',
   film_st: 'Míralo ✨',
   play: 'Ver',
   pill_count: 'Cuentas regresivas',
@@ -1163,6 +1198,12 @@ const ES = {
   mochi_3: '<strong>Mochi se emociona contigo.</strong> Tranquilo a un mes, saltando el día antes y de fiesta el gran día.',
   mochi_note: 'Ya casi',
   pill_focus: 'Enfoque',
+  pill_new: 'Nueva ✨',
+  fmate_alt: 'Bloop, Hoot y Lumo, las tres mascotas de Focus Mate',
+  fmate_tag: 'Tus apps quedan bloqueadas hasta que cumplas las metas de hoy. Un compañero te echa porras.',
+  fmate_1: '<strong>Pon tus metas de hoy.</strong> Escribe las pocas cosas que importan hoy: leer, hacer ejercicio, ese informe que sigues aplazando.',
+  fmate_2: '<strong>Bloquea tus distracciones.</strong> Elige las apps que se roban tu día. Quedan bloqueadas hasta que cumplas tus metas.',
+  fmate_3: '<strong>Concéntrate, cumple y crece.</strong> Arranca una sesión de enfoque con tu compañero, tacha tus metas y mira crecer a Hoot, Bloop o Lumo.',
   sq_alt: 'La casa del árbol de Nerd Squirrel, cada vez más acogedora con cada mejora',
   sq_tag: 'Un temporizador pomodoro acogedor con un compañero de estudio que se concentra contigo.',
   sq_1: '<strong>Elige una tarea.</strong> Agrega lo que tienes que hacer y estímalo en sesiones de enfoque.',
@@ -1245,7 +1286,7 @@ const SERIOUS = {
     hero_sub: '<strong>Neural Studio</strong> is a results-driven organization that leverages data-informed methodologies to deliver best-in-class applications, games and web platforms that maximize stakeholder value. (Yes, we can talk like this too.)',
     hero_btn1: 'View portfolio',
     hero_btn2: 'Schedule a call',
-    sticker1: '9 deliverables<br>shipped',
+    sticker1: '10 deliverables<br>shipped',
     sticker2: 'Q4<br>aligned',
     mq1: 'Synergy', mq2: 'Scalability', mq3: 'Stakeholder value', mq4: 'Best practices',
     st_h2: 'A data-driven<br><span class="hl">methodology.</span>',
@@ -1263,7 +1304,7 @@ const SERIOUS = {
     hero_sub: '<strong>Neural Studio</strong> es una organización orientada a resultados que apalanca metodologías basadas en datos para entregar aplicaciones, juegos y plataformas web de clase mundial que maximizan el valor para los grupos de interés. (Sí, también sabemos hablar así).',
     hero_btn1: 'Ver portafolio',
     hero_btn2: 'Agendar reunión',
-    sticker1: '9 entregables<br>lanzados',
+    sticker1: '10 entregables<br>lanzados',
     sticker2: 'Alineados<br>al Q4',
     mq1: 'Sinergia', mq2: 'Escalabilidad', mq3: 'Valor agregado', mq4: 'Mejores prácticas',
     st_h2: 'Una metodología<br><span class="hl">basada en datos.</span>',
