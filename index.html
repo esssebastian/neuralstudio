@@ -314,6 +314,28 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
 .community-cta p{opacity:.9;font-weight:500;margin-top:8px;max-width:600px}
 .community-cta .btn{background:#fff;color:var(--ink);border-color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
 
+/* hub */
+.hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.hub-card{
+  position:relative;background:var(--app-bg);border:var(--line);border-radius:30px;padding:30px;
+  box-shadow:6px 6px 0 var(--shadow);display:flex;flex-direction:column;
+  transition:transform .25s cubic-bezier(.2,.9,.3,1.4);
+}
+.hub-card:nth-child(odd){transform:rotate(-1deg)}
+.hub-card:nth-child(even){transform:rotate(1deg)}
+.hub-card:hover{transform:rotate(0) translateY(-6px)}
+.hub-card .app-icon{width:96px;height:96px;margin-bottom:20px}
+.hub-card h2{font-size:30px}
+.hub-card p{color:var(--fg-soft);font-weight:600;margin:14px 0 24px}
+.hub-actions{margin-top:auto;display:flex;align-items:center;gap:18px;position:relative;z-index:1}
+.hub-link{position:absolute;inset:0;border-radius:30px}
+
+.hub-card .app-icon{border-radius:22%;border:var(--line);box-shadow:4px 4px 0 var(--shadow)}
+.text-link{font-weight:800;color:var(--violet);text-decoration:underline;text-underline-offset:3px}
+[data-theme="dark"] .text-link{color:#9d85ff}
+@media (max-width:1000px){.hub-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.hub-grid{grid-template-columns:1fr}}
+
 /* ── story ── */
 .story{background:var(--story);border-top:var(--line);border-bottom:var(--line);overflow:hidden}
 .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
@@ -641,389 +663,124 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
       <p data-i18n="apps_p">Small apps with big personalities. Each one started as a "what if…" on a random Tuesday.</p>
     </div>
 
-    <!-- Focus Mate -->
-    <article class="app app-focus reveal" id="focus-mate">
-      <div class="app-art">
-        <img class="cover" src="/images/apps/focus-mate-cover.jpg" alt="Bloop, Hoot and Lumo, the three Focus Mate pets, studying with headphones" data-i18n-alt="fmate_alt" loading="lazy">
-        <div class="phone phone-a"><img src="/images/apps/focus-mate-1.jpg" alt="Focus Mate focus session" loading="lazy"></div>
-        <div class="phone phone-b"><img src="/images/apps/focus-mate-3.jpg" alt="Focus Mate goals for today" loading="lazy"></div>
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/focus-mate.png" alt="Focus Mate app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/focus-mate/" style="text-decoration:none">Focus Mate</a></h3>
-            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_focus">Focus</span><span class="pill" data-i18n="pill_new">New ✨</span></div>
-          </div>
+    <div class="hub-grid"><article class="hub-card reveal" id="focus-mate" style="--app-bg:var(--sky)">
+        <a class="hub-link" href="/apps/focus-mate/" aria-label="Focus Mate"></a>
+        <img class="app-icon" src="/images/apps/focus-mate.png" alt="" width="512" height="512">
+        <h2>Focus Mate</h2>
+        <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_focus">Focus</span></div>
+        <p data-i18n="fmate_tag">Your apps stay locked until today's goals are done. A focus mate cheers you on.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/focus-mate/" data-i18n="hub_see">See the app</a>
+          <a class="text-link" href="/apps/focus-mate/privacy/" data-i18n="privacy_link">Privacy</a>
         </div>
-        <p class="app-tagline" data-i18n="fmate_tag">Your apps stay locked until today's goals are done. A focus mate cheers you on.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="fmate_1"><strong>Set today's goals.</strong> Write down the few things that matter today: reading, a workout, that report you keep pushing.</span></li>
-          <li><span data-i18n="fmate_2"><strong>Lock your distractions.</strong> Pick the apps that steal your day. They stay locked until your goals are done.</span></li>
-          <li><span data-i18n="fmate_3"><strong>Focus, finish and grow.</strong> Start a focus session with your mate, check off your goals and watch Hoot, Bloop or Lumo grow.</span></li>
-        </ol>
-        <div class="app-cta">
-          <span class="btn btn-soon" aria-disabled="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
-            <span data-i18n="soon">Coming soon to the App Store</span>
-          </span>
-          <span class="app-note" data-i18n="mochi_note">Almost ready</span>
+      </article><article class="hub-card reveal" id="mochis-big-city" style="--app-bg:var(--peach)">
+        <a class="hub-link" href="/apps/mochis-big-city/" aria-label="Mochi's Big City"></a>
+        <img class="app-icon" src="/images/apps/mochis-big-city.png" alt="" width="512" height="512" style="image-rendering:pixelated">
+        <h2>Mochi's Big City</h2>
+        <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_game">Game</span></div>
+        <p data-i18n="mbc_tag">Our first game: a pixel-art adventure about a little monster with no home and a very big dream.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/mochis-big-city/" data-i18n="hub_game">See the game</a>
         </div>
-        <p class="app-links"><a href="/apps/focus-mate/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="/apps/focus-mate/privacy/" data-i18n="privacy_link">Privacy</a></p>
-      </div>
-    </article>
-
-    <!-- Mochi's Big City -->
-    <article class="app app-game flip reveal" id="mochis-big-city">
-      <div class="app-art">
-        <img class="cover" src="/images/apps/mochis-big-city-cover.jpg" alt="Mochi on a ferry arriving in Brightport at sunset" data-i18n-alt="mbc_alt" loading="lazy">
-        <div class="game-shot"><img src="/images/apps/mochis-big-city-play-2.jpg" alt="Mochi's Big City gameplay in Brightport harbor" loading="lazy"></div>
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/mochis-big-city.png" alt="Mochi's Big City game icon" loading="lazy" style="image-rendering:pixelated">
-          <div>
-            <h3><a href="/apps/mochis-big-city/" style="text-decoration:none">Mochi's Big City</a></h3>
-            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_game">Game</span><span class="pill" data-i18n="pill_pixel">Pixel art</span></div>
-          </div>
+      </article><article class="hub-card reveal" id="ghost-notes" style="--app-bg:var(--mint)">
+        <a class="hub-link" href="/apps/ghost-notes/" aria-label="Ghost Notes"></a>
+        <img class="app-icon" src="/images/apps/ghost-notes.png" alt="" width="512" height="512">
+        <h2>Ghost Notes</h2>
+        <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_notes">Notes</span></div>
+        <p data-i18n="gn_tag">See-through notes that float over your calls, so you never look away.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/ghost-notes/" data-i18n="hub_see">See the app</a>
         </div>
-        <p class="app-tagline" data-i18n="mbc_tag">Our first game: a pixel-art adventure about a little monster with no home and a very big dream.</p>
-        <p class="how-label" data-i18n="how_play">How it plays</p>
-        <ol class="steps">
-          <li><span data-i18n="mbc_1"><strong>Escape Gloomwood Home.</strong> Sneak out at night past Snoots and Snorts, the grumpy guards.</span></li>
-          <li><span data-i18n="mbc_2"><strong>Work town to town.</strong> Deliver bread, catch fish, serve coffee and solve puzzles to pay for the next ride.</span></li>
-          <li><span data-i18n="mbc_3"><strong>Reach the Big City.</strong> Nine chapters, new friends, silly bosses and a mystery about posters signed “M.”</span></li>
-        </ol>
-        <div class="app-cta">
-          <span class="btn btn-soon" aria-disabled="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
-            <span data-i18n="soon">Coming soon to the App Store</span>
-          </span>
-          <span class="app-note" data-i18n="mbc_note">In TestFlight now</span>
+      </article><article class="hub-card reveal" id="panda-streaks" style="--app-bg:var(--mint)">
+        <a class="hub-link" href="/apps/panda-streaks/" aria-label="Panda Streaks"></a>
+        <img class="app-icon" src="/images/apps/panda-streaks.png" alt="" width="512" height="512">
+        <h2>Panda Streaks</h2>
+        <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_habits">Habits</span></div>
+        <p data-i18n="ps_tag">Your habits keep a little panda alive. No pressure.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/panda-streaks/" data-i18n="hub_see">See the app</a>
+          <a class="text-link" href="/apps/panda-streaks/privacy/" data-i18n="privacy_link">Privacy</a>
         </div>
-        <p class="app-links"><a href="/apps/mochis-big-city/" data-i18n="more_game">See the game page</a></p>
-      </div>
-    </article>
-
-    <!-- Ghost Notes -->
-    <article class="app app-ghost reveal" id="ghost-notes">
-      <div class="app-art">
-        <img class="cover" src="/images/apps/ghost-notes-2.jpg" alt="The Ghost Notes ghost taking notes in front of a video call" data-i18n-alt="gn_alt" loading="lazy">
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/ghost-notes.png" alt="Ghost Notes app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/ghost-notes/" style="text-decoration:none">Ghost Notes</a></h3>
-            <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_free">Free</span><span class="pill" data-i18n="pill_new">New ✨</span></div>
-          </div>
+      </article><article class="hub-card reveal" id="cringe-to-star" style="--app-bg:var(--lilac)">
+        <a class="hub-link" href="/apps/cringe-to-star/" aria-label="Cringe to Star"></a>
+        <img class="app-icon" src="/images/apps/cringe-to-star.png" alt="" width="512" height="512">
+        <h2>Cringe to Star</h2>
+        <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_conf">Confidence</span></div>
+        <p data-i18n="cs_tag">Scared of the camera? Same. Let's fix that, one tiny mission a day.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/cringe-to-star/" data-i18n="hub_see">See the app</a>
+          <a class="text-link" href="/apps/cringe-to-star/privacy/" data-i18n="privacy_link">Privacy</a>
         </div>
-        <p class="app-tagline" data-i18n="gn_tag">See-through notes that float over your calls, so you never look away.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="gn_1"><strong>Press ⌃⌥N.</strong> Your notes appear on top of every app, even a full-screen call.</span></li>
-          <li><span data-i18n="gn_2"><strong>Write while you talk.</strong> The window is see-through, so you keep seeing the person and the shared screen.</span></li>
-          <li><span data-i18n="gn_3"><strong>Become a ghost.</strong> Press ⌃⌥G and clicks pass straight through to the app behind.</span></li>
-        </ol>
-        <div class="app-cta">
-          <a class="btn btn-ink" href="/apps/ghost-notes/#download" data-gate="ghost-notes">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
-            <span data-i18n="mac_dl">Download for Mac</span>
-          </a>
-          <span class="app-note" data-i18n="mac_note">Free · macOS 14+</span>
+      </article><article class="hub-card reveal" id="golden-abs" style="--app-bg:var(--gold)">
+        <a class="hub-link" href="/apps/golden-abs/" aria-label="Golden Abs"></a>
+        <img class="app-icon" src="/images/apps/golden-abs.png" alt="" width="512" height="512">
+        <h2>Golden Abs</h2>
+        <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_core">Core</span></div>
+        <p data-i18n="ga_tag">180 days of core training. Your character gets stronger with you.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/golden-abs/" data-i18n="hub_see">See the app</a>
+          <a class="text-link" href="/apps/golden-abs/privacy/" data-i18n="privacy_link">Privacy</a>
         </div>
-        <p class="app-links"><a href="/apps/ghost-notes/" data-i18n="more_app">See the app page</a></p>
-      </div>
-    </article>
-
-    <!-- Panda Streaks -->
-    <article class="app app-panda flip reveal" id="panda-streaks">
-      <div class="app-art">
-        <img class="cover" src="/images/apps/panda-streaks-header.jpg" alt="The Panda Streaks pandas celebrating in a bamboo field" data-i18n-alt="ps_alt" loading="lazy">
-        <div class="phone phone-a"><img src="/images/apps/panda-streaks-1.jpg" alt="Panda Streaks home screen with daily goals" loading="lazy"></div>
-        <div class="phone phone-b"><img src="/images/apps/panda-streaks-2.jpg" alt="Panda Streaks level-up screen" loading="lazy"></div>
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/panda-streaks.png" alt="Panda Streaks app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/panda-streaks/" style="text-decoration:none">Panda Streaks</a></h3>
-            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_habits">Habits</span></div>
-          </div>
+      </article><article class="hub-card reveal" id="nerd-squirrel" style="--app-bg:var(--acorn)">
+        <a class="hub-link" href="/apps/nerd-squirrel/" aria-label="Nerd Squirrel"></a>
+        <img class="app-icon" src="/images/apps/nerd-squirrel.png" alt="" width="512" height="512">
+        <h2>Nerd Squirrel</h2>
+        <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_focus">Focus</span></div>
+        <p data-i18n="sq_tag">A cozy pomodoro timer with a study buddy who focuses with you.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/nerd-squirrel/" data-i18n="hub_see">See the app</a>
         </div>
-        <p class="app-tagline" data-i18n="ps_tag">Your habits keep a little panda alive. No pressure.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="ps_1"><strong>Add your daily goals.</strong> Read, drink water, move, whatever matters to you.</span></li>
-          <li><span data-i18n="ps_2"><strong>Check them off to feed your panda.</strong> Health, XP, confetti and a happy dance. Skip a day and your panda feels it.</span></li>
-          <li><span data-i18n="ps_3"><strong>Keep the streak, watch it grow.</strong> From baby, to young adventurer, to a grown-up with a bamboo crown.</span></li>
-        </ol>
-        <div class="app-cta">
-          <a class="btn btn-ink" data-download="panda-streaks" href="https://apps.apple.com/app/id6825644628">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
-            <span data-i18n="appstore">Download on the App Store</span>
-          </a>
-          <span class="app-note" data-i18n="review">Arriving now, in Apple review</span>
+      </article><article class="hub-card reveal" id="mochi-days" style="--app-bg:var(--lilac)">
+        <a class="hub-link" href="/apps/mochi-days/" aria-label="Mochi Days"></a>
+        <img class="app-icon" src="/images/apps/mochi-days.png" alt="" width="512" height="512">
+        <h2>Mochi Days</h2>
+        <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_count">Countdowns</span></div>
+        <p data-i18n="mochi_tag">Count down to the days you can't wait for, with a fluffy friend who gets excited with you.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/mochi-days/" data-i18n="hub_see">See the app</a>
+          
         </div>
-        <p class="app-links"><a href="/apps/panda-streaks/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="/apps/panda-streaks/privacy/" data-i18n="privacy_link">Privacy</a></p>
-      </div>
-    </article>
-
-    <!-- Cringe to Star -->
-    <article class="app app-star reveal" id="cringe-to-star">
-      <div class="app-art">
-        <img class="cover" src="/images/apps/cringe-to-star-header.jpg" alt="Two characters going from hiding behind their phones to performing on stage" data-i18n-alt="cs_alt" loading="lazy">
-        <div class="phone phone-a"><img src="/images/apps/cringe-to-star-1.jpg" alt="Cringe to Star daily mission screen" loading="lazy"></div>
-        <div class="phone phone-b"><img src="/images/apps/cringe-to-star-2.jpg" alt="Cringe to Star level-up screen" loading="lazy"></div>
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/cringe-to-star.png" alt="Cringe to Star app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/cringe-to-star/" style="text-decoration:none">Cringe to Star</a></h3>
-            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_conf">Confidence</span></div>
-          </div>
+      </article><article class="hub-card reveal" id="outy" style="--app-bg:var(--peach)">
+        <a class="hub-link" href="/apps/outy/" aria-label="Outy"></a>
+        <img class="app-icon" src="/images/apps/outy.png" alt="" width="512" height="512">
+        <h2>Outy</h2>
+        <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_plans">Plans</span></div>
+        <p data-i18n="outy_tag">Something to do. Right when you're free.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/outy/" data-i18n="hub_see">See the app</a>
+          <a class="text-link" href="https://outy.vercel.app/privacy" target="_blank" rel="noopener" data-i18n="privacy_link">Privacy</a>
         </div>
-        <p class="app-tagline" data-i18n="cs_tag">Scared of the camera? Same. Let's fix that, one tiny mission a day.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="cs_1"><strong>Pick your character.</strong> They start out Shy, hiding behind their phone, like most of us.</span></li>
-          <li><span data-i18n="cs_2"><strong>Do one small mission a day.</strong> It starts with practice in a private camera nobody sees, and builds up to posting.</span></li>
-          <li><span data-i18n="cs_3"><strong>Grow from Shy to Star.</strong> A 180-day path through Trying, Confident and Creator. We measure effort, never fame.</span></li>
-        </ol>
-        <div class="app-cta">
-          <a class="btn btn-ink" data-download="cringe-to-star" href="https://apps.apple.com/app/id6825671181">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
-            <span data-i18n="appstore">Download on the App Store</span>
-          </a>
-          <span class="app-note" data-i18n="review">Arriving now, in Apple review</span>
+      </article><article class="hub-card reveal" id="calma" style="--app-bg:var(--sage)">
+        <a class="hub-link" href="/apps/calma/" aria-label="Calma"></a>
+        <img class="app-icon" src="/images/apps/calma.png" alt="" width="512" height="512">
+        <h2>Calma</h2>
+        <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_parent">Parenting</span></div>
+        <p data-i18n="calma_tag">Calm words for the hardest moments of parenting.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/calma/" data-i18n="hub_see">See the app</a>
+          
         </div>
-        <p class="app-links"><a href="/apps/cringe-to-star/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="/apps/cringe-to-star/privacy/" data-i18n="privacy_link">Privacy</a></p>
-      </div>
-    </article>
-
-    <!-- Golden Abs -->
-    <article class="app app-golden flip reveal" id="golden-abs">
-      <div class="app-art">
-        <div class="journey">
-          <figure><video src="/images/apps/golden-abs-day1.mp4" poster="/images/apps/golden-abs-1.jpg" autoplay muted loop playsinline aria-label="Wobbly beginner holding a shaky plank"></video><figcaption data-i18n="ga_cap1">Day 1</figcaption></figure>
-          <figure><video src="/images/apps/golden-abs-day42.mp4" poster="/images/apps/golden-abs-2.jpg" autoplay muted loop playsinline aria-label="Steady core stage, standing confident after a workout"></video><figcaption data-i18n="ga_cap2">Day 42</figcaption></figure>
-          <figure><video src="/images/apps/golden-abs-loop.mp4" poster="/images/apps/golden-abs-3.jpg" autoplay muted loop playsinline aria-label="Golden Core stage with a gold medal and sparkles"></video><figcaption data-i18n="ga_cap3">Golden Core</figcaption></figure>
+      </article><article class="hub-card reveal" id="dr-panda" style="--app-bg:var(--sky)">
+        <a class="hub-link" href="/apps/posture-panda/" aria-label="Posture Panda"></a>
+        <img class="app-icon" src="/images/apps/dr-panda.png" alt="" width="512" height="512">
+        <h2>Posture Panda</h2>
+        <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_free">Free</span></div>
+        <p data-i18n="pp_tag">Sit up straight, without having to think about it.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/posture-panda/" data-i18n="hub_see">See the app</a>
+          <a class="text-link" href="/apps/privacy/" data-i18n="privacy_link">Privacy</a>
         </div>
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/golden-abs.png" alt="Golden Abs app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/golden-abs/" style="text-decoration:none">Golden Abs</a></h3>
-            <div class="pills"><span class="pill">iPhone</span><span class="pill">Core</span></div>
-          </div>
+      </article><article class="hub-card reveal" id="fix-my-face" style="--app-bg:var(--pink)">
+        <a class="hub-link" href="/apps/fix-my-face/" aria-label="Fix My Face"></a>
+        <img class="app-icon" src="/images/apps/fix-my-face.png" alt="" width="512" height="512">
+        <h2>Fix My Face</h2>
+        <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_free">Free</span></div>
+        <p data-i18n="fm_tag">Unclench. Your face carries more tension than you think.</p>
+        <div class="hub-actions">
+          <a class="btn btn-ink" href="/apps/fix-my-face/" data-i18n="hub_see">See the app</a>
+          <a class="text-link" href="/apps/privacy/" data-i18n="privacy_link">Privacy</a>
         </div>
-        <p class="app-tagline" data-i18n="ga_tag">180 days of core training. Your character gets stronger with you.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="ga_1"><strong>Take the plank test.</strong> One quick hold picks your level: beginner, intermediate or advanced.</span></li>
-          <li><span data-i18n="ga_2"><strong>Do a short workout a day.</strong> 8 to 12 minutes with follow-along demos, and your phone's camera counts your reps. Rest days count too.</span></li>
-          <li><span data-i18n="ga_3"><strong>Go from Wobbly to Golden.</strong> Earn XP and keep your streak while your character grows from Wobbly Beginner to Golden Core.</span></li>
-        </ol>
-        <div class="app-cta">
-          <a class="btn btn-ink" data-download="golden-abs" href="https://apps.apple.com/app/id6825869862">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
-            <span data-i18n="appstore">Download on the App Store</span>
-          </a>
-          <span class="app-note" data-i18n="review">Arriving now, in Apple review</span>
-        </div>
-        <p class="app-links"><a href="/apps/golden-abs/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="/apps/golden-abs/privacy/" data-i18n="privacy_link">Privacy</a></p>
-      </div>
-    </article>
-
-    <!-- Nerd Squirrel -->
-    <article class="app app-squirrel reveal" id="nerd-squirrel">
-      <div class="app-art">
-        <img class="cover" src="/images/apps/nerd-squirrel-header.jpg" alt="The Nerd Squirrel treehouse getting cozier with each upgrade" data-i18n-alt="sq_alt" loading="lazy">
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/nerd-squirrel.png" alt="Nerd Squirrel app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/nerd-squirrel/" style="text-decoration:none">Nerd Squirrel</a></h3>
-            <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_free">Free</span></div>
-          </div>
-        </div>
-        <p class="app-tagline" data-i18n="sq_tag">A cozy pomodoro timer with a study buddy who focuses with you.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="sq_1"><strong>Pick one task.</strong> Add what you need to get done and estimate it in focus sessions.</span></li>
-          <li><span data-i18n="sq_2"><strong>Focus with your buddy.</strong> 25 minutes with your squirrel studying by your side. The countdown lives in your menu bar.</span></li>
-          <li><span data-i18n="sq_3"><strong>Earn acorns, build a treehouse.</strong> Every focused minute earns an acorn for fairy lights, plants, a bookshelf and more.</span></li>
-        </ol>
-        <div class="app-cta">
-          <a class="btn btn-ink" href="/apps/nerd-squirrel/#download" data-gate="nerd-squirrel">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
-            <span data-i18n="mac_dl">Download for Mac</span>
-          </a>
-          <span class="app-note" data-i18n="mac_note">Free · macOS 14+</span>
-        </div>
-        <p class="app-links"><a href="/apps/nerd-squirrel/" data-i18n="more_app">See the app page</a></p>
-      </div>
-    </article>
-
-    <!-- Mochi Days -->
-    <article class="app app-mochi flip reveal" id="mochi-days">
-      <div class="app-art">
-        <video class="cover" src="/images/apps/mochi-days-loop.mp4" poster="/images/apps/mochi-days-loop-poster.jpg" autoplay muted loop playsinline aria-label="Mochi, a fluffy lavender monster, celebrating the big day"></video>
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/mochi-days.png" alt="Mochi Days app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/mochi-days/" style="text-decoration:none">Mochi Days</a></h3>
-            <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_count">Countdowns</span><span class="pill" data-i18n="pill_free">Free</span></div>
-          </div>
-        </div>
-        <p class="app-tagline" data-i18n="mochi_tag">Count down to the days you can't wait for, with a fluffy friend who gets excited with you.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="mochi_1"><strong>Add a date.</strong> A birthday, a trip, a concert or anything you can't wait for.</span></li>
-          <li><span data-i18n="mochi_2"><strong>Watch the countdown.</strong> Days, hours, minutes and seconds, live, with the next big day in your menu bar.</span></li>
-          <li><span data-i18n="mochi_3"><strong>Mochi gets excited with you.</strong> Calm a month out, bouncing the day before, a full party on the big day.</span></li>
-        </ol>
-        <div class="app-cta">
-          <a class="btn btn-ink" href="/apps/mochi-days/#download" data-gate="mochi-days">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
-            <span data-i18n="mac_dl">Download for Mac</span>
-          </a>
-          <span class="app-note" data-i18n="mac_note">Free · macOS 14+</span>
-        </div>
-        <p class="app-links"><a href="/apps/mochi-days/" data-i18n="more_app">See the app page</a></p>
-      </div>
-    </article>
-
-    <!-- Outy -->
-    <article class="app app-outy reveal" id="outy">
-      <div class="app-art">
-        <div class="phone phone-a"><img src="/images/apps/outy-1.jpg" alt="Outy: swipe through plans" loading="lazy"></div>
-        <div class="phone phone-b"><img src="/images/apps/outy-3.jpg" alt="Outy: see who's going" loading="lazy"></div>
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/outy.png" alt="Outy app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/outy/" style="text-decoration:none">Outy</a></h3>
-            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_plans">Plans</span></div>
-          </div>
-        </div>
-        <p class="app-tagline" data-i18n="outy_tag">Something to do. Right when you're free.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="outy_1"><strong>Tell it when you're free.</strong> Weekdays, weekends or a specific day, anywhere in British Columbia.</span></li>
-          <li><span data-i18n="outy_2"><strong>Swipe through plans.</strong> Right to save, left to skip. Can't decide? Shake your phone and Outy picks one.</span></li>
-          <li><span data-i18n="outy_3"><strong>Go, with people.</strong> Turn a plan into a meetup, chat with who's going and find it on the map.</span></li>
-        </ol>
-        <div class="app-cta">
-          <span class="btn btn-soon" aria-disabled="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
-            <span data-i18n="soon">Coming soon to the App Store</span>
-          </span>
-          <a class="app-note" href="https://outy.vercel.app" target="_blank" rel="noopener" data-i18n="outy_site">Visit the Outy website</a>
-        </div>
-        <p class="app-links"><a href="/apps/outy/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="https://outy.vercel.app/privacy" target="_blank" rel="noopener" data-i18n="privacy_link">Privacy</a></p>
-      </div>
-    </article>
-
-    <!-- Calma -->
-    <article class="app app-calma flip reveal" id="calma">
-      <div class="app-art">
-        <img class="cover" style="object-fit:contain" src="/images/apps/calma-square.jpg" alt="A calm cloud next to the four steps of Calma: who needs you, what's happening, breathe together, what to say" data-i18n-alt="calma_alt" loading="lazy">
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/calma.png" alt="Calma app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/calma/" style="text-decoration:none">Calma</a></h3>
-            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_parenting">Parenting</span></div>
-          </div>
-        </div>
-        <p class="app-tagline" data-i18n="calma_tag">Calm words for the hardest moments of parenting.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="calma_1"><strong>Who needs you?</strong> Pick the child who's having a hard time.</span></li>
-          <li><span data-i18n="calma_2"><strong>What's happening?</strong> Choose the situation, so Calma finds the right words.</span></li>
-          <li><span data-i18n="calma_3"><strong>Breathe, then say this.</strong> A short guided breath and a few calm lines to say, in English, Spanish or both.</span></li>
-        </ol>
-        <div class="app-cta">
-          <span class="btn btn-soon" aria-disabled="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
-            <span data-i18n="soon">Coming soon to the App Store</span>
-          </span>
-          <span class="app-note" data-i18n="calma_note">In development</span>
-        </div>
-        <p class="app-links"><a href="/apps/calma/" data-i18n="more_app">See the app page</a></p>
-      </div>
-    </article>
-
-    <!-- Posture Panda -->
-    <article class="app app-posture reveal" id="posture-panda">
-      <div class="app-art">
-        <div class="mac-shot"><img src="/images/apps/posture-panda-shot.jpg" alt="Posture Panda showing a posture alert on a Mac" loading="lazy"></div>
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/dr-panda.png" alt="Posture Panda app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/posture-panda/" style="text-decoration:none">Posture Panda</a></h3>
-            <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_free">Free</span></div>
-          </div>
-        </div>
-        <p class="app-tagline" data-i18n="pp_tag">Sit up straight, without having to think about it.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="pp_1"><strong>Calibrate once.</strong> Sit the way you want to sit and press a button.</span></li>
-          <li><span data-i18n="pp_2"><strong>It watches your posture.</strong> It tracks your head and shoulders right on your Mac. Slouch for 8 seconds and a banner pops up.</span></li>
-          <li><span data-i18n="pp_3"><strong>It reminds you to move.</strong> After 45 minutes of sitting, time to stand up and stretch.</span></li>
-        </ol>
-        <div class="app-cta">
-          <a class="btn btn-ink" href="/apps/posture-panda/#download" data-gate="posture-panda">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
-            <span data-i18n="mac_dl">Download for Mac</span>
-          </a>
-          <span class="app-note" data-i18n="pp_note">Your camera never leaves your Mac.</span>
-        </div>
-        <p class="app-links"><a href="/apps/posture-panda/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="/apps/privacy/" data-i18n="privacy_link">Privacy</a></p>
-      </div>
-    </article>
-
-    <!-- Fix My Face -->
-    <article class="app app-face flip reveal" id="fix-my-face">
-      <div class="app-art">
-        <div class="mac-shot"><img src="/images/apps/fix-my-face-shot.jpg" alt="Fix My Face catching a frown on a Mac" loading="lazy"></div>
-      </div>
-      <div class="app-body">
-        <div class="app-top">
-          <img src="/images/apps/fix-my-face.png" alt="Fix My Face app icon" loading="lazy">
-          <div>
-            <h3><a href="/apps/fix-my-face/" style="text-decoration:none">Fix My Face</a></h3>
-            <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_free">Free</span></div>
-          </div>
-        </div>
-        <p class="app-tagline" data-i18n="fm_tag">Unclench. Your face carries more tension than you think.</p>
-        <p class="how-label" data-i18n="how">How it works</p>
-        <ol class="steps">
-          <li><span data-i18n="fm_1"><strong>Learn your relaxed face.</strong> Calibrate once with a neutral expression.</span></li>
-          <li><span data-i18n="fm_2"><strong>It spots the frown.</strong> It notices lowered brows and a scrunched nose while you work.</span></li>
-          <li><span data-i18n="fm_3"><strong>A friendly nudge.</strong> Hold the frown and a banner reminds you to let go. It lives quietly in your menu bar.</span></li>
-        </ol>
-        <div class="app-cta">
-          <a class="btn btn-ink" href="/apps/fix-my-face/#download" data-gate="fix-my-face">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
-            <span data-i18n="mac_dl">Download for Mac</span>
-          </a>
-          <span class="app-note" data-i18n="fm_note">Free · macOS 11+</span>
-        </div>
-        <p class="app-links"><a href="/apps/fix-my-face/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="/apps/privacy/" data-i18n="privacy_link">Privacy</a></p>
-      </div>
-    </article>
+      </article></div>
   </div>
 </section>
 
@@ -1269,6 +1026,14 @@ const ES = {
   mochi_note: 'Ya casi',
   pill_focus: 'Enfoque',
   pill_new: 'Nueva ✨',
+  hub_see: 'Ver la app',
+  pill_conf: 'Confianza',
+  pill_core: 'Abdomen',
+  pill_habits: 'Hábitos',
+  pill_notes: 'Notas',
+  pill_parent: 'Crianza',
+  pill_plans: 'Planes',
+  hub_game: 'Ver el juego',
   pill_game: 'Juego',
   pill_pixel: 'Pixel art',
   how_play: 'Cómo se juega',
