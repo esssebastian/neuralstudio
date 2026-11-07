@@ -188,7 +188,7 @@ section{scroll-margin-top:90px}
 .app:last-child{margin-bottom:0}
 .app-art{position:relative;min-height:440px;border-right:var(--line);overflow:hidden}
 .app.flip .app-art{order:2;border-right:0;border-left:var(--line)}
-.app-art > img.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.app-art > img.cover,.app-art > video.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .phone{
   position:absolute;width:30%;bottom:-12%;
   border:3px solid var(--ink);border-radius:22px;overflow:hidden;box-shadow:5px 5px 0 var(--ink);
@@ -246,6 +246,8 @@ section{scroll-margin-top:90px}
 .game-shot{position:absolute;right:6%;bottom:6%;width:58%;border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:5px 5px 0 var(--ink);transform:rotate(3deg);transition:transform .35s cubic-bezier(.2,.9,.3,1.4)}
 .game-shot img{width:100%;height:auto;image-rendering:pixelated}
 .app-game:hover .game-shot{transform:rotate(0) translateY(-8px)}
+.app-ghost{background:var(--mint)}
+.app-ghost .app-art{background:#8fe3c3}
 .app-squirrel{background:var(--acorn)}
 .app-squirrel .app-art{background:#f4c48e}
 .app-mochi{background:var(--lilac)}
@@ -523,7 +525,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
       </div>
       <div class="float-icon fi-2"><img src="/images/apps/panda-streaks.png" alt=""></div>
       <div class="float-icon fi-3"><img src="/images/apps/mochis-big-city.png" alt="" style="image-rendering:pixelated"></div>
-      <div class="sticker sticker-1" data-i18n="sticker1">10 apps,<br>1 game</div>
+      <div class="sticker sticker-1" data-i18n="sticker1">11 apps,<br>1 game</div>
       <div class="sticker sticker-2" data-i18n="sticker2">Shipped,<br>not pitched</div>
     </div>
   </div>
@@ -704,8 +706,39 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
       </div>
     </article>
 
+    <!-- Ghost Notes -->
+    <article class="app app-ghost reveal" id="ghost-notes">
+      <div class="app-art">
+        <img class="cover" src="/images/apps/ghost-notes-2.jpg" alt="The Ghost Notes ghost taking notes in front of a video call" data-i18n-alt="gn_alt" loading="lazy">
+      </div>
+      <div class="app-body">
+        <div class="app-top">
+          <img src="/images/apps/ghost-notes.png" alt="Ghost Notes app icon" loading="lazy">
+          <div>
+            <h3><a href="/apps/ghost-notes/" style="text-decoration:none">Ghost Notes</a></h3>
+            <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_free">Free</span><span class="pill" data-i18n="pill_new">New ✨</span></div>
+          </div>
+        </div>
+        <p class="app-tagline" data-i18n="gn_tag">See-through notes that float over your calls, so you never look away.</p>
+        <p class="how-label" data-i18n="how">How it works</p>
+        <ol class="steps">
+          <li><span data-i18n="gn_1"><strong>Press ⌃⌥N.</strong> Your notes appear on top of every app, even a full-screen call.</span></li>
+          <li><span data-i18n="gn_2"><strong>Write while you talk.</strong> The window is see-through, so you keep seeing the person and the shared screen.</span></li>
+          <li><span data-i18n="gn_3"><strong>Become a ghost.</strong> Press ⌃⌥G and clicks pass straight through to the app behind.</span></li>
+        </ol>
+        <div class="app-cta">
+          <a class="btn btn-ink" href="/apps/ghost-notes/#download" data-gate="ghost-notes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+            <span data-i18n="mac_dl">Download for Mac</span>
+          </a>
+          <span class="app-note" data-i18n="mac_note">Free · macOS 14+</span>
+        </div>
+        <p class="app-links"><a href="/apps/ghost-notes/" data-i18n="more_app">See the app page</a></p>
+      </div>
+    </article>
+
     <!-- Panda Streaks -->
-    <article class="app app-panda reveal" id="panda-streaks">
+    <article class="app app-panda flip reveal" id="panda-streaks">
       <div class="app-art">
         <img class="cover" src="/images/apps/panda-streaks-header.jpg" alt="The Panda Streaks pandas celebrating in a bamboo field" data-i18n-alt="ps_alt" loading="lazy">
         <div class="phone phone-a"><img src="/images/apps/panda-streaks-1.jpg" alt="Panda Streaks home screen with daily goals" loading="lazy"></div>
@@ -738,7 +771,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Cringe to Star -->
-    <article class="app app-star flip reveal" id="cringe-to-star">
+    <article class="app app-star reveal" id="cringe-to-star">
       <div class="app-art">
         <img class="cover" src="/images/apps/cringe-to-star-header.jpg" alt="Two characters going from hiding behind their phones to performing on stage" data-i18n-alt="cs_alt" loading="lazy">
         <div class="phone phone-a"><img src="/images/apps/cringe-to-star-1.jpg" alt="Cringe to Star daily mission screen" loading="lazy"></div>
@@ -771,7 +804,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Golden Abs -->
-    <article class="app app-golden reveal" id="golden-abs">
+    <article class="app app-golden flip reveal" id="golden-abs">
       <div class="app-art">
         <div class="journey">
           <figure><video src="/images/apps/golden-abs-day1.mp4" poster="/images/apps/golden-abs-1.jpg" autoplay muted loop playsinline aria-label="Wobbly beginner holding a shaky plank"></video><figcaption data-i18n="ga_cap1">Day 1</figcaption></figure>
@@ -806,73 +839,69 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Nerd Squirrel -->
-    <article class="app app-squirrel flip reveal" id="nerd-squirrel">
+    <article class="app app-squirrel reveal" id="nerd-squirrel">
       <div class="app-art">
         <img class="cover" src="/images/apps/nerd-squirrel-header.jpg" alt="The Nerd Squirrel treehouse getting cozier with each upgrade" data-i18n-alt="sq_alt" loading="lazy">
-        <div class="phone phone-a"><img src="/images/apps/nerd-squirrel-1.jpg" alt="Nerd Squirrel focus timer" loading="lazy"></div>
-        <div class="phone phone-b"><img src="/images/apps/nerd-squirrel-3.jpg" alt="Nerd Squirrel treehouse upgrades" loading="lazy"></div>
       </div>
       <div class="app-body">
         <div class="app-top">
           <img src="/images/apps/nerd-squirrel.png" alt="Nerd Squirrel app icon" loading="lazy">
           <div>
             <h3><a href="/apps/nerd-squirrel/" style="text-decoration:none">Nerd Squirrel</a></h3>
-            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_focus">Focus</span></div>
+            <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_free">Free</span></div>
           </div>
         </div>
         <p class="app-tagline" data-i18n="sq_tag">A cozy pomodoro timer with a study buddy who focuses with you.</p>
         <p class="how-label" data-i18n="how">How it works</p>
         <ol class="steps">
           <li><span data-i18n="sq_1"><strong>Pick one task.</strong> Add what you need to get done and estimate it in focus sessions.</span></li>
-          <li><span data-i18n="sq_2"><strong>Focus with your buddy.</strong> 25 minutes with your squirrel studying by your side. Leave to scroll and it gets a little worried.</span></li>
+          <li><span data-i18n="sq_2"><strong>Focus with your buddy.</strong> 25 minutes with your squirrel studying by your side. The countdown lives in your menu bar.</span></li>
           <li><span data-i18n="sq_3"><strong>Earn acorns, build a treehouse.</strong> Every focused minute earns an acorn for fairy lights, plants, a bookshelf and more.</span></li>
         </ol>
         <div class="app-cta">
-          <a class="btn btn-ink" data-download="nerd-squirrel" href="https://apps.apple.com/app/id6825993216">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
-            <span data-i18n="appstore">Download on the App Store</span>
+          <a class="btn btn-ink" href="/apps/nerd-squirrel/#download" data-gate="nerd-squirrel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+            <span data-i18n="mac_dl">Download for Mac</span>
           </a>
-          <span class="app-note" data-i18n="review">Arriving now, in Apple review</span>
+          <span class="app-note" data-i18n="mac_note">Free · macOS 14+</span>
         </div>
-        <p class="app-links"><a href="/apps/nerd-squirrel/" data-i18n="more_app">See the app page</a><span aria-hidden="true">·</span><a href="/apps/nerd-squirrel/privacy/" data-i18n="privacy_link">Privacy</a></p>
+        <p class="app-links"><a href="/apps/nerd-squirrel/" data-i18n="more_app">See the app page</a></p>
       </div>
     </article>
 
     <!-- Mochi Days -->
-    <article class="app app-mochi reveal" id="mochi-days">
+    <article class="app app-mochi flip reveal" id="mochi-days">
       <div class="app-art">
-        <img class="cover" src="/images/apps/mochi-days-tomorrow.jpg" alt="Mochi, a fluffy lavender monster, jumping with excitement next to a calendar and a gift" data-i18n-alt="mochi_alt" loading="lazy">
-        <div class="phone phone-a"><img src="/images/apps/mochi-days-1.jpg" alt="Mochi Days home screen with upcoming countdowns" loading="lazy"></div>
-        <div class="phone phone-b"><img src="/images/apps/mochi-days-2.jpg" alt="Mochi Days live countdown" loading="lazy"></div>
+        <video class="cover" src="/images/apps/mochi-days-loop.mp4" poster="/images/apps/mochi-days-loop-poster.jpg" autoplay muted loop playsinline aria-label="Mochi, a fluffy lavender monster, celebrating the big day"></video>
       </div>
       <div class="app-body">
         <div class="app-top">
           <img src="/images/apps/mochi-days.png" alt="Mochi Days app icon" loading="lazy">
           <div>
             <h3><a href="/apps/mochi-days/" style="text-decoration:none">Mochi Days</a></h3>
-            <div class="pills"><span class="pill">iPhone</span><span class="pill" data-i18n="pill_count">Countdowns</span></div>
+            <div class="pills"><span class="pill">Mac</span><span class="pill" data-i18n="pill_count">Countdowns</span><span class="pill" data-i18n="pill_free">Free</span></div>
           </div>
         </div>
         <p class="app-tagline" data-i18n="mochi_tag">Count down to the days you can't wait for, with a fluffy friend who gets excited with you.</p>
         <p class="how-label" data-i18n="how">How it works</p>
         <ol class="steps">
           <li><span data-i18n="mochi_1"><strong>Add a date.</strong> A birthday, a trip, a concert or anything you can't wait for.</span></li>
-          <li><span data-i18n="mochi_2"><strong>Watch the countdown.</strong> Days, hours, minutes and seconds, live, plus widgets and reminders.</span></li>
+          <li><span data-i18n="mochi_2"><strong>Watch the countdown.</strong> Days, hours, minutes and seconds, live, with the next big day in your menu bar.</span></li>
           <li><span data-i18n="mochi_3"><strong>Mochi gets excited with you.</strong> Calm a month out, bouncing the day before, a full party on the big day.</span></li>
         </ol>
         <div class="app-cta">
-          <span class="btn btn-soon" aria-disabled="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.67c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.88 1.15 9.13.76 1.1 1.67 2.34 2.86 2.29 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.24-.02 2.02-1.12 2.77-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.39-.92-2.41-3.65zM14.1 5.92c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.27z"/></svg>
-            <span data-i18n="soon">Coming soon to the App Store</span>
-          </span>
-          <span class="app-note" data-i18n="mochi_note">Almost ready</span>
+          <a class="btn btn-ink" href="/apps/mochi-days/#download" data-gate="mochi-days">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+            <span data-i18n="mac_dl">Download for Mac</span>
+          </a>
+          <span class="app-note" data-i18n="mac_note">Free · macOS 14+</span>
         </div>
         <p class="app-links"><a href="/apps/mochi-days/" data-i18n="more_app">See the app page</a></p>
       </div>
     </article>
 
     <!-- Outy -->
-    <article class="app app-outy flip reveal" id="outy">
+    <article class="app app-outy reveal" id="outy">
       <div class="app-art">
         <div class="phone phone-a"><img src="/images/apps/outy-1.jpg" alt="Outy: swipe through plans" loading="lazy"></div>
         <div class="phone phone-b"><img src="/images/apps/outy-3.jpg" alt="Outy: see who's going" loading="lazy"></div>
@@ -904,7 +933,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Calma -->
-    <article class="app app-calma reveal" id="calma">
+    <article class="app app-calma flip reveal" id="calma">
       <div class="app-art">
         <img class="cover" style="object-fit:contain" src="/images/apps/calma-square.jpg" alt="A calm cloud next to the four steps of Calma: who needs you, what's happening, breathe together, what to say" data-i18n-alt="calma_alt" loading="lazy">
       </div>
@@ -935,7 +964,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Posture Panda -->
-    <article class="app app-posture flip reveal" id="posture-panda">
+    <article class="app app-posture reveal" id="posture-panda">
       <div class="app-art">
         <div class="mac-shot"><img src="/images/apps/posture-panda-shot.jpg" alt="Posture Panda showing a posture alert on a Mac" loading="lazy"></div>
       </div>
@@ -955,7 +984,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
           <li><span data-i18n="pp_3"><strong>It reminds you to move.</strong> After 45 minutes of sitting, time to stand up and stretch.</span></li>
         </ol>
         <div class="app-cta">
-          <a class="btn btn-ink" data-download="posture-panda" href="https://github.com/esssebastian/neural-apps/releases/download/dr-panda-v1.3.0/Dr.Panda-1.3.0-universal.dmg">
+          <a class="btn btn-ink" href="/apps/posture-panda/#download" data-gate="posture-panda">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
             <span data-i18n="mac_dl">Download for Mac</span>
           </a>
@@ -966,7 +995,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
     </article>
 
     <!-- Fix My Face -->
-    <article class="app app-face reveal" id="fix-my-face">
+    <article class="app app-face flip reveal" id="fix-my-face">
       <div class="app-art">
         <div class="mac-shot"><img src="/images/apps/fix-my-face-shot.jpg" alt="Fix My Face catching a frown on a Mac" loading="lazy"></div>
       </div>
@@ -986,7 +1015,7 @@ a.app-note{font-weight:800;color:var(--violet);text-decoration:underline;text-un
           <li><span data-i18n="fm_3"><strong>A friendly nudge.</strong> Hold the frown and a banner reminds you to let go. It lives quietly in your menu bar.</span></li>
         </ol>
         <div class="app-cta">
-          <a class="btn btn-ink" data-download="fix-my-face" href="https://github.com/esssebastian/neural-apps/releases/download/fix-my-face-v0.1.0/Fix.My.Face-0.1.0-universal.dmg">
+          <a class="btn btn-ink" href="/apps/fix-my-face/#download" data-gate="fix-my-face">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
             <span data-i18n="mac_dl">Download for Mac</span>
           </a>
@@ -1185,7 +1214,7 @@ const ES = {
   sc_btn: 'Hablemos de estrategia',
   hero_btn1: 'Ver nuestras apps',
   hero_btn2: 'Trabaja con nosotros',
-  sticker1: '10 apps,<br>1 juego',
+  sticker1: '11 apps,<br>1 juego',
   sticker2: 'Lanzadas,<br>no prometidas',
   mq1: 'Builders de apps',
   mq2: 'Builders de servicios',
@@ -1235,7 +1264,7 @@ const ES = {
   mochi_alt: 'Mochi, un monstruito lila y peludo, saltando de emoción junto a un calendario y un regalo',
   mochi_tag: 'Cuenta los días que faltan para lo que más esperas, con un amigo peludo que se emociona contigo.',
   mochi_1: '<strong>Agrega una fecha.</strong> Un cumpleaños, un viaje, un concierto o lo que no puedas esperar.',
-  mochi_2: '<strong>Mira la cuenta regresiva.</strong> Días, horas, minutos y segundos, en vivo, con widgets y recordatorios.',
+  mochi_2: '<strong>Mira la cuenta regresiva.</strong> Días, horas, minutos y segundos, en vivo, con el próximo gran día en tu barra de menú.',
   mochi_3: '<strong>Mochi se emociona contigo.</strong> Tranquilo a un mes, saltando el día antes y de fiesta el gran día.',
   mochi_note: 'Ya casi',
   pill_focus: 'Enfoque',
@@ -1258,7 +1287,7 @@ const ES = {
   sq_alt: 'La casa del árbol de Nerd Squirrel, cada vez más acogedora con cada mejora',
   sq_tag: 'Un temporizador pomodoro acogedor con un compañero de estudio que se concentra contigo.',
   sq_1: '<strong>Elige una tarea.</strong> Agrega lo que tienes que hacer y estímalo en sesiones de enfoque.',
-  sq_2: '<strong>Concéntrate con tu compañero.</strong> 25 minutos con tu ardilla estudiando a tu lado. Si te vas a scrollear, se preocupa un poquito.',
+  sq_2: '<strong>Concéntrate con tu compañero.</strong> 25 minutos con tu ardilla estudiando a tu lado. La cuenta regresiva vive en tu barra de menú.',
   sq_3: '<strong>Gana bellotas y arma tu casa del árbol.</strong> Cada minuto de enfoque te da una bellota para luces, plantas, una biblioteca y más.',
   pill_plans: 'Planes',
   outy_tag: 'Algo que hacer. Justo cuando estás libre.',
@@ -1280,6 +1309,12 @@ const ES = {
   pp_2: '<strong>Vigila tu postura.</strong> Sigue tu cabeza y tus hombros desde tu Mac. Si te encorvas 8 segundos, aparece un aviso.',
   pp_3: '<strong>Te recuerda moverte.</strong> Después de 45 minutos sentado, toca pararse y estirarse.',
   mac_dl: 'Descargar para Mac',
+  mac_note: 'Gratis · macOS 14+',
+  gn_alt: 'El fantasma de Ghost Notes tomando notas frente a una videollamada',
+  gn_tag: 'Notas transparentes que flotan sobre tus llamadas, para que nunca dejes de mirar.',
+  gn_1: '<strong>Presiona ⌃⌥N.</strong> Tus notas aparecen encima de todas las apps, incluso de una llamada en pantalla completa.',
+  gn_2: '<strong>Escribe mientras hablas.</strong> La ventana es transparente, así sigues viendo a la persona y la pantalla compartida.',
+  gn_3: '<strong>Vuélvete fantasma.</strong> Presiona ⌃⌥G y los clics pasan directo a la app de atrás.',
   pp_note: 'Tu cámara nunca sale de tu Mac.',
   fm_tag: 'Relaja la cara. Carga más tensión de la que crees.',
   fm_1: '<strong>Aprende tu cara relajada.</strong> Calibra una vez con una expresión neutral.',
@@ -1337,7 +1372,7 @@ const SERIOUS = {
     hero_sub: '<strong>Neural Studio</strong> is a results-driven organization that leverages data-informed methodologies to deliver best-in-class applications, games and web platforms that maximize stakeholder value. (Yes, we can talk like this too.)',
     hero_btn1: 'View portfolio',
     hero_btn2: 'Schedule a call',
-    sticker1: '11 deliverables<br>shipped',
+    sticker1: '12 deliverables<br>shipped',
     sticker2: 'Q4<br>aligned',
     mq1: 'Synergy', mq2: 'Scalability', mq3: 'Stakeholder value', mq4: 'Best practices',
     st_h2: 'A data-driven<br><span class="hl">methodology.</span>',
@@ -1355,7 +1390,7 @@ const SERIOUS = {
     hero_sub: '<strong>Neural Studio</strong> es una organización orientada a resultados que apalanca metodologías basadas en datos para entregar aplicaciones, juegos y plataformas web de clase mundial que maximizan el valor para los grupos de interés. (Sí, también sabemos hablar así).',
     hero_btn1: 'Ver portafolio',
     hero_btn2: 'Agendar reunión',
-    sticker1: '11 entregables<br>lanzados',
+    sticker1: '12 entregables<br>lanzados',
     sticker2: 'Alineados<br>al Q4',
     mq1: 'Sinergia', mq2: 'Escalabilidad', mq3: 'Valor agregado', mq4: 'Mejores prácticas',
     st_h2: 'Una metodología<br><span class="hl">basada en datos.</span>',

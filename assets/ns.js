@@ -147,5 +147,100 @@
     new MutationObserver(label).observe(root, { attributes: true, attributeFilter: ['lang'] });
   });
 
+  // Mac downloads are newsletter-gated: [data-gate="slug"] opens a signup dialog; /api/download subscribes
+  // the email and returns the installer link, which then starts downloading.
+  const GATE_APPS = {
+    'ghost-notes': ['Ghost Notes', 'ghost-notes.png'],
+    'nerd-squirrel': ['Nerd Squirrel', 'nerd-squirrel.png'],
+    'mochi-days': ['Mochi Days', 'mochi-days.png'],
+    'posture-panda': ['Posture Panda', 'dr-panda.png'],
+    'fix-my-face': ['Fix My Face', 'fix-my-face.png']
+  };
+  const GATE_TXT = {
+    en: { title: n => 'Get ' + n + ' for free', sub: 'Join the Neural Studio newsletter and your download starts right away. New apps and behind the scenes, never spam.',
+      ph: 'you@email.com', btn: 'Download for Mac', busy: 'One sec…', terms: 'By downloading you join the Neural Studio newsletter. Unsubscribe anytime.',
+      bad: 'That email doesn’t look right.', fail: 'Something went wrong. Please try again.',
+      done: 'You’re in! 🎉', doneSub: n => 'Your download is starting. Open the .dmg and drag ' + n + ' into Applications.', again: 'Didn’t start? Download it here', close: 'Close' },
+    es: { title: n => 'Descarga ' + n + ' gratis', sub: 'Únete al newsletter de Neural Studio y tu descarga empieza de una. Apps nuevas y lo que pasa detrás, nada de spam.',
+      ph: 'tu@email.com', btn: 'Descargar para Mac', busy: 'Un segundo…', terms: 'Al descargar te unes al newsletter de Neural Studio. Te puedes salir cuando quieras.',
+      bad: 'Ese email no se ve bien.', fail: 'Algo salió mal. Intenta de nuevo.',
+      done: '¡Listo! 🎉', doneSub: n => 'Tu descarga está empezando. Abre el .dmg y arrastra ' + n + ' a Aplicaciones.', again: '¿No empezó? Descárgala aquí', close: 'Cerrar' }
+  };
+  let gateEl = null, gateSlug = null, gateLast = null;
+  function gt() { return GATE_TXT[root.lang === 'es' ? 'es' : 'en']; }
+  function buildGate() {
+    gateEl = document.createElement('div');
+    gateEl.className = 'gate';
+    gateEl.hidden = true;
+    gateEl.innerHTML = '<div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-title">' +
+      '<button type="button" class="gate-x">×</button>' +
+      '<img class="gate-icon" alt="" width="84" height="84">' +
+      '<div class="gate-form"><h2 id="gate-title"></h2><p class="gate-sub"></p>' +
+      '<form novalidate><input class="field" type="email" name="email" required autocomplete="email">' +
+      '<button type="submit" class="btn btn-violet"></button></form>' +
+      '<p class="gate-msg" role="alert"></p><p class="gate-terms"></p></div>' +
+      '<div class="gate-done" hidden><h2></h2><p></p><a class="text-link" href="#"></a></div></div>';
+    document.body.appendChild(gateEl);
+    gateEl.addEventListener('click', e => { if (e.target === gateEl) closeGate(); });
+    gateEl.querySelector('.gate-x').addEventListener('click', closeGate);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !gateEl.hidden) closeGate(); });
+    gateEl.querySelector('form').addEventListener('submit', submitGate);
+  }
+  function openGate(slug, opener) {
+    if (!gateEl) buildGate();
+    gateSlug = slug; gateLast = opener;
+    const [name, icon] = GATE_APPS[slug], t = gt();
+    gateEl.querySelector('.gate-icon').src = '/images/apps/' + icon;
+    gateEl.querySelector('#gate-title').textContent = t.title(name);
+    gateEl.querySelector('.gate-sub').textContent = t.sub;
+    gateEl.querySelector('.gate-terms').textContent = t.terms;
+    gateEl.querySelector('.gate-x').setAttribute('aria-label', t.close);
+    const input = gateEl.querySelector('input'), btn = gateEl.querySelector('form .btn');
+    input.placeholder = t.ph; input.value = store.get('ns-sub-email') || '';
+    btn.textContent = t.btn; btn.disabled = false;
+    gateEl.querySelector('.gate-msg').textContent = '';
+    gateEl.querySelector('.gate-form').hidden = false;
+    gateEl.querySelector('.gate-done').hidden = true;
+    gateEl.hidden = false;
+    document.documentElement.classList.add('gate-open');
+    requestAnimationFrame(() => { gateEl.classList.add('show'); input.focus(); });
+  }
+  function closeGate() {
+    gateEl.classList.remove('show');
+    document.documentElement.classList.remove('gate-open');
+    setTimeout(() => { gateEl.hidden = true; }, 200);
+    if (gateLast) gateLast.focus();
+  }
+  async function submitGate(e) {
+    e.preventDefault();
+    const t = gt(), input = gateEl.querySelector('input'), btn = gateEl.querySelector('form .btn'), msg = gateEl.querySelector('.gate-msg');
+    const email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { msg.textContent = t.bad; input.focus(); return; }
+    btn.disabled = true; btn.textContent = t.busy; msg.textContent = '';
+    try {
+      const r = await fetch('/api/download', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, app: gateSlug, lang: root.lang === 'es' ? 'es' : 'en' }) });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || !data.url) throw new Error(data.error || r.status);
+      store.set('ns-sub-email', email);
+      const name = GATE_APPS[gateSlug][0], done = gateEl.querySelector('.gate-done');
+      done.querySelector('h2').textContent = t.done;
+      done.querySelector('p').textContent = t.doneSub(name);
+      const again = done.querySelector('a'); again.textContent = t.again; again.href = data.url;
+      gateEl.querySelector('.gate-form').hidden = true; done.hidden = false;
+      const r2 = gateEl.querySelector('.gate-card').getBoundingClientRect();
+      burst(r2.left + r2.width / 2, r2.top + 40, 120);
+      if (window.fbq) { fbq('track', 'Lead', { content_name: gateSlug }); fbq('trackCustom', 'AppDownload', { app: gateSlug + '-mac' }); }
+      window.location.href = data.url;
+    } catch (err) {
+      msg.textContent = String(err.message) === 'email' ? t.bad : t.fail;
+      btn.disabled = false; btn.textContent = t.btn;
+    }
+  }
+  document.querySelectorAll('[data-gate]').forEach(a => {
+    if (!GATE_APPS[a.dataset.gate]) return;
+    a.addEventListener('click', e => { e.preventDefault(); openGate(a.dataset.gate, a); });
+  });
+
   window.NS = { burst, store, reduceMotion, labelTheme };
 })();
